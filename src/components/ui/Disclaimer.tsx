@@ -10,7 +10,7 @@ export function Disclaimer({ text, className }: DisclaimerProps) {
   return (
     <div
       className={cn(
-        "flex gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800",
+        "flex gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800",
         className
       )}
       role="note"
