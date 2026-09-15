@@ -1,19 +1,17 @@
 "use client";
 
 /**
- * AvensaLogo — Unique geometric SVG mark for Avensa Overseas
- *
- * The mark concept: "Meridian Compass"
+ * AvensaLogo v2 — "Ascent" Brand Mark
  * ─────────────────────────────────────
- * A stylised globe/compass formed by:
- *   • An outer ring (world boundary)
- *   • Two curved meridian arcs crossing at centre (longitude lines)
- *   • A horizontal equator line
- *   • A sharp upward-pointing navigation arrow piercing through the top
- *   • A coral accent dot at the arrow tip (destination)
- *   • Subtle inner glow rings that pulse on the animated variant
+ * Concept: A bold geometric "A" constructed from two rising diagonal
+ * shards with a connecting crossbar — forming a subtle upward arrow /
+ * mountain peak. This reads simultaneously as the letter A, a compass
+ * needle, and an ascending trajectory. A gold accent dot crowns the apex.
  *
- * This avoids any letter shapes — it's a pure mark that works at any size.
+ * - Pure SVG, no external assets
+ * - Works at any size, any background
+ * - Optional pulse animation on the apex dot
+ * - Wordmark uses Syne (display) for AVENSA + light Outfit for OVERSEAS
  */
 
 import { cn } from "@/lib/utils";
@@ -31,18 +29,18 @@ interface AvensaLogoProps {
   className?:   string;
 }
 
-const markPx: Record<Size, number> = { xs: 24, sm: 32, md: 40, lg: 52, xl: 72 };
+const markPx: Record<Size, number> = { xs: 24, sm: 32, md: 42, lg: 54, xl: 72 };
 
 const nameSz: Record<Size, string> = {
-  xs: "text-xs",   sm: "text-sm",  md: "text-base",
-  lg: "text-xl",   xl: "text-3xl",
+  xs: "text-xs",  sm: "text-sm",  md: "text-[15px]",
+  lg: "text-xl",  xl: "text-3xl",
 };
 const tagSz: Record<Size, string> = {
-  xs: "text-[8px]", sm: "text-[9px]",  md: "text-[10px]",
+  xs: "text-[7px]", sm: "text-[8.5px]", md: "text-[10px]",
   lg: "text-xs",    xl: "text-sm",
 };
 
-/* ─── Mark SVG ───────────────────────────────────────────────────── */
+/* ── Mark SVG ─────────────────────────────────────────────────────── */
 function LogoMark({
   px,
   theme,
@@ -52,166 +50,125 @@ function LogoMark({
   theme: Theme;
   animated?: boolean;
 }) {
-  /* Unique IDs per theme to avoid SSR collisions */
-  const uid = `av-${theme}`;
+  const uid   = `av2-${theme}`;
+  const isDark = theme !== "light";
 
   return (
     <svg
       width={px}
       height={px}
-      viewBox="0 0 56 56"
+      viewBox="0 0 52 52"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       style={{ overflow: "visible" }}
     >
       <defs>
-        {/* Badge background gradient */}
-        <linearGradient id={`${uid}-bg`} x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-          {theme === "light" ? (
+        {/* Badge background */}
+        <linearGradient id={`${uid}-bg`} x1="0" y1="0" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+          {isDark ? (
             <>
-              <stop offset="0%"   stopColor="#060a30" />
-              <stop offset="100%" stopColor="#1e2c78" />
+              <stop offset="0%"   stopColor="#1e1b4b" />
+              <stop offset="55%"  stopColor="#312e81" />
+              <stop offset="100%" stopColor="#4f46e5" />
             </>
           ) : (
             <>
-              <stop offset="0%"   stopColor="#001414" />
-              <stop offset="40%"  stopColor="#004c4c" />
-              <stop offset="100%" stopColor="#009494" />
+              <stop offset="0%"   stopColor="#eef2ff" />
+              <stop offset="100%" stopColor="#c7d2fe" />
             </>
           )}
         </linearGradient>
 
-        {/* Meridian stroke gradient */}
-        <linearGradient id={`${uid}-mer`} x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="rgba(255,255,255,0.55)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.20)" />
-        </linearGradient>
-
-        {/* Arrow + ring gradient */}
-        <linearGradient id={`${uid}-arr`} x1="28" y1="4" x2="28" y2="44" gradientUnits="userSpaceOnUse">
-          <stop offset="0%"   stopColor="#ffffff" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0.75)" />
-        </linearGradient>
-
-        {/* Coral dot gradient */}
-        <radialGradient id={`${uid}-dot`} cx="50%" cy="35%" r="65%">
-          <stop offset="0%"   stopColor="#ff9a7d" />
-          <stop offset="100%" stopColor="#ff5530" />
-        </radialGradient>
-
         {/* Inner highlight */}
-        <radialGradient id={`${uid}-hl`} cx="35%" cy="22%" r="60%">
-          <stop offset="0%"   stopColor="rgba(255,255,255,0.18)" />
+        <radialGradient id={`${uid}-hl`} cx="30%" cy="20%" r="65%">
+          <stop offset="0%"   stopColor={isDark ? "rgba(255,255,255,0.14)" : "rgba(255,255,255,0.70)"} />
           <stop offset="100%" stopColor="rgba(255,255,255,0)" />
         </radialGradient>
 
-        {/* Outer glow filter */}
-        <filter id={`${uid}-glow`} x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur stdDeviation="2.5" result="blur" />
+        {/* Shard gradient */}
+        <linearGradient id={`${uid}-shard`} x1="26" y1="8" x2="26" y2="44" gradientUnits="userSpaceOnUse">
+          <stop offset="0%"   stopColor={isDark ? "rgba(255,255,255,0.95)" : "rgba(79,70,229,0.90)"} />
+          <stop offset="100%" stopColor={isDark ? "rgba(255,255,255,0.55)" : "rgba(79,70,229,0.45)"} />
+        </linearGradient>
+
+        {/* Gold apex gradient */}
+        <radialGradient id={`${uid}-gold`} cx="50%" cy="30%" r="65%">
+          <stop offset="0%"   stopColor="#fcd34d" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </radialGradient>
+
+        {/* Subtle outer ring glow */}
+        <filter id={`${uid}-glow`} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="3" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
 
+        {/* Clip to badge shape */}
         <clipPath id={`${uid}-clip`}>
-          <rect width="56" height="56" rx="14" />
+          <rect width="52" height="52" rx="13" />
         </clipPath>
       </defs>
 
-      {/* ── Badge background ── */}
-      <rect width="56" height="56" rx="14" fill={`url(#${uid}-bg)`} />
-      <rect width="56" height="56" rx="14" fill={`url(#${uid}-hl)`} />
+      {/* Badge shell */}
+      <rect width="52" height="52" rx="13" fill={`url(#${uid}-bg)`} />
+      <rect width="52" height="52" rx="13" fill={`url(#${uid}-hl)`} />
 
-      {/* ── Clipped content ── */}
+      {/* Subtle border */}
+      <rect
+        width="51" height="51" x="0.5" y="0.5" rx="12.5"
+        stroke={isDark ? "rgba(255,255,255,0.12)" : "rgba(79,70,229,0.25)"}
+        strokeWidth="1"
+        fill="none"
+      />
+
       <g clipPath={`url(#${uid}-clip)`}>
-
-        {/* Outer globe ring */}
-        <circle
-          cx="28" cy="30" r="17"
-          stroke={`url(#${uid}-mer)`}
-          strokeWidth="1.6"
-          fill="none"
-          className={animated ? "animate-[spin_18s_linear_infinite]" : ""}
-          style={animated ? { transformOrigin: "28px 30px" } : {}}
-        />
-
-        {/* Second inner ring (slightly tilted = latitude ring) */}
-        <ellipse
-          cx="28" cy="30" rx="17" ry="7"
-          stroke="rgba(255,255,255,0.18)"
-          strokeWidth="1.4"
-          fill="none"
-        />
-
-        {/* Left meridian arc */}
+        {/* ── Left shard of the A ── */}
+        {/* Outer left edge → apex → inner left */}
         <path
-          d="M28 13 Q11 30 28 47"
-          stroke={`url(#${uid}-mer)`}
-          strokeWidth="1.4"
-          fill="none"
-          strokeLinecap="round"
+          d="M10 43 L26 9 L26 17 L18 43 Z"
+          fill={`url(#${uid}-shard)`}
+          opacity="1"
         />
 
-        {/* Right meridian arc */}
+        {/* ── Right shard of the A ── */}
         <path
-          d="M28 13 Q45 30 28 47"
-          stroke={`url(#${uid}-mer)`}
-          strokeWidth="1.4"
-          fill="none"
-          strokeLinecap="round"
+          d="M42 43 L26 9 L26 17 L34 43 Z"
+          fill={`url(#${uid}-shard)`}
+          opacity="0.75"
         />
 
-        {/* Equator horizontal line */}
-        <line
-          x1="11" y1="30" x2="45" y2="30"
-          stroke="rgba(255,255,255,0.22)"
-          strokeWidth="1.3"
+        {/* ── Crossbar ── */}
+        <rect
+          x="17" y="30" width="18" height="3.5" rx="1.75"
+          fill={isDark ? "rgba(255,255,255,0.85)" : "rgba(79,70,229,0.80)"}
         />
 
-        {/* Navigation arrow shaft (piercing upward through globe) */}
-        <line
-          x1="28" y1="8" x2="28" y2="38"
-          stroke={`url(#${uid}-arr)`}
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-
-        {/* Arrow left wing */}
-        <path
-          d="M28 8 L22 18"
-          stroke="rgba(255,255,255,0.90)"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
-
-        {/* Arrow right wing */}
-        <path
-          d="M28 8 L34 18"
-          stroke="rgba(255,255,255,0.90)"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-        />
+        {/* ── Background grid lines (subtle) ── */}
+        <line x1="0"  y1="52" x2="52" y2="0"  stroke={isDark ? "rgba(255,255,255,0.04)" : "rgba(79,70,229,0.06)"} strokeWidth="1" />
+        <line x1="0"  y1="26" x2="52" y2="26" stroke={isDark ? "rgba(255,255,255,0.04)" : "rgba(79,70,229,0.06)"} strokeWidth="1" />
       </g>
 
-      {/* ── Coral destination dot (outside clip so it can overflow) ── */}
-      <circle cx="28" cy="8" r="4.5" fill={`url(#${uid}-dot)`} />
-      <circle cx="28" cy="8" r="2"   fill="white" opacity="0.9" />
+      {/* ── Gold apex dot (outside clip so it can overflow top) ── */}
+      <circle cx="26" cy="9" r="4.5" fill={`url(#${uid}-gold)`} />
+      <circle cx="26" cy="9" r="2"   fill="white" opacity="0.90" />
 
-      {/* pulse ring (animated only) */}
+      {/* ── Pulse ring (animated variant only) ── */}
       {animated && (
         <circle
-          cx="28" cy="8" r="4.5"
-          stroke="#ff5530"
+          cx="26" cy="9" r="4.5"
+          stroke="#f59e0b"
           strokeWidth="1.5"
           fill="none"
-          opacity="0.6"
-          style={{ animation: "av-ping 2s cubic-bezier(0,0,0.2,1) infinite" }}
+          opacity="0.65"
+          style={{ animation: "av-ping 2.2s cubic-bezier(0,0,0.2,1) infinite" }}
         />
       )}
     </svg>
   );
 }
 
-/* ─── Wordmark ───────────────────────────────────────────────────── */
+/* ── Wordmark ─────────────────────────────────────────────────────── */
 function Wordmark({
   size,
   theme,
@@ -221,62 +178,68 @@ function Wordmark({
   theme: Theme;
   showTagline?: boolean;
 }) {
-  const dark = theme === "dark";
+  const isDark = theme !== "light";
 
   return (
     <div className="leading-none select-none">
-      {/* Brand name with split weight */}
       <div
         className={cn("flex items-baseline gap-0", nameSz[size])}
-        style={{ fontFamily: "var(--font-dm-sans)" }}
+        style={{ fontFamily: "var(--font-syne)" }}
       >
-        <span className={cn("font-black tracking-tight", dark ? "text-white" : "text-navy-950")}>
-          AVENSA
-        </span>
+        {/* AVENSA — bold, tight */}
         <span
           className={cn(
-            "font-extralight tracking-[0.12em] ml-1.5",
-            dark ? "text-teal-300" : "text-teal-600"
+            "font-bold tracking-[-0.03em]",
+            isDark ? "text-white" : "text-indigo-950"
           )}
+        >
+          AVENSA
+        </span>
+
+        {/* Separator dot */}
+        <span className={cn(
+          "mx-1.5 text-[0.55em] mb-[0.08em] self-end",
+          isDark ? "text-gold-400 opacity-80" : "text-gold-500 opacity-70"
+        )}>
+          ◆
+        </span>
+
+        {/* OVERSEAS — light weight */}
+        <span
+          className={cn(
+            "font-light tracking-[0.06em]",
+            isDark ? "text-indigo-300" : "text-indigo-500"
+          )}
+          style={{ fontFamily: "var(--font-outfit)" }}
         >
           OVERSEAS
         </span>
       </div>
 
       {showTagline && (
-        <div
-          className={cn(
-            "flex items-center gap-1.5 mt-1",
-            tagSz[size]
+        <div className={cn("flex items-center gap-2 mt-1.5", tagSz[size])}>
+          <span className={cn(
+            "h-px flex-1 max-w-[24px]",
+            isDark ? "bg-indigo-500/35" : "bg-indigo-300/50"
+          )} />
+          <span className={cn(
+            "font-semibold uppercase tracking-[0.22em]",
+            isDark ? "text-indigo-400/65" : "text-indigo-500/70"
           )}
-        >
-          <span
-            className={cn(
-              "inline-block h-px flex-1",
-              dark ? "bg-white/20" : "bg-navy-200"
-            )}
-          />
-          <span
-            className={cn(
-              "font-semibold uppercase tracking-[0.20em]",
-              dark ? "text-teal-400/70" : "text-teal-500"
-            )}
-          >
+          style={{ fontFamily: "var(--font-outfit)" }}>
             EU Immigration Portal
           </span>
-          <span
-            className={cn(
-              "inline-block h-px flex-1",
-              dark ? "bg-white/20" : "bg-navy-200"
-            )}
-          />
+          <span className={cn(
+            "h-px flex-1 max-w-[24px]",
+            isDark ? "bg-indigo-500/35" : "bg-indigo-300/50"
+          )} />
         </div>
       )}
     </div>
   );
 }
 
-/* ─── Public export ──────────────────────────────────────────────── */
+/* ── Public export ────────────────────────────────────────────────── */
 export function AvensaLogo({
   variant     = "horizontal",
   theme       = "dark",
