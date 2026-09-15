@@ -25,7 +25,7 @@ export function Navbar() {
   return (
     <>
       {/* ── Announcement bar ── */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 py-2">
+      {/* <div className="relative overflow-hidden bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 py-2">
         <div className="animate-ticker flex whitespace-nowrap" style={{ animation: "ticker 28s linear infinite" }}>
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex items-center gap-8 px-4" style={{ fontFamily: "var(--font-outfit)" }}>
@@ -38,7 +38,7 @@ export function Navbar() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <header
         className={cn(
@@ -107,7 +107,8 @@ export function Navbar() {
             </nav>
 
             {/* ── Desktop Actions ── */}
-            <div className="hidden lg:flex items-center gap-2 shrink-0">
+            {/* Sign In and Get Started temporarily hidden */}
+            {/* <div className="hidden lg:flex items-center gap-2 shrink-0">
               <Link href="/auth/login">
                 <button
                   className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-[13px] font-medium text-white/50 transition-all duration-200 hover:bg-white/[0.06] hover:text-white"
@@ -135,7 +136,7 @@ export function Navbar() {
                   Get Started
                 </button>
               </Link>
-            </div>
+            </div> */}
 
             {/* ── Mobile toggle ── */}
             <button
@@ -204,8 +205,8 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Action buttons */}
-            <div className="relative mt-4 grid grid-cols-2 gap-2 border-t border-white/[0.06] pt-4">
+            {/* Action buttons — temporarily hidden */}
+            {/* <div className="relative mt-4 grid grid-cols-2 gap-2 border-t border-white/[0.06] pt-4">
               <Link href="/auth/login">
                 <button
                   className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-2.5 text-sm font-medium text-white hover:bg-white/[0.09] transition-all"
@@ -223,7 +224,7 @@ export function Navbar() {
                   Get Started
                 </button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>

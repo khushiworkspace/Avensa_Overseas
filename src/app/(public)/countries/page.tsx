@@ -50,7 +50,7 @@ const COUNTRY_PHOTOS: Record<string, { photo: string; caption: string }> = {
     caption: "Warsaw, Poland",
   },
   at: {
-    photo: "https://images.unsplash.com/photo-1516550893885-985c836c5843?w=600&q=80&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1573599852326-2d4da0bbe613?w=600&q=80&auto=format&fit=crop",
     caption: "Vienna, Austria",
   },
   fi: {

@@ -84,7 +84,7 @@ export const EUROPEAN_CITIES = [
     country: "Austria",
     countryId: "at",
     caption: "Imperial elegance & culture",
-    photo: "https://images.unsplash.com/photo-1516550893885-985c836c5843?w=800&q=80&auto=format&fit=crop",
+    photo: "https://images.unsplash.com/photo-1573599852326-2d4da0bbe613?w=800&q=80&auto=format&fit=crop",
     accent: "#8b5cf6",
   },
   {

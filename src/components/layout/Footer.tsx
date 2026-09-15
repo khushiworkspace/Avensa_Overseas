@@ -38,7 +38,7 @@ function StatPill({ value, label }: { value: string; label: string }) {
         {value}
       </span>
       <span
-        className="text-[11px] text-white/40 uppercase tracking-wider"
+        className="text-[11px] text-white/60 uppercase tracking-wider"
         style={{ fontFamily: "var(--font-outfit)" }}
       >
         {label}
@@ -88,7 +88,7 @@ export function Footer() {
                 Ready to start your EU journey?
               </p>
               <p
-                className="mt-1 text-sm text-white/45"
+                className="mt-1 text-sm text-white/65"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
                 Create a free account in minutes. No legal advice — just clarity.
@@ -128,7 +128,7 @@ export function Footer() {
             </Link>
 
             <p
-              className="text-sm leading-relaxed text-white/45 max-w-xs"
+              className="text-sm leading-relaxed text-white/70 max-w-xs"
               style={{ fontFamily: "var(--font-outfit)" }}
             >
               Helping applicants navigate EU immigration with clear guidance,
@@ -153,7 +153,7 @@ export function Footer() {
                   {href ? (
                     <a
                       href={href}
-                      className="group flex items-center gap-2.5 text-sm text-white/38 hover:text-indigo-300 transition-colors"
+                      className="group flex items-center gap-2.5 text-sm text-white/65 hover:text-indigo-300 transition-colors"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     >
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/[0.05] group-hover:bg-indigo-500/20 transition-colors">
@@ -163,7 +163,7 @@ export function Footer() {
                     </a>
                   ) : (
                     <div
-                      className="flex items-center gap-2.5 text-sm text-white/38"
+                      className="flex items-center gap-2.5 text-sm text-white/65"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     >
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/[0.05]">
@@ -189,7 +189,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="group flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.07] text-white/38 hover:bg-indigo-600/30 hover:border-indigo-500/40 hover:text-indigo-300 transition-all duration-200"
+                  className="group flex h-9 w-9 items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.07] text-white/65 hover:bg-indigo-600/30 hover:border-indigo-500/40 hover:text-indigo-300 transition-all duration-200"
                 >
                   <Icon size={14} />
                 </a>
@@ -211,7 +211,7 @@ export function Footer() {
                   <li key={link.href + link.label}>
                     <Link
                       href={link.href}
-                      className="group inline-flex items-center gap-1.5 text-sm text-white/38 hover:text-white transition-colors duration-200"
+                      className="group inline-flex items-center gap-1.5 text-sm text-white/65 hover:text-white transition-colors duration-200"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     >
                       <span className="relative">
@@ -245,17 +245,17 @@ export function Footer() {
           <div className="flex items-start gap-2.5 mb-4">
             <Shield size={12} className="text-gold-400 shrink-0 mt-0.5" />
             <p
-              className="text-[11px] text-white/22 leading-relaxed max-w-4xl"
+              className="text-[11px] text-white/55 leading-relaxed max-w-4xl"
               style={{ fontFamily: "var(--font-outfit)" }}
             >
-              <strong className="text-white/35 font-semibold">Important Disclaimer: </strong>
+              <strong className="text-white/70 font-semibold">Important Disclaimer: </strong>
               {COMPANY.disclaimer}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p
-              className="text-[11px] text-white/18"
+              className="text-[11px] text-white/55"
               style={{ fontFamily: "var(--font-outfit)" }}
             >
               © {new Date().getFullYear()} {COMPANY.name}. All rights reserved.
@@ -270,7 +270,7 @@ export function Footer() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="text-[11px] text-white/22 hover:text-white/55 transition-colors"
+                  className="text-[11px] text-white/50 hover:text-white/80 transition-colors"
                   style={{ fontFamily: "var(--font-outfit)" }}
                 >
                   {l.label}

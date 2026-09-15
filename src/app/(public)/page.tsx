@@ -5,12 +5,13 @@ import {
   ArrowRight, Globe, FileText, Search, Clock, Shield,
   Briefcase, GraduationCap, Home as HomeIcon, Plane, Star,
   ChevronRight, Sparkles, MapPin, Zap, ArrowUpRight, Lock,
-  TrendingUp, CheckCircle, Users, BarChart3, Layers,
+  TrendingUp, CheckCircle, Users,
 } from "lucide-react";
 import { COUNTRIES, COMPANY } from "@/lib/constants";
 import { MOCK_FAQS, MOCK_ARTICLES } from "@/lib/mock-data";
 import { formatDate } from "@/lib/utils";
 import { EuropeanCitiesStrip, EuropeanCitiesStripDark, EUROPEAN_CITIES } from "@/components/ui/EuropeanCitiesStrip";
+import FAQItem from "@/components/ui/FAQItem";
 
 export const metadata: Metadata = {
   title: "Avensa Overseas – EU Immigration Portal",
@@ -189,7 +190,7 @@ export default function HomePage() {
         {/* ── European city background photo ── */}
         <div className="absolute inset-0 pointer-events-none">
           <Image
-            src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1800&q=85&auto=format&fit=crop"
+            src="https://picsum.photos/seed/amsterdam/1800/1000"
             alt="European city skyline"
             fill
             priority
@@ -310,14 +311,14 @@ export default function HomePage() {
             {/* Sub-headline */}
             <Reveal delay={0.16}>
               <p
-                className="mt-9 text-lg leading-relaxed text-white/48 max-w-2xl mx-auto"
+                className="mt-9 text-lg leading-relaxed text-white/80 max-w-2xl mx-auto"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
                 Check eligibility, build your document checklist, and track your
                 application across{" "}
-                <strong className="text-white/80 font-semibold">13 European countries</strong>
+                <strong className="text-white font-semibold">13 European countries</strong>
                 {" "}and{" "}
-                <strong className="text-white/80 font-semibold">30+ immigration routes</strong>.
+                <strong className="text-white font-semibold">30+ immigration routes</strong>.
               </p>
             </Reveal>
 
@@ -351,7 +352,7 @@ export default function HomePage() {
                 {["Free eligibility check", "Secure document upload", "Live application tracking"].map(t => (
                   <span
                     key={t}
-                    className="flex items-center gap-1.5 text-xs font-medium text-white/35"
+                    className="flex items-center gap-1.5 text-xs font-medium text-white/70"
                     style={{ fontFamily: "var(--font-outfit)" }}
                   >
                     <CheckCircle size={12} className="text-indigo-400 shrink-0" />
@@ -379,7 +380,7 @@ export default function HomePage() {
                       {s.value}
                     </p>
                     <p
-                      className="relative mt-0.5 text-[11px] font-medium text-white/35 uppercase tracking-wide"
+                      className="relative mt-0.5 text-[11px] font-medium text-white/60 uppercase tracking-wide"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     >
                       {s.label}
@@ -397,6 +398,457 @@ export default function HomePage() {
           <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block">
             <path d="M0 80V44C360 4 720 80 1080 40C1260 20 1380 58 1440 44V80H0Z" fill="#f8f7ff" />
           </svg>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          § 1.5  SPECIALISATION — Schengen-to-Schengen TRC
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative py-20 overflow-hidden bg-white">
+        {/* subtle top glow */}
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-[700px] rounded-full blur-[130px] pointer-events-none"
+          style={{ background: "rgba(79,70,229,0.07)" }} />
+
+        <div className="relative page-container">
+          {/* Section header */}
+          <div className="text-center mb-14">
+            <Reveal>
+              <div className="section-eyebrow mb-4">
+                <Sparkles size={11} />
+                Our Specialisation
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="section-title text-ink">
+                We Specialise in{" "}
+                <span className="text-gradient-hero">Schengen to Schengen</span>
+                <br className="hidden sm:block" /> TRC Change
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="section-subtitle mx-auto max-w-2xl">
+                Changing your Temporary Residence Permit between Schengen countries is
+                complex — visa categories, timelines, and documentation differ by country.
+                We guide you through every step with precision.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Feature grid */}
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: Globe,
+                title: "Cross-Country TRC Transfers",
+                desc: "Already living in one Schengen country? We help you transfer or upgrade your residence permit to another EU member state without starting from zero.",
+                accent: "from-indigo-500 to-violet-600",
+                glow: "rgba(79,70,229,0.35)",
+                tag: "Most Requested",
+              },
+              {
+                icon: FileText,
+                title: "Document Checklist & Prep",
+                desc: "Every TRC change requires a tailored document set. We generate a precise, country-specific checklist so nothing is missed.",
+                accent: "from-violet-500 to-purple-600",
+                glow: "rgba(124,58,237,0.30)",
+                tag: null,
+              },
+              {
+                icon: Clock,
+                title: "Timeline & Deadline Tracking",
+                desc: "We track your current permit validity and alert you when to begin the TRC change process so you never overstay or lose status.",
+                accent: "from-sky-500 to-indigo-500",
+                glow: "rgba(14,165,233,0.28)",
+                tag: null,
+              },
+              {
+                icon: Shield,
+                title: "Compliance Verification",
+                desc: "We cross-check your eligibility against each country's specific TRC transfer rules before you submit a single document.",
+                accent: "from-emerald-500 to-teal-600",
+                glow: "rgba(16,185,129,0.28)",
+                tag: null,
+              },
+              {
+                icon: Search,
+                title: "Route Comparison Tool",
+                desc: "Compare TRC change routes across multiple Schengen countries side-by-side — processing times, fees, and requirements at a glance.",
+                accent: "from-amber-500 to-orange-500",
+                glow: "rgba(245,158,11,0.30)",
+                tag: null,
+              },
+              {
+                icon: TrendingUp,
+                title: "Real-Time Status Updates",
+                desc: "Once your application is submitted, track its progress in real time. Every milestone, every update — straight to you.",
+                accent: "from-rose-500 to-pink-600",
+                glow: "rgba(244,63,94,0.28)",
+                tag: "Live",
+              },
+            ].map((card, i) => (
+              <Reveal key={card.title} delay={i * 0.07}>
+                <div className="group relative flex flex-col gap-4 p-6 rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(15,22,64,0.06)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.16)] hover:border-indigo-300/50 h-full">
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: `linear-gradient(90deg, transparent, ${card.glow.replace("0.", "rgba(99,102,241,0.")}, transparent)` }} />
+                  {/* Inner glow */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+                    style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.04), transparent 70%)" }} />
+
+                  {card.tag && (
+                    <span className="absolute top-4 right-4 rounded-full bg-indigo-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-600"
+                      style={{ fontFamily: "var(--font-outfit)" }}>
+                      {card.tag}
+                    </span>
+                  )}
+
+                  <div className={`relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${card.accent} text-white shrink-0 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg`}
+                    style={{ boxShadow: `0 4px 18px ${card.glow}` }}>
+                    <card.icon size={20} />
+                  </div>
+
+                  <div className="relative">
+                    <h3 className="font-bold text-ink group-hover:text-indigo-700 transition-colors text-sm"
+                      style={{ fontFamily: "var(--font-syne)" }}>
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-500 leading-relaxed"
+                      style={{ fontFamily: "var(--font-outfit)" }}>
+                      {card.desc}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <Reveal delay={0.44}>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/eligibility">
+                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(79,70,229,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(79,70,229,0.60)]"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  Check TRC Eligibility
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="group inline-flex items-center gap-2 rounded-2xl border border-indigo-200 bg-indigo-50 px-8 py-3.5 text-sm font-semibold text-indigo-700 transition-all duration-300 hover:bg-indigo-100 hover:-translate-y-0.5"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  Talk to an Expert
+                  <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          § 1.6  STUDENT VISA COUNTRIES
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden"
+        style={{ background: "linear-gradient(160deg, #050714 0%, #080c28 45%, #0d1038 75%, #050714 100%)" }}>
+        {/* Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 grid-pattern opacity-[0.18]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full blur-[160px]"
+            style={{ background: "rgba(79,70,229,0.10)" }} />
+        </div>
+
+        <div className="relative page-container">
+          <div className="text-center mb-14">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-300 mb-5"
+                style={{ fontFamily: "var(--font-outfit)" }}>
+                <GraduationCap size={11} />
+                Student Visa
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="text-3xl lg:text-5xl font-bold text-white"
+                style={{ fontFamily: "var(--font-syne)" }}>
+                Study in Europe
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-4 text-white/70 text-base max-w-xl mx-auto leading-relaxed"
+                style={{ fontFamily: "var(--font-outfit)" }}>
+                We support student visa applications for these countries — world-class education, affordable tuition.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+            {[
+              {
+                flag: "🇱🇹",
+                code: "LT",
+                name: "Lithuania",
+                capital: "Vilnius",
+                highlight: "Top Tech & Medical Universities",
+                desc: "Lithuania offers affordable EU-standard education with a growing tech ecosystem. English-taught programmes widely available.",
+                img: "https://picsum.photos/seed/vilnius/800/500",
+                tags: ["Bachelor", "Master", "PhD"],
+                color: "from-yellow-500/20 to-green-500/10",
+                border: "border-yellow-400/20",
+                badge: "from-yellow-500 to-green-500",
+              },
+              {
+                flag: "🇱🇻",
+                code: "LV",
+                name: "Latvia",
+                capital: "Riga",
+                highlight: "Affordable EU Tuition",
+                desc: "Latvia's universities rank among the most affordable in the EU, with strong medicine, engineering, and business programmes.",
+                img: "https://picsum.photos/seed/riga/800/500",
+                tags: ["Bachelor", "Master", "Language Courses"],
+                color: "from-red-500/20 to-slate-500/10",
+                border: "border-red-400/20",
+                badge: "from-red-500 to-rose-600",
+              },
+              {
+                flag: "🇧🇬",
+                code: "BG",
+                name: "Bulgaria",
+                capital: "Sofia",
+                highlight: "Lowest Cost EU Study",
+                desc: "Bulgaria has some of the lowest tuition fees in the EU with recognised medical, law, and engineering degrees.",
+                img: "https://picsum.photos/seed/sofia/800/500",
+                tags: ["Bachelor", "Medical", "Engineering"],
+                color: "from-emerald-500/20 to-sky-500/10",
+                border: "border-emerald-400/20",
+                badge: "from-emerald-500 to-teal-500",
+              },
+            ].map((c, i) => (
+              <Reveal key={c.code} delay={i * 0.10}>
+                <div className={`group relative rounded-3xl overflow-hidden border ${c.border} transition-all duration-500 hover:-translate-y-2.5 hover:shadow-[0_24px_60px_-8px_rgba(79,70,229,0.30)] bg-white/[0.03] backdrop-blur-sm h-full flex flex-col`}>
+                  {/* Country photo */}
+                  <div className="relative h-44 overflow-hidden shrink-0">
+                    <Image
+                      src={c.img}
+                      alt={`${c.name} study`}
+                      fill
+                      sizes="(max-width:768px) 100vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* dark overlay */}
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(5,7,20,0.75) 0%, rgba(5,7,20,0.15) 60%)" }} />
+                    {/* Flag + code */}
+                    <div className="absolute top-3 left-3 flex items-center gap-2">
+                      <span className="text-2xl">{c.flag}</span>
+                      <span className="rounded-full bg-black/40 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold text-white/80 font-mono border border-white/10">{c.code}</span>
+                    </div>
+                    {/* Highlight badge */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className={`inline-flex items-center rounded-full bg-gradient-to-r ${c.badge} px-3 py-1 text-[10px] font-bold text-white shadow-lg`}
+                        style={{ fontFamily: "var(--font-outfit)" }}>
+                        ✦ {c.highlight}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Body */}
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h3 className="text-lg font-bold text-white group-hover:text-violet-300 transition-colors"
+                        style={{ fontFamily: "var(--font-syne)" }}>
+                        {c.name}
+                      </h3>
+                      <span className="text-xs text-white/45 flex items-center gap-1 shrink-0"
+                        style={{ fontFamily: "var(--font-outfit)" }}>
+                        <MapPin size={10} /> {c.capital}
+                      </span>
+                    </div>
+                    <p className="text-sm text-white/65 leading-relaxed mb-4"
+                      style={{ fontFamily: "var(--font-outfit)" }}>
+                      {c.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mt-auto">
+                      {c.tags.map(t => (
+                        <span key={t} className="rounded-full bg-violet-500/15 border border-violet-400/20 px-2.5 py-0.5 text-[11px] font-semibold text-violet-300"
+                          style={{ fontFamily: "var(--font-outfit)" }}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.35}>
+            <div className="mt-10 text-center">
+              <Link href="/eligibility">
+                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(124,58,237,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(124,58,237,0.60)]"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  Apply for Student Visa
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          § 1.7  TOURIST & WORK VISA COUNTRIES
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative section-padding overflow-hidden bg-ice-50">
+        <div className="absolute inset-0 dot-pattern-light pointer-events-none opacity-60" />
+        <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full blur-[130px] pointer-events-none"
+          style={{ background: "rgba(79,70,229,0.07)" }} />
+
+        <div className="relative page-container">
+          <div className="text-center mb-14">
+            <Reveal>
+              <div className="section-eyebrow mb-4">
+                <Briefcase size={11} />
+                Tourist &amp; Work Visa
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="section-title text-ink">
+                Work &amp; Travel Across Europe
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="section-subtitle mx-auto max-w-2xl">
+                We process Tourist and Work Visa applications for 14 European destinations —
+                from the Baltic coast to the Mediterranean.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {[
+              {
+                flag: "🇱🇹", code: "LT", name: "Lithuania",
+                img: "https://picsum.photos/seed/vilnius/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇱🇻", code: "LV", name: "Latvia",
+                img: "https://picsum.photos/seed/riga/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇵🇱", code: "PL", name: "Poland",
+                img: "https://picsum.photos/seed/warsaw/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇧🇬", code: "BG", name: "Bulgaria",
+                img: "https://picsum.photos/seed/sofia/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇲🇩", code: "MD", name: "Moldova",
+                img: "https://picsum.photos/seed/chisinau/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇮🇹", code: "IT", name: "Italy",
+                img: "https://picsum.photos/seed/rome/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇫🇷", code: "FR", name: "France",
+                img: "https://picsum.photos/seed/paris/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇬🇷", code: "GR", name: "Greece",
+                img: "https://picsum.photos/seed/athens/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇷🇸", code: "RS", name: "Serbia",
+                img: "https://picsum.photos/seed/belgrade/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇩🇰", code: "DK", name: "Denmark",
+                img: "https://picsum.photos/seed/copenhagen/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇵🇹", code: "PT", name: "Portugal",
+                img: "https://picsum.photos/seed/lisbon/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇳🇱", code: "NL", name: "Netherlands",
+                img: "https://picsum.photos/seed/amsterdam/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇸🇰", code: "SK", name: "Slovakia",
+                img: "https://picsum.photos/seed/bratislava/600/400",
+                types: ["Tourist", "Work"],
+              },
+              {
+                flag: "🇷🇴", code: "RO", name: "Romania",
+                img: "https://picsum.photos/seed/bucharest/600/400",
+                types: ["Tourist", "Work"],
+              },
+            ].map((c, i) => (
+              <Reveal key={c.code} delay={i * 0.04}>
+                <Link href="/countries" className="group block h-full">
+                  <div className="relative rounded-2xl overflow-hidden border border-slate-200/60 shadow-[0_1px_4px_rgba(15,22,64,0.06)] bg-white transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_16px_40px_-8px_rgba(79,70,229,0.20)] hover:border-indigo-300/50 h-full flex flex-col">
+                    {/* Photo */}
+                    <div className="relative h-32 overflow-hidden shrink-0">
+                      <Image
+                        src={c.img}
+                        alt={c.name}
+                        fill
+                        sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 20vw"
+                        className="object-cover object-center transition-transform duration-600 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,22,64,0.65) 0%, transparent 55%)" }} />
+                      <span className="absolute top-2 left-2 text-xl">{c.flag}</span>
+                      <span className="absolute bottom-2 right-2 rounded-md bg-black/40 backdrop-blur-sm px-1.5 py-0.5 text-[9px] font-bold text-white/80 font-mono border border-white/10">{c.code}</span>
+                    </div>
+                    {/* Body */}
+                    <div className="p-3 flex flex-col flex-1">
+                      <p className="font-bold text-ink text-sm group-hover:text-indigo-700 transition-colors"
+                        style={{ fontFamily: "var(--font-syne)" }}>
+                        {c.name}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-1">
+                        {c.types.map(t => (
+                          <span key={t} className={`rounded-full px-2 py-0.5 text-[10px] font-semibold border ${t === "Work" ? "bg-indigo-50 border-indigo-100 text-indigo-600" : "bg-amber-50 border-amber-100 text-amber-600"}`}
+                            style={{ fontFamily: "var(--font-outfit)" }}>
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.60}>
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/eligibility">
+                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(79,70,229,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(79,70,229,0.60)]"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  Check My Eligibility
+                  <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </Link>
+              <Link href="/countries">
+                <button className="group inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-8 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 hover:-translate-y-0.5"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  <Globe size={14} className="text-indigo-500" />
+                  View All Countries
+                </button>
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -679,100 +1131,143 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          § 4  HOW IT WORKS — dramatic dark section
+          § 4  HOW IT WORKS — premium light section
       ════════════════════════════════════════════════════════════ */}
-      <section
-        className="relative section-padding overflow-hidden"
-        style={{
-          background: "linear-gradient(165deg, #050714 0%, #0a0f2e 30%, #0f1640 65%, #050714 100%)",
-        }}
-      >
-        {/* Background layers */}
+      <section className="relative section-padding overflow-hidden bg-white">
+        {/* Subtle background decoration */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 grid-pattern opacity-[0.18]" />
+          <div className="absolute inset-0 dot-pattern-light opacity-50" />
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[800px] rounded-full blur-[160px]"
-            style={{ background: "rgba(79,70,229,0.09)" }}
+            className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[900px] rounded-full blur-[140px]"
+            style={{ background: "rgba(79,70,229,0.06)" }}
           />
           <div
-            className="absolute bottom-0 right-0 h-72 w-72 rounded-full blur-[110px]"
+            className="absolute bottom-0 right-0 h-80 w-80 rounded-full blur-[120px]"
             style={{ background: "rgba(245,158,11,0.07)" }}
+          />
+          <div
+            className="absolute bottom-0 left-0 h-64 w-64 rounded-full blur-[100px]"
+            style={{ background: "rgba(124,58,237,0.06)" }}
           />
         </div>
 
         <div className="relative page-container">
-          <div className="text-center mb-20">
+          {/* Section header */}
+          <div className="text-center mb-16">
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300 mb-5"
-                style={{ fontFamily: "var(--font-outfit)" }}>
+              <div
+                className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/8 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-600 mb-5"
+                style={{ fontFamily: "var(--font-outfit)" }}
+              >
                 <Zap size={11} />
-                Process
+                How It Works
               </div>
             </Reveal>
             <Reveal delay={0.06}>
               <h2
-                className="text-3xl lg:text-5xl font-bold text-white"
+                className="text-3xl lg:text-5xl font-bold text-ink"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                Four Steps to Your EU Future
+                Four Steps to Your{" "}
+                <span className="text-gradient-indigo">EU Future</span>
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
               <p
-                className="mt-4 text-white/42 text-base max-w-xl mx-auto leading-relaxed"
+                className="mt-4 text-base text-slate-500 max-w-xl mx-auto leading-relaxed"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
-                From eligibility check to submitted application — structured, clear, and guided.
+                From eligibility check to submitted application — structured, clear, and guided every step of the way.
               </p>
             </Reveal>
           </div>
 
-          {/* Steps */}
-          <div className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Connecting line (desktop) */}
-            <div
-              className="hidden lg:block absolute top-[44px] left-[15%] right-[15%] h-px"
-              style={{ background: "linear-gradient(90deg, rgba(79,70,229,0.6), rgba(124,58,237,0.5), rgba(245,158,11,0.5), rgba(16,185,129,0.6))" }}
-            />
+          {/* Steps grid */}
+          <div className="relative grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {/* Desktop connector line — sits behind cards */}
+            <div className="hidden lg:block absolute top-[52px] left-[calc(12.5%+38px)] right-[calc(12.5%+38px)] h-px pointer-events-none">
+              <div
+                className="w-full h-full"
+                style={{
+                  background: "linear-gradient(90deg, rgba(99,102,241,0.30) 0%, rgba(124,58,237,0.25) 33%, rgba(245,158,11,0.25) 66%, rgba(16,185,129,0.30) 100%)",
+                }}
+              />
+              {/* Animated shimmer over connector */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%)",
+                  backgroundSize: "200% 100%",
+                  animation: "shimmer 3s linear infinite",
+                }}
+              />
+            </div>
 
             {steps.map((step, i) => {
               const st = stepStyles[step.color];
+              const stepColorMap: Record<string, { border: string; glow: string; iconRing: string; numBg: string; numText: string }> = {
+                indigo:  { border: "rgba(99,102,241,0.20)",  glow: "rgba(79,70,229,0.08)",   iconRing: "rgba(99,102,241,0.15)",  numBg: "#eef2ff", numText: "#4f46e5" },
+                violet:  { border: "rgba(124,58,237,0.20)",  glow: "rgba(124,58,237,0.07)",  iconRing: "rgba(124,58,237,0.15)", numBg: "#f5f3ff", numText: "#7c3aed" },
+                gold:    { border: "rgba(245,158,11,0.22)",  glow: "rgba(245,158,11,0.07)",  iconRing: "rgba(245,158,11,0.20)", numBg: "#fffbeb", numText: "#d97706" },
+                emerald: { border: "rgba(16,185,129,0.20)",  glow: "rgba(16,185,129,0.07)",  iconRing: "rgba(16,185,129,0.18)", numBg: "#ecfdf5", numText: "#059669" },
+              };
+              const sc = stepColorMap[step.color];
               return (
                 <Reveal key={step.num} delay={i * 0.10}>
-                  <div className="group relative flex flex-col items-center text-center">
-                    {/* Icon badge */}
-                    <div className="relative z-10 mb-6">
-                      <div
-                        className={`flex h-[76px] w-[76px] items-center justify-center rounded-3xl ${st.badge} text-white transition-all duration-500 group-hover:-translate-y-2 group-hover:scale-105`}
-                      >
-                        <step.icon size={30} />
-                      </div>
-                      {/* Step number badge */}
-                      <div
-                        className="absolute -top-2.5 -right-2.5 flex h-6 w-6 items-center justify-center rounded-full bg-void border-2 border-indigo-900/80 text-[10px] font-bold text-white/60"
-                        style={{ fontFamily: "var(--font-outfit)" }}
-                      >
-                        {i + 1}
-                      </div>
+                  <div
+                    className="group relative flex flex-col items-center text-center rounded-3xl p-7 bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.16)]"
+                    style={{
+                      border: `1px solid ${sc.border}`,
+                      boxShadow: `0 1px 4px rgba(15,22,64,0.05)`,
+                    }}
+                  >
+                    {/* Top gradient accent bar */}
+                    <div
+                      className="absolute top-0 left-6 right-6 h-[2px] rounded-full opacity-60"
+                      style={{
+                        background: step.color === "indigo"
+                          ? "linear-gradient(90deg, transparent, #6366f1, transparent)"
+                          : step.color === "violet"
+                          ? "linear-gradient(90deg, transparent, #7c3aed, transparent)"
+                          : step.color === "gold"
+                          ? "linear-gradient(90deg, transparent, #f59e0b, transparent)"
+                          : "linear-gradient(90deg, transparent, #10b981, transparent)",
+                      }}
+                    />
+
+                    {/* Step number */}
+                    <div
+                      className="absolute top-5 right-5 flex h-6 w-6 items-center justify-center rounded-lg text-[11px] font-bold"
+                      style={{ background: sc.numBg, color: sc.numText, fontFamily: "var(--font-outfit)" }}
+                    >
+                      {i + 1}
+                    </div>
+
+                    {/* Icon */}
+                    <div
+                      className={`relative z-10 mb-5 flex h-[76px] w-[76px] items-center justify-center rounded-2xl ${st.badge} text-white transition-all duration-500 group-hover:-translate-y-1.5 group-hover:scale-105`}
+                      style={{ boxShadow: `0 0 0 8px ${sc.iconRing}` }}
+                    >
+                      <step.icon size={30} />
                     </div>
 
                     <h3
-                      className="text-base font-bold text-white mb-2"
+                      className="text-[15px] font-bold text-ink mb-2.5 transition-colors duration-300"
                       style={{ fontFamily: "var(--font-syne)" }}
                     >
                       {step.title}
                     </h3>
                     <p
-                      className="text-sm text-white/38 leading-relaxed"
+                      className="text-sm text-slate-500 leading-relaxed"
                       style={{ fontFamily: "var(--font-outfit)" }}
                     >
                       {step.desc}
                     </p>
 
-                    {/* Colour accent dot on hover */}
+                    {/* Hover glow overlay */}
                     <div
-                      className={`mt-5 h-[3px] w-0 group-hover:w-10 rounded-full transition-all duration-500 ${st.num}`}
-                      style={{ background: step.color === "indigo" ? "#6366f1" : step.color === "violet" ? "#7c3aed" : step.color === "gold" ? "#f59e0b" : "#10b981" }}
+                      className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ background: `radial-gradient(ellipse at 50% 100%, ${sc.glow}, transparent 70%)` }}
                     />
                   </div>
                 </Reveal>
@@ -780,11 +1275,12 @@ export default function HomePage() {
             })}
           </div>
 
-          <Reveal delay={0.4}>
-            <div className="mt-16 text-center">
+          {/* CTA */}
+          <Reveal delay={0.45}>
+            <div className="mt-14 text-center">
               <Link href="/eligibility">
                 <button
-                  className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-9 py-4 text-sm font-semibold text-white shadow-[0_6px_32px_rgba(79,70,229,0.50)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_48px_rgba(79,70,229,0.65)] active:translate-y-0 active:scale-[0.97]"
+                  className="group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-9 py-4 text-sm font-semibold text-white shadow-[0_6px_32px_rgba(79,70,229,0.38)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(79,70,229,0.52)] active:translate-y-0 active:scale-[0.97]"
                   style={{ fontFamily: "var(--font-outfit)" }}
                 >
                   Start Your Eligibility Check
@@ -1066,225 +1562,209 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          § 8  FAQ — clean accordion
+          § 7.5  TEAM — 7 members
       ════════════════════════════════════════════════════════════ */}
-      <section
-        className="section-padding relative overflow-hidden"
-        style={{ background: "var(--bg-page)" }}
-      >
-        <div className="absolute inset-0 dot-pattern-light pointer-events-none opacity-60" />
-        <div className="absolute top-0 right-0 h-72 w-72 rounded-full blur-[130px] pointer-events-none"
+      <section className="relative section-padding overflow-hidden bg-slate-50">
+        {/* Background decoration */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-[800px] rounded-full blur-[160px] pointer-events-none"
           style={{ background: "rgba(79,70,229,0.06)" }} />
+        <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full blur-[120px] pointer-events-none"
+          style={{ background: "rgba(245,158,11,0.06)" }} />
 
         <div className="relative page-container">
-          <div className="mx-auto max-w-3xl">
-            <div className="text-center mb-14">
+          {/* Section header */}
+          <div className="text-center mb-14">
+            <Reveal>
+              <div className="section-eyebrow mb-4">
+                <Users size={11} />
+                Our Team
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="section-title text-ink">
+                The People Behind{" "}
+                <span className="text-gradient-hero">Avensa</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="section-subtitle mx-auto max-w-2xl">
+                A dedicated team of immigration specialists, legal experts, and consultants working together to simplify your European journey.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* Team grid — 6 members, 3 cols × 2 rows */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+            {[
+              { name: "Nishant Bhagat",  role: "Director & CEO",                    avatar: "/team/Nishant.jpeg",  gradient: "from-indigo-500 to-violet-600" },
+              { name: "Yashika Sharma",  role: "Legal Team & Consultant",           avatar: "/team/Yashika.jpeg",  gradient: "from-emerald-500 to-teal-600"  },
+              { name: "Santosh Gawas",   role: "Tourist Visa Expert & Consultant",  avatar: "/team/Santosh.jpeg",  gradient: "from-rose-500 to-pink-600"     },
+              { name: "Rohit Chaudhary", role: "Schengen TRC Consultant",           avatar: "/team/Rohit.jpeg",    gradient: "from-teal-500 to-cyan-600"     },
+              { name: "Tushar Sharma",   role: "Legal & Study Consultant",          avatar: "/team/Tushar.jpeg",   gradient: "from-amber-500 to-orange-500"  },
+              { name: "Sanjiv Kumar",    role: "General Consultant",                avatar: "/team/Sanjiv.jpeg",   gradient: "from-sky-500 to-indigo-500"    },
+            ].map((member, i) => (
+              <Reveal key={member.name} delay={i * 0.07}>
+                <div className="group relative rounded-2xl overflow-hidden bg-white border border-slate-200/80 shadow-[0_2px_12px_rgba(15,22,64,0.07)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_16px_48px_-8px_rgba(79,70,229,0.18)] hover:border-indigo-200">
+
+                  {/* Accent line top */}
+                  <div className={`absolute top-0 left-0 right-0 h-[3px] z-10 bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                  {/* Photo — portrait ratio, no overlay on face */}
+                  <div className="relative w-full" style={{ paddingBottom: "100%" }}>
+                    <Image
+                      src={member.avatar}
+                      alt={member.name}
+                      fill
+                      sizes="(max-width:640px) 50vw, 33vw"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+
+                  {/* Name + role below photo — white bg, always fully readable */}
+                  <div className="px-4 py-3 border-t border-slate-100">
+                    <p
+                      className="text-[14px] font-bold text-slate-900 leading-tight"
+                      style={{ fontFamily: "var(--font-syne)" }}
+                    >
+                      {member.name}
+                    </p>
+                    <p
+                      className={`mt-1 text-[11px] font-semibold bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent leading-snug`}
+                      style={{ fontFamily: "var(--font-outfit)" }}
+                    >
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <Reveal delay={0.50}>
+            <div className="mt-14 text-center">
+              <p className="text-sm text-slate-500 mb-4" style={{ fontFamily: "var(--font-outfit)" }}>
+                Want to work with us? We&apos;re always looking for immigration experts and consultants.
+              </p>
+              <Link href="/contact">
+                <button
+                  className="group inline-flex items-center gap-2 rounded-2xl border border-indigo-200 bg-indigo-50 px-7 py-3 text-sm font-semibold text-indigo-700 transition-all duration-300 hover:bg-indigo-100 hover:-translate-y-0.5"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  Get in Touch
+                  <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          § 8  FAQ — split layout with smooth accordion
+      ════════════════════════════════════════════════════════════ */}
+      <section
+        className="relative section-padding overflow-hidden"
+        style={{
+          background: "linear-gradient(165deg, #050714 0%, #0a0f2e 35%, #0f1640 70%, #050714 100%)",
+        }}
+      >
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 grid-pattern opacity-[0.14]" />
+          <div
+            className="absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full blur-[150px]"
+            style={{ background: "rgba(79,70,229,0.12)" }}
+          />
+          <div
+            className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full blur-[120px]"
+            style={{ background: "rgba(245,158,11,0.08)" }}
+          />
+          <div
+            className="absolute top-1/2 right-0 h-64 w-64 rounded-full blur-[100px]"
+            style={{ background: "rgba(124,58,237,0.10)" }}
+          />
+        </div>
+
+        <div className="relative page-container">
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20 lg:items-start">
+
+            {/* ── Left: sticky header panel ── */}
+            <div className="lg:sticky lg:top-28">
               <Reveal>
-                <div className="section-eyebrow mb-4">
+                <div
+                  className="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300 mb-6"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
                   <Search size={11} />
                   FAQ
                 </div>
               </Reveal>
+
               <Reveal delay={0.06}>
-                <h2 className="section-title text-ink">Frequently Asked Questions</h2>
+                <h2
+                  className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-5"
+                  style={{ fontFamily: "var(--font-syne)" }}
+                >
+                  Common Questions,{" "}
+                  <span className="text-gradient-indigo">Clear Answers</span>
+                </h2>
               </Reveal>
+
               <Reveal delay={0.12}>
-                <p className="section-subtitle mx-auto">Quick answers to common immigration questions.</p>
+                <p
+                  className="text-base text-white/65 leading-relaxed mb-8"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  Everything you need to know about EU immigration, eligibility, and the Avensa process.
+                </p>
               </Reveal>
-            </div>
 
-            <div className="space-y-3">
-              {homeFaqs.map((faq, i) => (
-                <Reveal key={faq.id} delay={i * 0.06}>
-                  <details className="group rounded-3xl border border-slate-200/80 bg-white shadow-[0_1px_4px_rgba(15,22,64,0.05)] overflow-hidden transition-all duration-300 hover:border-indigo-300/50 hover:shadow-[0_8px_30px_-4px_rgba(79,70,229,0.10)] open:border-indigo-300/60 open:shadow-[0_0_0_1px_rgba(79,70,229,0.10),0_8px_30px_-4px_rgba(79,70,229,0.12)]">
-                    <summary className="flex cursor-pointer items-center justify-between px-6 py-4.5 list-none select-none">
-                      <span className="flex items-center gap-3">
-                        <span
-                          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100 text-[11px] font-bold text-indigo-600 group-open:bg-indigo-600 group-open:text-white group-open:border-indigo-600 transition-colors"
-                          style={{ fontFamily: "var(--font-outfit)" }}
-                        >
-                          {i + 1}
-                        </span>
-                        <span
-                          className="text-sm font-semibold text-ink group-open:text-indigo-700 transition-colors"
-                          style={{ fontFamily: "var(--font-outfit)" }}
-                        >
-                          {faq.question}
-                        </span>
-                      </span>
-                      <ChevronRight
-                        size={15}
-                        className="shrink-0 text-slate-300 transition-transform duration-300 group-open:rotate-90 group-open:text-indigo-400 ml-4"
-                      />
-                    </summary>
-                    <div
-                      className="border-t border-slate-100 bg-indigo-50/40 px-6 py-4 text-sm text-slate-500 leading-relaxed"
-                      style={{ fontFamily: "var(--font-outfit)" }}
+              {/* Stat pills */}
+              <Reveal delay={0.18}>
+                <div className="flex flex-wrap gap-3 mb-10">
+                  {[
+                    { label: "13 EU Countries", color: "rgba(99,102,241,0.20)", border: "rgba(99,102,241,0.30)", text: "#a5b4fc" },
+                    { label: "Free to Use",     color: "rgba(16,185,129,0.15)", border: "rgba(16,185,129,0.28)", text: "#6ee7b7" },
+                    { label: "Always Updated",  color: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.28)", text: "#fcd34d" },
+                  ].map(p => (
+                    <span
+                      key={p.label}
+                      className="rounded-full px-3.5 py-1.5 text-[12px] font-semibold"
+                      style={{ background: p.color, border: `1px solid ${p.border}`, color: p.text, fontFamily: "var(--font-outfit)" }}
                     >
-                      {faq.answer}
-                    </div>
-                  </details>
-                </Reveal>
-              ))}
-            </div>
+                      {p.label}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
 
-            <Reveal delay={0.30}>
-              <div className="mt-10 text-center">
+              <Reveal delay={0.22}>
                 <Link href="/knowledge-base#faq">
                   <button
-                    className="btn-secondary flex items-center gap-2 mx-auto"
+                    className="inline-flex items-center gap-2.5 rounded-2xl border border-indigo-400/30 bg-indigo-500/10 px-6 py-3 text-sm font-semibold text-indigo-300 transition-all duration-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 hover:text-white hover:-translate-y-0.5"
                     style={{ fontFamily: "var(--font-outfit)" }}
                   >
                     View All FAQs <ChevronRight size={14} />
                   </button>
                 </Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════════════════════
-          § 9  FINAL CTA — immersive full-width
-      ════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-28 lg:py-36">
-        {/* European city photo mosaic — bottom strip behind the dark overlay */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* 3-photo horizontal mosaic at the bottom */}
-          <div className="absolute bottom-0 left-0 right-0 h-[45%] flex overflow-hidden opacity-30">
-            {[
-              "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=60&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=60&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=60&auto=format&fit=crop",
-            ].map((src, i) => (
-              <div key={i} className="relative flex-1 min-w-0">
-                <Image
-                  src={src}
-                  alt="European city"
-                  fill
-                  sizes="33vw"
-                  className="object-cover object-center"
-                />
-              </div>
-            ))}
-          </div>
-          {/* Gradient mask over the mosaic so it fades into the dark bg */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[55%]"
-            style={{ background: "linear-gradient(to bottom, #050714 0%, transparent 100%)" }}
-          />
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[20%]"
-            style={{ background: "linear-gradient(to top, rgba(5,7,20,0.9) 0%, transparent 100%)" }}
-          />
-        </div>
-
-        {/* Deep aurora background */}
-        <div className="absolute inset-0" style={{
-          background: [
-            "radial-gradient(ellipse 95% 85% at 50% -15%, rgba(79,70,229,0.55) 0%, transparent 55%)",
-            "radial-gradient(ellipse 70% 55% at 0%   82%, rgba(124,58,237,0.42) 0%, transparent 55%)",
-            "radial-gradient(ellipse 65% 48% at 102% 75%, rgba(245,158,11,0.20) 0%, transparent 52%)",
-            "linear-gradient(160deg, #050714 0%, #080c28 35%, #050714 100%)",
-          ].join(",")
-        }} />
-        <div className="absolute inset-0 grid-pattern opacity-[0.20] pointer-events-none" />
-
-        {/* Animated orbs */}
-        <div className="absolute top-12 left-1/3  h-52 w-52 rounded-full blur-[90px] animate-float-slow"
-          style={{ background: "rgba(99,102,241,0.18)" }} />
-        <div className="absolute bottom-12 right-1/3 h-44 w-44 rounded-full blur-[80px] animate-float"
-          style={{ background: "rgba(245,158,11,0.14)", animationDelay: "2s" }} />
-
-        {/* Starburst lines from center */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.07]">
-          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
-            {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg, i) => (
-              <line
-                key={i}
-                x1="50%" y1="50%"
-                x2={`${50 + 80 * Math.cos((deg * Math.PI) / 180)}%`}
-                y2={`${50 + 80 * Math.sin((deg * Math.PI) / 180)}%`}
-                stroke="white"
-                strokeWidth="0.5"
-              />
-            ))}
-          </svg>
-        </div>
-
-        <div className="relative page-container text-center">
-          <Reveal>
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-gold-400/30 bg-gold-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-300 mb-8"
-              style={{ fontFamily: "var(--font-outfit)" }}>
-              <Sparkles size={11} />
-              Start Today — It&apos;s Free
+              </Reveal>
             </div>
-          </Reveal>
 
-          <Reveal delay={0.08}>
-            <h2
-              className="text-4xl font-bold text-white lg:text-6xl max-w-3xl mx-auto leading-tight"
-              style={{ fontFamily: "var(--font-syne)" }}
-            >
-              Ready to Begin Your{" "}
-              <br className="hidden sm:block" />
-              <span className="text-gradient-hero">EU Journey?</span>
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.16}>
-            <p
-              className="mt-6 text-base text-white/40 max-w-md mx-auto leading-relaxed"
-              style={{ fontFamily: "var(--font-outfit)" }}
-            >
-              Join thousands navigating EU immigration with clarity and confidence.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.24}>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href="/auth/register">
-                <button
-                  className="btn-shine group relative inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-10 py-4.5 text-sm font-semibold text-white shadow-[0_8px_40px_rgba(79,70,229,0.55)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_14px_60px_rgba(79,70,229,0.70)] active:translate-y-0 active:scale-[0.97]"
-                  style={{ fontFamily: "var(--font-outfit)" }}
-                >
-                  Create Free Account
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </button>
-              </Link>
-              <Link href="/eligibility">
-                <button
-                  className="group inline-flex items-center gap-2.5 rounded-2xl border border-white/12 bg-white/[0.06] px-10 py-4.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.10] hover:border-white/22 hover:-translate-y-1"
-                  style={{ fontFamily: "var(--font-outfit)" }}
-                >
-                  Check Eligibility
-                </button>
-              </Link>
-            </div>
-          </Reveal>
-
-          {/* Feature chips */}
-          <Reveal delay={0.32}>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {[
-                { icon: Shield,    text: "No hidden fees" },
-                { icon: Lock,      text: "GDPR compliant" },
-                { icon: BarChart3, text: "Real-time tracking" },
-                { icon: Layers,    text: "30+ routes" },
-              ].map(({ icon: Icon, text }) => (
-                <span
-                  key={text}
-                  className="flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/45"
-                  style={{ fontFamily: "var(--font-outfit)" }}
-                >
-                  <Icon size={11} className="text-indigo-400 shrink-0" />
-                  {text}
-                </span>
+            {/* ── Right: accordion list ── */}
+            <div className="space-y-3">
+              {homeFaqs.map((faq, i) => (
+                <Reveal key={faq.id} delay={i * 0.07}>
+                  <FAQItem index={i} question={faq.question} answer={faq.answer} />
+                </Reveal>
               ))}
             </div>
-          </Reveal>
+
+          </div>
         </div>
       </section>
+
+
 
       {/* ════════════════════════════════════════════════════════════
           § 10  DISCLAIMER BAND
