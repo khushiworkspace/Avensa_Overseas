@@ -1,12 +1,37 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Map, ArrowRight, Clock, FileText, Briefcase, GraduationCap, Users, Home as HomeIcon, Plane, Star, ChevronRight } from "lucide-react";
+import { Map, ArrowRight, Clock, FileText, Briefcase, GraduationCap, Users, Home as HomeIcon, Plane, Star, ChevronRight, Globe } from "lucide-react";
 import { IMMIGRATION_ROUTES, COUNTRIES, CATEGORY_LABELS, CATEGORY_DESCRIPTIONS } from "@/lib/constants";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Disclaimer } from "@/components/ui/Disclaimer";
 import { Button } from "@/components/ui/Button";
+import { EuropeanCitiesStrip } from "@/components/ui/EuropeanCitiesStrip";
 import type { ImmigrationCategory } from "@/types";
+
+/* ─── Lifestyle photos for the hero collage ──────────────────── */
+const HERO_PHOTOS = [
+  {
+    src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&auto=format&fit=crop",
+    alt: "Professionals working in a European office",
+    label: "Work",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80&auto=format&fit=crop",
+    alt: "Students on a European university campus",
+    label: "Study",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80&auto=format&fit=crop",
+    alt: "Family in a European city square",
+    label: "Family",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80&auto=format&fit=crop",
+    alt: "European city street at golden hour",
+    label: "Explore",
+  },
+];
 
 export const metadata: Metadata = { title: "Immigration Routes – EU Visa & Permit Guide" };
 
@@ -25,8 +50,66 @@ export default function RoutesPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--bg-page)" }}>
 
-      {/* ── Hero ── */}
-      <div className="gradient-hero py-20">
+      {/* ════════════════════════════════════════════════════════
+          HERO — European lifestyle photo collage + city strip
+      ════════════════════════════════════════════════════════ */}
+      <div className="gradient-hero py-20 relative overflow-hidden">
+
+        {/* ── Background city photo ── */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Image
+            src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1800&q=70&auto=format&fit=crop"
+            alt="European street life"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+            style={{ opacity: 0.12 }}
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(160deg, rgba(5,7,20,0.80) 0%, rgba(10,15,46,0.68) 55%, rgba(5,7,20,0.84) 100%)",
+            }}
+          />
+        </div>
+
+        {/* ── Lifestyle photo collage — right side, desktop only ── */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 hidden xl:flex items-center gap-3 pr-6 opacity-0 xl:opacity-100">
+          {/* Stacked 2×2 mosaic */}
+          <div className="flex flex-col gap-3">
+            {[HERO_PHOTOS[0], HERO_PHOTOS[2]].map((p, i) => (
+              <div key={i} className="relative w-[148px] h-[112px] rounded-2xl overflow-hidden ring-1 ring-white/10"
+                style={{ transform: i === 0 ? "translateY(8px)" : "translateY(-8px)" }}>
+                <Image src={p.src} alt={p.alt} fill sizes="148px" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <span className="absolute bottom-2 left-3 text-[10px] font-semibold text-white/80"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  {p.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            {[HERO_PHOTOS[1], HERO_PHOTOS[3]].map((p, i) => (
+              <div key={i} className="relative w-[148px] h-[112px] rounded-2xl overflow-hidden ring-1 ring-white/10"
+                style={{ transform: i === 0 ? "translateY(-6px)" : "translateY(6px)" }}>
+                <Image src={p.src} alt={p.alt} fill sizes="148px" className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <span className="absolute bottom-2 left-3 text-[10px] font-semibold text-white/80"
+                  style={{ fontFamily: "var(--font-outfit)" }}>
+                  {p.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          {/* Right-edge fade mask */}
+          <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#050714] to-transparent" />
+          {/* Left-edge fade mask so mosaic blends into content */}
+          <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#050714] to-transparent" />
+        </div>
+
         <div className="relative z-10 page-container">
           <Breadcrumb items={[{ label: "Routes" }]} className="text-white/50 mb-6" />
           <div className="section-eyebrow mb-5">
@@ -44,11 +127,31 @@ export default function RoutesPage() {
             className="mt-5 text-base text-white/50 max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-outfit)" }}
           >
-            Browse all available visa and permit routes, grouped by purpose. Filter by country or start your eligibility check.
+            Browse all available visa and permit routes, grouped by purpose.
+            From Berlin boardrooms to Amsterdam canal apartments — find your path in Europe.
           </p>
 
+          {/* Quick-stat chips */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            {[
+              { icon: Globe,        label: "13 EU Countries" },
+              { icon: Map,          label: "30+ Active Routes" },
+              { icon: Briefcase,    label: "Work · Study · Family" },
+            ].map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 backdrop-blur-sm"
+              >
+                <Icon size={12} className="text-indigo-300 shrink-0" />
+                <span className="text-xs font-semibold text-white/70" style={{ fontFamily: "var(--font-outfit)" }}>
+                  {label}
+                </span>
+              </div>
+            ))}
+          </div>
+
           {/* Category quick-jump pills */}
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {CATEGORIES.map((cat) => {
               const cfg = categoryConfig[cat];
               return (
@@ -63,6 +166,16 @@ export default function RoutesPage() {
                 </Link>
               );
             })}
+          </div>
+
+          {/* City strip at the bottom of the hero */}
+          <div className="mt-10 -mx-4 sm:-mx-6 lg:-mx-8">
+            <EuropeanCitiesStrip
+              animated
+              showLabels={false}
+              cardWidth={180}
+              className="[--fade-from:#050714]"
+            />
           </div>
         </div>
       </div>

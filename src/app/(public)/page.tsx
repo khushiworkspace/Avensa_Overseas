@@ -10,6 +10,7 @@ import {
 import { COUNTRIES, COMPANY } from "@/lib/constants";
 import { MOCK_FAQS, MOCK_ARTICLES } from "@/lib/mock-data";
 import { formatDate } from "@/lib/utils";
+import { EuropeanCitiesStrip, EuropeanCitiesStripDark, EUROPEAN_CITIES } from "@/components/ui/EuropeanCitiesStrip";
 
 export const metadata: Metadata = {
   title: "Avensa Overseas – EU Immigration Portal",
@@ -185,14 +186,35 @@ export default function HomePage() {
           background: "linear-gradient(160deg, #050714 0%, #080c28 40%, #0d1038 70%, #050714 100%)",
         }}
       >
+        {/* ── European city background photo ── */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Image
+            src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1800&q=85&auto=format&fit=crop"
+            alt="European city skyline"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+            style={{ opacity: 0.38 }}
+          />
+          {/* Single dark vignette — no blue tint, just darkens so text stays readable */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(160deg, rgba(2,4,12,0.78) 0%, rgba(4,6,18,0.62) 45%, rgba(2,4,12,0.72) 100%)",
+            }}
+          />
+        </div>
+
         {/* ── Multi-layer aurora background ── */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Primary aurora */}
+          {/* Primary aurora — reduced opacity so the photo shows through */}
           <div className="absolute inset-0" style={{
             background: [
-              "radial-gradient(ellipse 120% 70% at 50% -10%, rgba(79,70,229,0.55) 0%, transparent 52%)",
-              "radial-gradient(ellipse 80% 55% at -5%  65%, rgba(124,58,237,0.38) 0%, transparent 52%)",
-              "radial-gradient(ellipse 70% 50% at 108% 78%, rgba(245,158,11,0.20) 0%, transparent 52%)",
+              "radial-gradient(ellipse 120% 70% at 50% -10%, rgba(79,70,229,0.32) 0%, transparent 52%)",
+              "radial-gradient(ellipse 80% 55% at -5%  65%, rgba(124,58,237,0.22) 0%, transparent 52%)",
+              "radial-gradient(ellipse 70% 50% at 108% 78%, rgba(245,158,11,0.12) 0%, transparent 52%)",
             ].join(",")
           }} />
 
@@ -201,19 +223,19 @@ export default function HomePage() {
 
           {/* Top beam shaft */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-[500px]"
-            style={{ background: "linear-gradient(to bottom, rgba(99,102,241,0.90), transparent)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(99,102,241,0.60), transparent)" }}
           />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[340px] w-[800px] rounded-full blur-[130px]"
-            style={{ background: "rgba(79,70,229,0.22)" }}
+            style={{ background: "rgba(79,70,229,0.10)" }}
           />
 
           {/* Floating orbs */}
           <div className="absolute top-[14%] right-[8%]  h-56 w-56 rounded-full blur-[90px]  animate-float-slow"
-            style={{ background: "rgba(124,58,237,0.18)", animationDelay: "0s" }} />
+            style={{ background: "rgba(124,58,237,0.10)", animationDelay: "0s" }} />
           <div className="absolute bottom-[18%] left-[6%]  h-72 w-72 rounded-full blur-[110px] animate-float"
-            style={{ background: "rgba(79,70,229,0.22)", animationDelay: "2.5s" }} />
+            style={{ background: "rgba(79,70,229,0.12)", animationDelay: "2.5s" }} />
           <div className="absolute bottom-[8%]  right-[22%] h-48 w-48 rounded-full blur-[80px]  animate-float-slow"
-            style={{ background: "rgba(245,158,11,0.12)", animationDelay: "1.5s" }} />
+            style={{ background: "rgba(245,158,11,0.08)", animationDelay: "1.5s" }} />
 
           {/* Large faint globe wireframe (desktop) */}
           <div className="absolute right-[2%] top-1/2 -translate-y-1/2 opacity-[0.04] hidden xl:block pointer-events-none">
@@ -465,6 +487,74 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════
+          § 2.5  EUROPEAN DESTINATIONS VISUAL SHOWCASE
+      ════════════════════════════════════════════════════════════ */}
+      <section className="relative py-16 overflow-hidden bg-white">
+        {/* Section header */}
+        <div className="relative page-container mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <Reveal>
+                <div className="section-eyebrow mb-4">
+                  <MapPin size={11} />
+                  Destinations
+                </div>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <h2 className="section-title text-ink">
+                  Live &amp; Work Across Europe
+                </h2>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <p className="section-subtitle mt-3 max-w-xl">
+                  From the cobblestones of Vilnius to the canals of Amsterdam — your next chapter starts here.
+                </p>
+              </Reveal>
+            </div>
+            <Reveal delay={0.08}>
+              <Link href="/countries">
+                <button
+                  className="btn-secondary shrink-0 flex items-center gap-2"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  All 13 Countries <ChevronRight size={14} />
+                </button>
+              </Link>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* Scrolling city strip — light bg variant */}
+        <EuropeanCitiesStrip animated showLabels cardWidth={300} className="[--fade-from:#ffffff]" />
+
+        {/* Bottom caption row */}
+        <Reveal delay={0.18}>
+          <div className="relative page-container mt-8 flex flex-wrap items-center justify-center gap-6">
+            {[
+              { flag: "🇱🇹", city: "Vilnius"    },
+              { flag: "🇩🇪", city: "Berlin"     },
+              { flag: "🇳🇱", city: "Amsterdam"  },
+              { flag: "🇫🇷", city: "Paris"      },
+              { flag: "🇸🇪", city: "Stockholm"  },
+              { flag: "🇮🇹", city: "Rome"       },
+              { flag: "🇵🇱", city: "Warsaw"     },
+              { flag: "🇫🇮", city: "Helsinki"   },
+              { flag: "🇦🇹", city: "Vienna"     },
+            ].map(({ flag, city }) => (
+              <span
+                key={city}
+                className="flex items-center gap-1.5 text-xs font-medium text-slate-400"
+                style={{ fontFamily: "var(--font-outfit)" }}
+              >
+                <span>{flag}</span>
+                {city}
+              </span>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* ════════════════════════════════════════════════════════════
@@ -805,8 +895,9 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           § 6  SOCIAL PROOF TICKER
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative py-5 overflow-hidden border-y border-indigo-100/60 bg-ice-50">
-        <div className="flex whitespace-nowrap" style={{ animation: "ticker 28s linear infinite" }}>
+      <section className="relative py-0 overflow-hidden border-y border-indigo-100/60 bg-ice-50">
+        {/* Top row — route ticker */}
+        <div className="flex whitespace-nowrap border-b border-indigo-100/40 py-3" style={{ animation: "ticker 28s linear infinite" }}>
           {[...Array(3)].map((_, gi) => (
             <div key={gi} className="flex items-center gap-10 px-5 shrink-0">
               {[
@@ -820,6 +911,8 @@ export default function HomePage() {
                 { icon: "🇦🇹", text: "Austria Red-White-Red Card" },
                 { icon: "🇵🇱", text: "Poland Work Permit" },
                 { icon: "🇧🇪", text: "Belgium Single Permit" },
+                { icon: "🇱🇹", text: "Lithuania National Visa D" },
+                { icon: "🇫🇮", text: "Finland Residence Permit" },
               ].map((item, j) => (
                 <span
                   key={j}
@@ -829,6 +922,36 @@ export default function HomePage() {
                   <span className="text-base">{item.icon}</span>
                   <span>{item.text}</span>
                   <span className="text-slate-300 text-xs">·</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom row — European landmarks ticker (reverse direction) */}
+        <div className="flex whitespace-nowrap py-3" style={{ animation: "ticker 36s linear infinite reverse" }}>
+          {[...Array(3)].map((_, gi) => (
+            <div key={gi} className="flex items-center gap-10 px-5 shrink-0">
+              {[
+                { icon: "🏛️", text: "Vilnius Old Town, Lithuania"     },
+                { icon: "🌉", text: "Brandenburg Gate, Berlin"         },
+                { icon: "⛵", text: "Amsterdam Canals, Netherlands"    },
+                { icon: "🗼", text: "Eiffel Tower, Paris"              },
+                { icon: "🏰", text: "Stockholm Royal Palace"           },
+                { icon: "🏟️", text: "Colosseum, Rome"                 },
+                { icon: "🌆", text: "Warsaw Skyline, Poland"           },
+                { icon: "🎶", text: "Helsinki Cathedral, Finland"      },
+                { icon: "🎡", text: "Schönbrunn Palace, Vienna"        },
+                { icon: "🧭", text: "EU Blue Card · Fast Track"        },
+              ].map((item, j) => (
+                <span
+                  key={j}
+                  className="flex items-center gap-2.5 text-sm font-medium text-indigo-400/70"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  <span className="text-base">{item.icon}</span>
+                  <span>{item.text}</span>
+                  <span className="text-indigo-200 text-xs">·</span>
                 </span>
               ))}
             </div>
@@ -1025,6 +1148,37 @@ export default function HomePage() {
           § 9  FINAL CTA — immersive full-width
       ════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden py-28 lg:py-36">
+        {/* European city photo mosaic — bottom strip behind the dark overlay */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* 3-photo horizontal mosaic at the bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[45%] flex overflow-hidden opacity-30">
+            {[
+              "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=60&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=800&q=60&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=60&auto=format&fit=crop",
+            ].map((src, i) => (
+              <div key={i} className="relative flex-1 min-w-0">
+                <Image
+                  src={src}
+                  alt="European city"
+                  fill
+                  sizes="33vw"
+                  className="object-cover object-center"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Gradient mask over the mosaic so it fades into the dark bg */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[55%]"
+            style={{ background: "linear-gradient(to bottom, #050714 0%, transparent 100%)" }}
+          />
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[20%]"
+            style={{ background: "linear-gradient(to top, rgba(5,7,20,0.9) 0%, transparent 100%)" }}
+          />
+        </div>
+
         {/* Deep aurora background */}
         <div className="absolute inset-0" style={{
           background: [

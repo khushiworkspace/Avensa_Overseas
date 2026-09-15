@@ -517,6 +517,10 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+@keyframes citiesScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 @keyframes magneticLine {
   0%,100% { transform: scaleX(0); transform-origin: left; }
   50%     { transform: scaleX(1); transform-origin: left; }
