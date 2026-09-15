@@ -11,25 +11,25 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "bg-teal-600 text-white shadow-teal-sm hover:bg-teal-700 hover:shadow-teal-md hover:-translate-y-0.5 focus-visible:ring-teal-500",
+    "btn-shine bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-indigo-md hover:shadow-indigo-lg hover:-translate-y-0.5 focus-visible:ring-indigo-400",
   accent:
-    "btn-shine bg-gradient-to-r from-coral-600 to-coral-500 text-white shadow-coral-sm hover:shadow-coral-md hover:-translate-y-0.5 focus-visible:ring-coral-400",
+    "btn-shine bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-indigo-md hover:shadow-indigo-lg hover:-translate-y-0.5 focus-visible:ring-indigo-400",
   gold:
-    "btn-shine bg-gradient-to-r from-coral-600 to-coral-500 text-white shadow-coral-sm hover:shadow-coral-md hover:-translate-y-0.5 focus-visible:ring-coral-400",
+    "btn-shine bg-gradient-to-r from-amber-500 to-gold-400 text-void font-bold shadow-gold-md hover:shadow-gold-lg hover:-translate-y-0.5 focus-visible:ring-gold-400",
   secondary:
-    "border border-[rgba(14,20,72,0.13)] bg-white text-navy-800 shadow-card hover:bg-sand-50 hover:border-teal-400/60 hover:text-teal-700 hover:-translate-y-0.5 focus-visible:ring-teal-500",
+    "border border-[--border-medium] bg-white text-slate-700 shadow-card hover:bg-indigo-50 hover:border-indigo-400/50 hover:text-indigo-700 hover:-translate-y-0.5 focus-visible:ring-indigo-400",
   danger:
-    "bg-rose-600 text-white shadow-sm hover:bg-rose-700 hover:-translate-y-0.5 focus-visible:ring-rose-500",
+    "bg-ember-600 text-white shadow-sm hover:bg-ember-700 hover:-translate-y-0.5 focus-visible:ring-ember-500",
   ghost:
-    "text-navy-600 hover:bg-teal-50 hover:text-teal-700 focus-visible:ring-teal-500",
+    "text-slate-600 hover:bg-indigo-50 hover:text-indigo-700 focus-visible:ring-indigo-400",
   outline:
-    "border border-teal-600 text-teal-700 hover:bg-teal-50 hover:-translate-y-0.5 focus-visible:ring-teal-500",
+    "border border-indigo-400/50 text-indigo-700 bg-indigo-50/50 hover:bg-indigo-100 hover:-translate-y-0.5 focus-visible:ring-indigo-400",
 };
 
 const sizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
-  sm:  "px-3.5 py-1.5 text-xs gap-1.5 rounded-lg",
-  md:  "px-5 py-2.5 text-sm gap-2 rounded-xl",
-  lg:  "px-6 py-3 text-sm gap-2 rounded-xl",
+  sm:  "px-3.5 py-1.5 text-xs gap-1.5 rounded-xl",
+  md:  "px-5 py-2.5 text-sm gap-2 rounded-2xl",
+  lg:  "px-6 py-3 text-sm gap-2 rounded-2xl",
   xl:  "px-8 py-3.5 text-base gap-2.5 rounded-2xl",
 };
 
@@ -39,6 +39,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         disabled={disabled || loading}
+        style={{ fontFamily: "var(--font-outfit)" }}
         className={cn(
           "inline-flex items-center justify-center font-semibold",
           "transition-all duration-300 ease-spring",

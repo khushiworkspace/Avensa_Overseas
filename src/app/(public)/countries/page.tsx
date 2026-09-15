@@ -1,105 +1,172 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, Globe, ChevronRight, CheckCircle } from "lucide-react";
-import { COUNTRIES, CATEGORY_LABELS } from "@/lib/constants";
+import { Globe, CheckCircle, ChevronRight, ArrowUpRight, MapPin, Zap } from "lucide-react";
+import { COUNTRIES } from "@/lib/constants";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { Disclaimer } from "@/components/ui/Disclaimer";
-import { Card } from "@/components/ui/Card";
 
-export const metadata: Metadata = { title: "EU Countries – Immigration Destinations" };
+export const metadata: Metadata = { title: "EU Countries – Supported Immigration Destinations" };
+
+const activeCountries = COUNTRIES.filter((c) => c.status === "active");
 
 export default function CountriesPage() {
-  const active = COUNTRIES.filter((c) => c.status === "active");
-  const schengen = active.filter((c) => c.schengen);
-
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* Header */}
-      <div className="gradient-hero py-14">
-        <div className="page-container">
-          <Breadcrumb items={[{ label: "Countries" }]} className="text-blue-200 mb-4" />
-          <h1 className="text-4xl font-extrabold text-white font-heading">EU Immigration Countries</h1>
-          <p className="mt-3 text-blue-200 max-w-xl">
-            Explore immigration routes, requirements and processing information for {active.length} supported EU destinations.
-          </p>
-          <div className="mt-2 flex items-center gap-2 text-sm text-blue-200">
-            <CheckCircle size={14} className="text-gold-400" />
-            {schengen.length} Schengen Area countries covered
+    <div className="min-h-screen" style={{ background: "var(--bg-page)" }}>
+
+      {/* ── Hero ── */}
+      <div className="gradient-hero py-20">
+        <div className="relative z-10 page-container">
+          <Breadcrumb items={[{ label: "Countries" }]} className="text-white/50 mb-6" />
+
+          <div className="max-w-3xl">
+            <div className="section-eyebrow mb-5">
+              <Globe size={11} />
+              Coverage
+            </div>
+            <h1
+              className="text-4xl lg:text-6xl font-bold text-white leading-tight"
+              style={{ fontFamily: "var(--font-syne)" }}
+            >
+              13 EU Countries,{" "}
+              <span className="text-gradient-hero">One Platform</span>
+            </h1>
+            <p
+              className="mt-5 text-base text-white/50 max-w-xl leading-relaxed"
+              style={{ fontFamily: "var(--font-outfit)" }}
+            >
+              Full application support for all major European immigration destinations.
+              Select a country to explore its available routes.
+            </p>
+          </div>
+
+          {/* Quick stats */}
+          <div className="mt-10 flex flex-wrap gap-4">
+            {[
+              { icon: Globe,        label: `${activeCountries.length} Countries` },
+              { icon: CheckCircle,  label: `${COUNTRIES.filter(c => c.schengen).length} Schengen Area` },
+              { icon: Zap,          label: "30+ Immigration Routes" },
+            ].map(({ icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.07] px-4 py-2 backdrop-blur-sm"
+              >
+                <Icon size={13} className="text-indigo-300" />
+                <span
+                  className="text-xs font-semibold text-white/75"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  {label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="page-container py-10">
-        <Disclaimer className="mb-8" />
+      {/* ── Disclaimer ── */}
+      <div className="page-container pt-10">
+        <Disclaimer />
+      </div>
 
-        {/* Stats bar */}
-        <div className="mb-8 grid grid-cols-3 gap-4">
-          {[
-            { label: "Countries", value: active.length },
-            { label: "Schengen", value: schengen.length },
-            { label: "Routes", value: "30+" },
-          ].map((s) => (
-            <div key={s.label} className="rounded-xl bg-white border border-slate-100 p-4 text-center shadow-card">
-              <p className="text-2xl font-bold text-brand-700">{s.value}</p>
-              <p className="text-xs text-slate-500 font-medium mt-0.5">{s.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Grid */}
+      {/* ── Country grid ── */}
+      <div className="page-container py-12">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {active.map((country) => (
-            <Link key={country.id} href={`/countries/${country.id}`}>
-              <Card hover className="h-full flex flex-col">
-                <div className="p-5">
-                  <div className="flex items-start gap-4">
-                    <Image
-                      src={country.flagUrl}
-                      alt={`${country.name} flag`}
-                      width={56}
-                      height={38}
-                      className="rounded-md shadow object-cover"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between">
-                        <h2 className="font-bold text-slate-900 text-lg">{country.name}</h2>
-                        <div className="flex gap-1">
-                          {country.schengen && (
-                            <span className="rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-600">
-                              Schengen
-                            </span>
-                          )}
-                          {country.eu && (
-                            <span className="rounded-full bg-gold-50 px-2 py-0.5 text-xs font-medium text-gold-700">
-                              EU
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                      <p className="text-xs text-slate-500 mt-0.5">Capital: {country.capital} · Currency: {country.currency}</p>
+          {activeCountries.map((country, i) => (
+            <Link
+              key={country.id}
+              href={`/countries/${country.id}`}
+              className="group block animate-fade-up"
+              style={{ animationDelay: `${i * 0.04}s`, animationFillMode: "both" }}
+            >
+              <div className="relative flex flex-col h-full p-6 rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-indigo-300/50">
+
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(90deg,transparent,rgba(79,70,229,0.6),transparent)" }} />
+
+                {/* Inner glow */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
+                  style={{ background: "radial-gradient(ellipse at 50% 0%,rgba(79,70,229,0.04),transparent 70%)" }} />
+
+                {/* Flag + name */}
+                <div className="relative flex items-center gap-4">
+                  <Image
+                    src={country.flagUrl}
+                    alt={`${country.name} flag`}
+                    width={60}
+                    height={40}
+                    className="rounded-xl shadow-sm object-cover ring-1 ring-slate-200 shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3
+                        className="font-bold text-ink group-hover:text-indigo-700 transition-colors truncate"
+                        style={{ fontFamily: "var(--font-syne)" }}
+                      >
+                        {country.name}
+                      </h3>
+                      <span
+                        className="text-[10px] text-slate-400 font-mono shrink-0 bg-slate-50 px-1.5 py-0.5 rounded-lg border border-slate-200"
+                        style={{ fontFamily: "var(--font-outfit)" }}
+                      >
+                        {country.code}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+                      {country.eu && (
+                        <span className="inline-flex items-center rounded-full bg-indigo-50 border border-indigo-100 px-2 py-0.5 text-[10px] font-semibold text-indigo-600"
+                          style={{ fontFamily: "var(--font-outfit)" }}>
+                          EU Member
+                        </span>
+                      )}
+                      {country.schengen && (
+                        <span className="inline-flex items-center rounded-full bg-amber-50 border border-amber-100 px-2 py-0.5 text-[10px] font-semibold text-amber-600"
+                          style={{ fontFamily: "var(--font-outfit)" }}>
+                          Schengen
+                        </span>
+                      )}
                     </div>
                   </div>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed line-clamp-2">
-                    {country.description}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {country.supportedRoutes.map((r) => (
-                      <span key={r} className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 capitalize">
-                        {CATEGORY_LABELS[r]}
-                      </span>
-                    ))}
+                </div>
+
+                {/* Description */}
+                <p
+                  className="relative mt-4 text-xs text-slate-500 leading-relaxed line-clamp-2"
+                  style={{ fontFamily: "var(--font-outfit)" }}
+                >
+                  {country.description.slice(0, 85)}…
+                </p>
+
+                {/* Route pills */}
+                <div className="relative mt-3 flex flex-wrap gap-1.5">
+                  {country.supportedRoutes.map(r => (
+                    <span
+                      key={r}
+                      className="rounded-full bg-indigo-50 border border-indigo-100 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-600 capitalize"
+                      style={{ fontFamily: "var(--font-outfit)" }}
+                    >
+                      {r}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Footer row */}
+                <div className="relative mt-4 flex items-center justify-between pt-3 border-t border-slate-100">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin size={11} className="text-slate-400" />
+                    <span className="text-[11px] text-slate-400" style={{ fontFamily: "var(--font-outfit)" }}>
+                      {country.capital}
+                    </span>
                   </div>
-                  <p className="mt-3 text-xs text-slate-400 flex items-center gap-1">
-                    <Globe size={11} />
-                    {country.processingInfo}
-                  </p>
+                  <span
+                    className="flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:gap-2 transition-all duration-300"
+                    style={{ fontFamily: "var(--font-outfit)" }}
+                  >
+                    View routes <ArrowUpRight size={11} />
+                  </span>
                 </div>
-                <div className="mt-auto px-5 py-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-medium text-brand-600">View routes</span>
-                  <ChevronRight size={14} className="text-brand-400" />
-                </div>
-              </Card>
+              </div>
             </Link>
           ))}
         </div>

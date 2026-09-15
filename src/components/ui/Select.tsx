@@ -23,7 +23,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {label && (
           <label htmlFor={selectId} className="form-label">
             {label}
-            {props.required && <span className="text-rose-500 ml-1">*</span>}
+            {props.required && <span className="text-red-500 ml-1">*</span>}
           </label>
         )}
         <div className="relative">
@@ -32,7 +32,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             id={selectId}
             className={cn(
               "form-input appearance-none pr-10",
-              error && "border-rose-400 focus:border-rose-500 focus:ring-rose-500/20",
+              error && "border-red-400 focus:border-red-500 focus:ring-red-400/20",
               className
             )}
             {...props}
@@ -46,7 +46,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           </select>
           <ChevronDown
             size={16}
-            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-navy-300"
+            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
           />
         </div>
         {error && <p className="form-error">{error}</p>}

@@ -13,26 +13,25 @@ interface EmptyStateProps {
   className?: string;
 }
 
-export function EmptyState({
-  icon: Icon,
-  title,
-  description,
-  action,
-  className,
-}: EmptyStateProps) {
+export function EmptyState({ icon: Icon, title, description, action, className }: EmptyStateProps) {
   return (
-    <div
-      className={cn(
-        "flex flex-col items-center justify-center py-16 px-4 text-center",
-        className
-      )}
-    >
-      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-sand-100">
-        <Icon size={28} className="text-navy-400" />
+    <div className={cn("flex flex-col items-center justify-center py-16 px-4 text-center", className)}>
+      <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-3xl bg-indigo-50 border border-indigo-100">
+        <Icon size={28} className="text-indigo-400" />
       </div>
-      <h3 className="text-lg font-bold text-navy-800">{title}</h3>
+      <h3
+        className="text-lg font-bold text-ink"
+        style={{ fontFamily: "var(--font-syne)" }}
+      >
+        {title}
+      </h3>
       {description && (
-        <p className="mt-2 max-w-sm text-sm text-navy-400">{description}</p>
+        <p
+          className="mt-2 max-w-sm text-sm text-slate-500"
+          style={{ fontFamily: "var(--font-outfit)" }}
+        >
+          {description}
+        </p>
       )}
       {action && (
         <Button className="mt-6" onClick={action.onClick}>

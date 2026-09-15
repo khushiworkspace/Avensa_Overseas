@@ -13,13 +13,13 @@ export function Card({ children, className, hover, glow, onClick }: CardProps) {
     <div
       onClick={onClick}
       className={cn(
-        "rounded-2xl bg-white border border-[rgba(14,20,72,0.08)] shadow-card",
+        "rounded-3xl bg-white border border-[--border-subtle] shadow-card",
         hover && [
-          "transition-all duration-300 cursor-pointer",
-          "hover:shadow-card-hover hover:-translate-y-1",
-          "hover:border-teal-200",
+          "transition-all duration-500 ease-spring cursor-pointer",
+          "hover:shadow-card-hover hover:-translate-y-1.5",
+          "hover:border-indigo-300/50",
         ],
-        glow && "hover:shadow-card-glow hover:border-teal-300",
+        glow && "hover:shadow-card-glow hover:border-indigo-300",
         className
       )}
     >
@@ -36,12 +36,7 @@ export function CardHeader({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "px-6 py-4 border-b border-[rgba(14,20,72,0.07)]",
-        className
-      )}
-    >
+    <div className={cn("px-6 py-4 border-b border-[--border-subtle]", className)}>
       {children}
     </div>
   );
@@ -65,12 +60,7 @@ export function CardFooter({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "px-6 py-4 border-t border-[rgba(14,20,72,0.07)] bg-sand-50 rounded-b-2xl",
-        className
-      )}
-    >
+    <div className={cn("px-6 py-4 border-t border-[--border-subtle] bg-ice-50 rounded-b-3xl", className)}>
       {children}
     </div>
   );

@@ -15,7 +15,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label htmlFor={inputId} className="form-label">
             {label}
-            {props.required && <span className="text-rose-500 ml-1">*</span>}
+            {props.required && <span className="text-red-500 ml-1">*</span>}
           </label>
         )}
         <input
@@ -23,7 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           id={inputId}
           className={cn(
             "form-input",
-            error && "border-rose-400 focus:border-rose-500 focus:ring-rose-500/20",
+            error && "border-red-400 focus:border-red-500 focus:ring-red-400/20",
             className
           )}
           aria-invalid={!!error}

@@ -1,78 +1,81 @@
 import type { Metadata } from "next";
+import { Shield } from "lucide-react";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { COMPANY } from "@/lib/constants";
 
 export const metadata: Metadata = { title: "Privacy Policy" };
 
+const sections = [
+  {
+    title: "1. Who We Are",
+    body: `${COMPANY.name} ("we", "us", "our") operates the Avensa Overseas EU Immigration Portal. We are the controller of the personal data you provide to us. Contact: ${COMPANY.email}.`,
+  },
+  {
+    title: "2. Data We Collect",
+    body: "We collect identity and contact details (name, email, phone, address), passport and travel document information, employment, education and financial information provided for eligibility checks and applications, documents you upload, and usage data (pages visited, actions taken) for platform improvement.",
+  },
+  {
+    title: "3. How We Use Your Data",
+    body: "We process your data to provide eligibility guidance and application management services, communicate with you about your applications and appointments, comply with legal obligations, and improve the platform (analytics, aggregated and anonymised).",
+  },
+  {
+    title: "4. Legal Basis",
+    body: "We rely on contractual necessity for service delivery, consent for marketing communications, and legitimate interests for platform security and fraud prevention.",
+  },
+  {
+    title: "5. Data Retention",
+    body: "Application data is retained for up to 10 years post-completion or as required by law. Documents are retained for 7 years. Marketing preferences are retained until you withdraw consent.",
+  },
+  {
+    title: "6. Your Rights",
+    body: `Under GDPR and applicable law, you have the right to access, correct, port, restrict processing of, or request erasure of your data. To exercise your rights, email ${COMPANY.email} or use your account settings.`,
+  },
+  {
+    title: "7. Security",
+    body: "All data is encrypted in transit (TLS) and at rest. Documents are stored in private encrypted object storage with time-limited signed URLs. Access is controlled by role-based permissions.",
+  },
+  {
+    title: "8. Contact",
+    body: `For privacy queries or to exercise your rights: ${COMPANY.email}`,
+  },
+];
+
 export default function PrivacyPage() {
   return (
-    <div className="bg-white min-h-screen">
-      <div className="gradient-hero py-12">
-        <div className="page-container">
-          <Breadcrumb items={[{ label: "Privacy Policy" }]} className="text-blue-200 mb-4" />
-          <h1 className="text-3xl font-extrabold text-white font-heading">Privacy Policy</h1>
-          <p className="text-blue-200 mt-2 text-sm">Last updated: 1 January 2024</p>
+    <div className="min-h-screen" style={{ background: "var(--bg-page)" }}>
+      <div className="gradient-hero py-20">
+        <div className="relative z-10 page-container">
+          <Breadcrumb items={[{ label: "Privacy Policy" }]} className="text-white/50 mb-6" />
+          <div className="section-eyebrow mb-5">
+            <Shield size={11} />
+            Legal
+          </div>
+          <h1 className="text-4xl lg:text-5xl font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
+            Privacy Policy
+          </h1>
+          <p className="mt-3 text-sm text-white/40" style={{ fontFamily: "var(--font-outfit)" }}>
+            Last updated: 1 January 2024
+          </p>
         </div>
       </div>
-      <div className="page-container py-12 max-w-3xl">
-        <div className="prose prose-slate max-w-none text-sm leading-relaxed space-y-6">
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">1. Who We Are</h2>
-            <p className="text-slate-600">
-              {COMPANY.name} (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) operates the Avensa Overseas EU Immigration Portal. We are the controller of the personal data you provide to us. Contact: {COMPANY.email}.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">2. Data We Collect</h2>
-            <p className="text-slate-600">We collect:</p>
-            <ul className="list-disc pl-5 text-slate-600 space-y-1">
-              <li>Identity and contact details (name, email, phone, address)</li>
-              <li>Passport and travel document information</li>
-              <li>Employment, education and financial information provided for eligibility checks and applications</li>
-              <li>Documents you upload</li>
-              <li>Usage data (pages visited, actions taken) for platform improvement</li>
-            </ul>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">3. How We Use Your Data</h2>
-            <p className="text-slate-600">We process your data to:</p>
-            <ul className="list-disc pl-5 text-slate-600 space-y-1">
-              <li>Provide eligibility guidance and application management services</li>
-              <li>Communicate with you about your applications and appointments</li>
-              <li>Comply with legal obligations</li>
-              <li>Improve the platform (analytics, aggregated and anonymised)</li>
-            </ul>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">4. Legal Basis</h2>
-            <p className="text-slate-600">
-              We rely on contractual necessity for service delivery, consent for marketing communications, and legitimate interests for platform security and fraud prevention.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">5. Data Retention</h2>
-            <p className="text-slate-600">
-              Application data is retained for up to 10 years post-completion or as required by law. Documents are retained for 7 years. Marketing preferences are retained until you withdraw consent.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">6. Your Rights</h2>
-            <p className="text-slate-600">
-              Under GDPR and applicable law, you have the right to access, correct, port, restrict processing of, or request erasure of your data. To exercise your rights, email {COMPANY.email} or use your account settings.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">7. Security</h2>
-            <p className="text-slate-600">
-              All data is encrypted in transit (TLS) and at rest. Documents are stored in private encrypted object storage with time-limited signed URLs. Access is controlled by role-based permissions.
-            </p>
-          </section>
-          <section>
-            <h2 className="text-lg font-bold text-slate-900">8. Contact</h2>
-            <p className="text-slate-600">
-              For privacy enquiries: {COMPANY.email}
-            </p>
-          </section>
+
+      <div className="page-container py-14 max-w-3xl">
+        <div className="rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden">
+          <div className="px-8 py-8 space-y-8">
+            {sections.map(({ title, body }) => (
+              <section key={title} className="border-b border-slate-100 last:border-0 pb-8 last:pb-0">
+                <h2
+                  className="text-base font-bold text-ink mb-3"
+                  style={{ fontFamily: "var(--font-syne)" }}
+                >
+                  {title}
+                </h2>
+                <p className="text-sm text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-outfit)" }}>
+                  {body}
+                </p>
+              </section>
+            ))}
+          </div>
         </div>
       </div>
     </div>

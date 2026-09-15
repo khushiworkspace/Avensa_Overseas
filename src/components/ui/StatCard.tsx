@@ -8,79 +8,65 @@ interface StatCardProps {
   trend?: "up" | "down" | "neutral";
   icon?: LucideIcon;
   iconColor?: string;
-  accent?: "teal" | "coral" | "mint" | "amber";
+  accent?: "indigo" | "violet" | "gold" | "emerald" | "teal" | "coral" | "mint" | "amber";
   className?: string;
 }
 
-const accentMap = {
-  teal:  { icon: "bg-teal-100 text-teal-600",  bar: "bg-teal-500",  glow: "shadow-teal-sm"  },
-  coral: { icon: "bg-coral-100 text-coral-600", bar: "bg-coral-500", glow: "shadow-coral-sm" },
-  mint:  { icon: "bg-mint-100 text-mint-600",   bar: "bg-mint-500",  glow: ""               },
-  amber: { icon: "bg-amber-100 text-amber-600", bar: "bg-amber-500", glow: ""               },
+const accentMap: Record<NonNullable<StatCardProps["accent"]>, { icon: string; bar: string; glow: string }> = {
+  indigo:  { icon: "bg-indigo-100  text-indigo-600",  bar: "bg-indigo-500",  glow: "shadow-indigo-sm" },
+  violet:  { icon: "bg-violet-100  text-violet-600",  bar: "bg-violet-500",  glow: "shadow-violet-md" },
+  gold:    { icon: "bg-amber-100   text-amber-600",   bar: "bg-amber-500",   glow: "shadow-gold-sm"   },
+  emerald: { icon: "bg-emerald-100 text-emerald-600", bar: "bg-emerald-500", glow: ""                 },
+  /* legacy aliases */
+  teal:    { icon: "bg-indigo-100  text-indigo-600",  bar: "bg-indigo-500",  glow: "shadow-indigo-sm" },
+  coral:   { icon: "bg-red-100     text-red-600",     bar: "bg-red-500",     glow: ""                 },
+  mint:    { icon: "bg-emerald-100 text-emerald-600", bar: "bg-emerald-500", glow: ""                 },
+  amber:   { icon: "bg-amber-100   text-amber-600",   bar: "bg-amber-500",   glow: "shadow-gold-sm"   },
 };
 
-export function StatCard({
-  label,
-  value,
-  change,
-  trend,
-  icon: Icon,
-  iconColor,
-  accent = "teal",
-  className,
-}: StatCardProps) {
-  const TrendIcon =
-    trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : Minus;
-
+export function StatCard({ label, value, change, trend, icon: Icon, iconColor, accent = "indigo", className }: StatCardProps) {
+  const TrendIcon = trend === "up" ? TrendingUp : trend === "down" ? TrendingDown : Minus;
   const trendColor =
-    trend === "up"
-      ? "text-mint-600 bg-mint-50"
-      : trend === "down"
-      ? "text-rose-500 bg-rose-50"
-      : "text-navy-400 bg-sand-100";
-
+    trend === "up"   ? "text-emerald-600 bg-emerald-50" :
+    trend === "down" ? "text-red-500     bg-red-50"     :
+                       "text-slate-400   bg-slate-100";
   const colors = accentMap[accent];
 
   return (
-    <div
-      className={cn(
-        "relative rounded-2xl bg-white border border-[rgba(14,20,72,0.08)] shadow-card p-5 overflow-hidden",
-        "transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5",
-        className
-      )}
-    >
+    <div className={cn(
+      "relative rounded-3xl bg-white border border-[--border-subtle] shadow-card p-5 overflow-hidden",
+      "transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5",
+      className
+    )}>
       {/* top accent bar */}
-      <div className={cn("absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl", colors.bar)} />
+      <div className={cn("absolute top-0 left-0 right-0 h-[3px] rounded-t-3xl", colors.bar)} />
 
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-wider text-navy-400">
+          <p
+            className="text-xs font-semibold uppercase tracking-wider text-slate-400"
+            style={{ fontFamily: "var(--font-outfit)" }}
+          >
             {label}
           </p>
-          <p className="mt-2 text-3xl font-bold text-navy-900 leading-none">{value}</p>
-        </div>
-
-        {Icon && (
-          <div
-            className={cn(
-              "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
-              iconColor ?? colors.icon
-            )}
+          <p
+            className="mt-2 text-3xl font-bold text-ink leading-none"
+            style={{ fontFamily: "var(--font-syne)" }}
           >
+            {value}
+          </p>
+        </div>
+        {Icon && (
+          <div className={cn("flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl", iconColor ?? colors.icon)}>
             <Icon size={20} />
           </div>
         )}
       </div>
 
       {change !== undefined && trend && (
-        <div
-          className={cn(
-            "mt-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold",
-            trendColor
-          )}
-        >
+        <div className={cn("mt-3 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold", trendColor)}>
           <TrendIcon size={12} />
-          <span>{Math.abs(change)}% vs last month</span>
+          <span style={{ fontFamily: "var(--font-outfit)" }}>{Math.abs(change)}% vs last month</span>
         </div>
       )}
     </div>

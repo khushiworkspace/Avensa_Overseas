@@ -2,32 +2,40 @@ import { cn } from "@/lib/utils";
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: "teal" | "coral" | "mint" | "amber" | "rose" | "navy" | "sand" | "purple" | "orange" | "blue" | "green" | "yellow" | "red" | "slate";
+  variant?: "indigo" | "violet" | "gold" | "emerald" | "rose" | "slate" | "amber" |
+            /* legacy aliases kept for existing code */
+            "teal" | "coral" | "mint" | "navy" | "sand" | "purple" | "orange" |
+            "blue" | "green" | "yellow" | "red";
   className?: string;
 }
 
 const variantClasses: Record<NonNullable<BadgeProps["variant"]>, string> = {
-  // New palette
-  teal:   "bg-teal-100 text-teal-700 border border-teal-200",
-  coral:  "bg-coral-100 text-coral-700 border border-coral-200",
-  mint:   "bg-mint-100 text-mint-700 border border-mint-200",
-  amber:  "bg-amber-100 text-amber-700 border border-amber-200",
-  rose:   "bg-rose-100 text-rose-700 border border-rose-200",
-  navy:   "bg-navy-100 text-navy-700 border border-navy-200",
-  sand:   "bg-sand-100 text-sand-700 border border-sand-200",
-  purple: "bg-purple-100 text-purple-700 border border-purple-200",
-  orange: "bg-amber-100 text-amber-700 border border-amber-200",
-  // Legacy aliases so old code doesn't break
-  blue:   "bg-teal-100 text-teal-700 border border-teal-200",
-  green:  "bg-mint-100 text-mint-700 border border-mint-200",
-  yellow: "bg-amber-100 text-amber-700 border border-amber-200",
-  red:    "bg-rose-100 text-rose-700 border border-rose-200",
-  slate:  "bg-navy-100 text-navy-600 border border-navy-200",
+  /* New palette */
+  indigo:  "bg-indigo-100  text-indigo-700  border border-indigo-200/80",
+  violet:  "bg-violet-100  text-violet-700  border border-violet-200/80",
+  gold:    "bg-amber-100   text-amber-700   border border-amber-200/80",
+  emerald: "bg-emerald-100 text-emerald-700 border border-emerald-200/80",
+  rose:    "bg-red-100     text-red-700     border border-red-200/80",
+  slate:   "bg-slate-100   text-slate-600   border border-slate-200/80",
+  amber:   "bg-amber-100   text-amber-700   border border-amber-200/80",
+  /* Legacy aliases — keep existing pages working */
+  teal:    "bg-indigo-100  text-indigo-700  border border-indigo-200/80",
+  coral:   "bg-red-100     text-red-700     border border-red-200/80",
+  mint:    "bg-emerald-100 text-emerald-700 border border-emerald-200/80",
+  navy:    "bg-slate-100   text-slate-600   border border-slate-200/80",
+  sand:    "bg-amber-50    text-amber-600   border border-amber-200/60",
+  purple:  "bg-violet-100  text-violet-700  border border-violet-200/80",
+  orange:  "bg-amber-100   text-amber-700   border border-amber-200/80",
+  blue:    "bg-indigo-100  text-indigo-700  border border-indigo-200/80",
+  green:   "bg-emerald-100 text-emerald-700 border border-emerald-200/80",
+  yellow:  "bg-amber-100   text-amber-700   border border-amber-200/80",
+  red:     "bg-red-100     text-red-700     border border-red-200/80",
 };
 
-export function Badge({ children, variant = "navy", className }: BadgeProps) {
+export function Badge({ children, variant = "slate", className }: BadgeProps) {
   return (
     <span
+      style={{ fontFamily: "var(--font-outfit)" }}
       className={cn(
         "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold",
         variantClasses[variant],
