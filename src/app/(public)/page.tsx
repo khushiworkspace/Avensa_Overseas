@@ -24,8 +24,8 @@ const purposeCards = [
     label: "Work",
     href: "/routes/work",
     desc: "EU Blue Card · Skilled Worker · Job Seeker",
-    gradient: "from-indigo-500 to-violet-600",
-    glow: "rgba(79,70,229,0.40)",
+    gradient: "from-[#0d1b4b] to-[#1a2b6b]",
+    glow: "rgba(13,27,75,0.40)",
     tag: "Most Popular",
   },
   {
@@ -33,8 +33,8 @@ const purposeCards = [
     label: "Study",
     href: "/routes/study",
     desc: "Bachelor · Master · PhD programmes",
-    gradient: "from-violet-500 to-purple-600",
-    glow: "rgba(124,58,237,0.35)",
+    gradient: "from-[#F5A623] to-[#E8971A]",
+    glow: "rgba(245,166,35,0.35)",
     tag: null,
   },
   {
@@ -42,8 +42,8 @@ const purposeCards = [
     label: "Family",
     href: "/routes/family",
     desc: "Spouse · Child · Reunification",
-    gradient: "from-sky-500 to-indigo-500",
-    glow: "rgba(14,165,233,0.30)",
+    gradient: "from-[#1a2b6b] to-[#0d1b4b]",
+    glow: "rgba(26,43,107,0.30)",
     tag: null,
   },
   {
@@ -51,8 +51,8 @@ const purposeCards = [
     label: "Residence",
     href: "/routes/residence",
     desc: "Long-term · Permanent · Digital Nomad",
-    gradient: "from-emerald-500 to-teal-600",
-    glow: "rgba(16,185,129,0.30)",
+    gradient: "from-[#0d1b4b] to-[#F5A623]",
+    glow: "rgba(13,27,75,0.30)",
     tag: null,
   },
   {
@@ -60,8 +60,8 @@ const purposeCards = [
     label: "Visit",
     href: "/routes/visit",
     desc: "Tourism · Business · Short Stay",
-    gradient: "from-gold-500 to-amber-500",
-    glow: "rgba(245,158,11,0.35)",
+    gradient: "from-[#F5A623] to-[#fcd34d]",
+    glow: "rgba(245,166,35,0.35)",
     tag: null,
   },
   {
@@ -69,8 +69,8 @@ const purposeCards = [
     label: "Special",
     href: "/routes/special",
     desc: "Researcher · Entrepreneur · Highly Qualified",
-    gradient: "from-rose-500 to-ember-500",
-    glow: "rgba(244,63,94,0.30)",
+    gradient: "from-[#1a2b6b] to-[#F5A623]",
+    glow: "rgba(13,27,75,0.30)",
     tag: "New",
   },
 ];
@@ -107,10 +107,10 @@ const steps = [
 ];
 
 const stepStyles: Record<string, { badge: string; glow: string; num: string }> = {
-  indigo:  { badge: "bg-indigo-600  shadow-[0_6px_28px_rgba(79,70,229,0.50)]",   glow: "rgba(79,70,229,0.25)",  num: "text-indigo-400"  },
-  violet:  { badge: "bg-violet-600  shadow-[0_6px_28px_rgba(124,58,237,0.50)]",  glow: "rgba(124,58,237,0.22)", num: "text-violet-400"  },
-  gold:    { badge: "bg-amber-500   shadow-[0_6px_28px_rgba(245,158,11,0.50)]",   glow: "rgba(245,158,11,0.22)", num: "text-gold-400"    },
-  emerald: { badge: "bg-emerald-600 shadow-[0_6px_28px_rgba(16,185,129,0.50)]",  glow: "rgba(16,185,129,0.22)", num: "text-emerald-400" },
+  indigo:  { badge: "bg-[#0d1b4b]  shadow-[0_6px_28px_rgba(13,27,75,0.50)]",    glow: "rgba(13,27,75,0.25)",   num: "text-[#5c80c0]"  },
+  violet:  { badge: "bg-[#1a2b6b]  shadow-[0_6px_28px_rgba(26,43,107,0.50)]",   glow: "rgba(26,43,107,0.22)",  num: "text-[#7a9ad0]"  },
+  gold:    { badge: "bg-[#F5A623]   shadow-[0_6px_28px_rgba(245,166,35,0.50)]",  glow: "rgba(245,166,35,0.22)", num: "text-gold-400"    },
+  emerald: { badge: "bg-[#0d1b4b]   shadow-[0_6px_28px_rgba(13,27,75,0.50)]",   glow: "rgba(13,27,75,0.22)",   num: "text-[#5c80c0]"  },
 };
 
 const trustCards = [
@@ -118,38 +118,38 @@ const trustCards = [
     icon: Lock,
     title: "Bank-Grade Security",
     desc: "AES-256 encryption for every document and personal data point.",
-    iconBg: "bg-indigo-500/15",
-    iconCl: "text-indigo-300",
-    glow: "rgba(79,70,229,0.22)",
+    iconBg: "bg-[rgba(13,27,75,0.15)]",
+    iconCl: "text-[#8aa5d6]",
+    glow: "rgba(13,27,75,0.25)",
   },
   {
     icon: Clock,
     title: "Live Tracking",
     desc: "Push notifications at every application milestone, instantly.",
-    iconBg: "bg-gold-500/15",
-    iconCl: "text-gold-300",
-    glow: "rgba(245,158,11,0.18)",
+    iconBg: "bg-[rgba(245,166,35,0.12)]",
+    iconCl: "text-[#F5A623]",
+    glow: "rgba(245,166,35,0.18)",
   },
   {
     icon: Globe,
     title: "13 EU Countries",
     desc: "Complete coverage across all major European immigration destinations.",
-    iconBg: "bg-violet-500/15",
-    iconCl: "text-violet-300",
-    glow: "rgba(124,58,237,0.20)",
+    iconBg: "bg-[rgba(26,43,107,0.15)]",
+    iconCl: "text-[#8aa5d6]",
+    glow: "rgba(26,43,107,0.22)",
   },
   {
     icon: TrendingUp,
     title: "Versioned Rules",
     desc: "All eligibility rules date-stamped with effective dates and official sources.",
-    iconBg: "bg-emerald-500/15",
-    iconCl: "text-emerald-300",
-    glow: "rgba(16,185,129,0.18)",
+    iconBg: "bg-[rgba(245,166,35,0.10)]",
+    iconCl: "text-[#fcd34d]",
+    glow: "rgba(245,166,35,0.15)",
   },
 ];
 
 const stats = [
-  { value: "13+", label: "EU Countries"       },
+  { value: "30+", label: "EU Countries"       },
   { value: "30+", label: "Immigration Routes" },
   { value: "50k+",label: "Applications Guided"},
   { value: "98%", label: "Accuracy Rate"      },
@@ -210,33 +210,33 @@ export default function HomePage() {
 
         {/* ── Multi-layer aurora background ── */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Primary aurora — reduced opacity so the photo shows through */}
+          {/* Primary aurora — navy + gold tones matching the logo */}
           <div className="absolute inset-0" style={{
             background: [
-              "radial-gradient(ellipse 120% 70% at 50% -10%, rgba(79,70,229,0.32) 0%, transparent 52%)",
-              "radial-gradient(ellipse 80% 55% at -5%  65%, rgba(124,58,237,0.22) 0%, transparent 52%)",
-              "radial-gradient(ellipse 70% 50% at 108% 78%, rgba(245,158,11,0.12) 0%, transparent 52%)",
+              "radial-gradient(ellipse 120% 70% at 50% -10%, rgba(13,27,75,0.55) 0%, transparent 52%)",
+              "radial-gradient(ellipse 80% 55% at -5%  65%, rgba(26,43,107,0.30) 0%, transparent 52%)",
+              "radial-gradient(ellipse 70% 50% at 108% 78%, rgba(245,166,35,0.10) 0%, transparent 52%)",
             ].join(",")
           }} />
 
           {/* Hex / grid overlay */}
           <div className="absolute inset-0 grid-pattern opacity-[0.22]" />
 
-          {/* Top beam shaft */}
+          {/* Top beam shaft — gold tint */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-[500px]"
-            style={{ background: "linear-gradient(to bottom, rgba(99,102,241,0.60), transparent)" }}
+            style={{ background: "linear-gradient(to bottom, rgba(245,166,35,0.40), transparent)" }}
           />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[340px] w-[800px] rounded-full blur-[130px]"
-            style={{ background: "rgba(79,70,229,0.10)" }}
+            style={{ background: "rgba(13,27,75,0.18)" }}
           />
 
-          {/* Floating orbs */}
+          {/* Floating orbs — navy + gold */}
           <div className="absolute top-[14%] right-[8%]  h-56 w-56 rounded-full blur-[90px]  animate-float-slow"
-            style={{ background: "rgba(124,58,237,0.10)", animationDelay: "0s" }} />
+            style={{ background: "rgba(26,43,107,0.18)", animationDelay: "0s" }} />
           <div className="absolute bottom-[18%] left-[6%]  h-72 w-72 rounded-full blur-[110px] animate-float"
-            style={{ background: "rgba(79,70,229,0.12)", animationDelay: "2.5s" }} />
+            style={{ background: "rgba(13,27,75,0.20)", animationDelay: "2.5s" }} />
           <div className="absolute bottom-[8%]  right-[22%] h-48 w-48 rounded-full blur-[80px]  animate-float-slow"
-            style={{ background: "rgba(245,158,11,0.08)", animationDelay: "1.5s" }} />
+            style={{ background: "rgba(245,166,35,0.07)", animationDelay: "1.5s" }} />
 
           {/* Large faint globe wireframe (desktop) */}
           <div className="absolute right-[2%] top-1/2 -translate-y-1/2 opacity-[0.04] hidden xl:block pointer-events-none">
@@ -274,11 +274,12 @@ export default function HomePage() {
 
             {/* Eyebrow badge */}
             <Reveal delay={0}>
-              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-5 py-2 backdrop-blur-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-indigo-400 animate-pulse" />
+              <div className="mb-8 inline-flex items-center gap-2 rounded-full px-5 py-2 backdrop-blur-sm"
+                style={{ border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.08)" }}>
+                <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: "#F5A623" }} />
                 <span
-                  className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300"
-                  style={{ fontFamily: "var(--font-outfit)" }}
+                  className="text-[11px] font-semibold uppercase tracking-[0.14em]"
+                  style={{ fontFamily: "var(--font-outfit)", color: "#F5A623" }}
                 >
                   Trusted EU Immigration Guidance — Not Legal Advice
                 </span>
@@ -295,11 +296,11 @@ export default function HomePage() {
                 <br className="hidden sm:block" />
                 <span className="relative inline-block mt-2">
                   <span className="text-gradient-hero">with Precision</span>
-                  {/* animated shimmer underline */}
+                  {/* animated shimmer underline — gold matching logo */}
                   <span
                     className="absolute -bottom-3 left-0 right-0 h-[3px] rounded-full"
                     style={{
-                      background: "linear-gradient(90deg, transparent, #818cf8 30%, #a78bfa 60%, #fbbf24 80%, transparent)",
+                      background: "linear-gradient(90deg, transparent, #1a2b6b 20%, #F5A623 60%, transparent)",
                       animation: "shimmer 3.5s linear infinite",
                       backgroundSize: "300% 100%",
                     }}
@@ -327,8 +328,13 @@ export default function HomePage() {
               <div className="mt-10 flex flex-wrap justify-center gap-3">
                 <Link href="/eligibility">
                   <button
-                    className="btn-shine group relative inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-4 text-sm font-semibold text-white shadow-[0_6px_32px_rgba(79,70,229,0.50)] transition-all duration-300 hover:shadow-[0_10px_48px_rgba(79,70,229,0.68)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97]"
-                    style={{ fontFamily: "var(--font-outfit)" }}
+                    className="group relative inline-flex items-center gap-2.5 rounded-2xl px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97]"
+                    style={{
+                      fontFamily: "var(--font-outfit)",
+                      background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                      border: "1px solid rgba(245,166,35,0.40)",
+                      boxShadow: "0 6px 32px rgba(13,27,75,0.55), 0 0 0 1px rgba(245,166,35,0.10)",
+                    }}
                   >
                     Check My Eligibility
                     <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -339,7 +345,7 @@ export default function HomePage() {
                     className="group inline-flex items-center gap-2.5 rounded-2xl border border-white/12 bg-white/[0.06] px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/[0.10] hover:border-white/20 hover:-translate-y-1 active:translate-y-0"
                     style={{ fontFamily: "var(--font-outfit)" }}
                   >
-                    <Globe size={15} className="text-indigo-400" />
+                    <Globe size={15} style={{ color: "#F5A623" }} />
                     Explore Countries
                   </button>
                 </Link>
@@ -355,7 +361,7 @@ export default function HomePage() {
                     className="flex items-center gap-1.5 text-xs font-medium text-white/70"
                     style={{ fontFamily: "var(--font-outfit)" }}
                   >
-                    <CheckCircle size={12} className="text-indigo-400 shrink-0" />
+                    <CheckCircle size={12} className="shrink-0" style={{ color: "#F5A623" }} />
                     {t}
                   </span>
                 ))}
@@ -368,11 +374,14 @@ export default function HomePage() {
                 {stats.map((s, i) => (
                   <div
                     key={s.label}
-                    className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm px-4 py-4 text-center transition-all duration-400 hover:-translate-y-1.5 hover:border-indigo-400/30 hover:bg-indigo-500/[0.08]"
-                    style={{ animationDelay: `${i * 0.08}s` }}
+                    className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm px-4 py-4 text-center transition-all duration-400 hover:-translate-y-1.5"
+                    style={{
+                      animationDelay: `${i * 0.08}s`,
+                      borderColor: "rgba(245,166,35,0.15)",
+                    }}
                   >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
-                      style={{ background: "radial-gradient(circle at 50% 0%, rgba(79,70,229,0.16), transparent 70%)" }} />
+                      style={{ background: "radial-gradient(circle at 50% 0%, rgba(245,166,35,0.10), transparent 70%)" }} />
                     <p
                       className="relative text-2xl font-bold text-white"
                       style={{ fontFamily: "var(--font-syne)" }}
@@ -407,7 +416,7 @@ export default function HomePage() {
       <section className="relative py-20 overflow-hidden bg-white">
         {/* subtle top glow */}
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-[700px] rounded-full blur-[130px] pointer-events-none"
-          style={{ background: "rgba(79,70,229,0.07)" }} />
+          style={{ background: "rgba(13,27,75,0.06)" }} />
 
         <div className="relative page-container">
           {/* Section header */}
@@ -441,63 +450,63 @@ export default function HomePage() {
                 icon: Globe,
                 title: "Cross-Country TRC Transfers",
                 desc: "Already living in one Schengen country? We help you transfer or upgrade your residence permit to another EU member state without starting from zero.",
-                accent: "from-indigo-500 to-violet-600",
-                glow: "rgba(79,70,229,0.35)",
+                accent: "from-[#0d1b4b] to-[#1a2b6b]",
+                glow: "rgba(13,27,75,0.35)",
                 tag: "Most Requested",
               },
               {
                 icon: FileText,
                 title: "Document Checklist & Prep",
                 desc: "Every TRC change requires a tailored document set. We generate a precise, country-specific checklist so nothing is missed.",
-                accent: "from-violet-500 to-purple-600",
-                glow: "rgba(124,58,237,0.30)",
+                accent: "from-[#F5A623] to-[#E8971A]",
+                glow: "rgba(245,166,35,0.30)",
                 tag: null,
               },
               {
                 icon: Clock,
                 title: "Timeline & Deadline Tracking",
                 desc: "We track your current permit validity and alert you when to begin the TRC change process so you never overstay or lose status.",
-                accent: "from-sky-500 to-indigo-500",
-                glow: "rgba(14,165,233,0.28)",
+                accent: "from-[#1a2b6b] to-[#0d1b4b]",
+                glow: "rgba(26,43,107,0.28)",
                 tag: null,
               },
               {
                 icon: Shield,
                 title: "Compliance Verification",
                 desc: "We cross-check your eligibility against each country's specific TRC transfer rules before you submit a single document.",
-                accent: "from-emerald-500 to-teal-600",
-                glow: "rgba(16,185,129,0.28)",
+                accent: "from-[#0d1b4b] to-[#F5A623]",
+                glow: "rgba(13,27,75,0.28)",
                 tag: null,
               },
               {
                 icon: Search,
                 title: "Route Comparison Tool",
                 desc: "Compare TRC change routes across multiple Schengen countries side-by-side — processing times, fees, and requirements at a glance.",
-                accent: "from-amber-500 to-orange-500",
-                glow: "rgba(245,158,11,0.30)",
+                accent: "from-[#F5A623] to-[#fcd34d]",
+                glow: "rgba(245,166,35,0.30)",
                 tag: null,
               },
               {
                 icon: TrendingUp,
                 title: "Real-Time Status Updates",
                 desc: "Once your application is submitted, track its progress in real time. Every milestone, every update — straight to you.",
-                accent: "from-rose-500 to-pink-600",
-                glow: "rgba(244,63,94,0.28)",
+                accent: "from-[#1a2b6b] to-[#F5A623]",
+                glow: "rgba(26,43,107,0.28)",
                 tag: "Live",
               },
             ].map((card, i) => (
               <Reveal key={card.title} delay={i * 0.07}>
-                <div className="group relative flex flex-col gap-4 p-6 rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(15,22,64,0.06)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.16)] hover:border-indigo-300/50 h-full">
+                <div className="group relative flex flex-col gap-4 p-6 rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(13,27,75,0.06)] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-8px_rgba(13,27,75,0.16)] hover:border-[rgba(245,166,35,0.35)] h-full">
                   {/* Top accent line */}
                   <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: `linear-gradient(90deg, transparent, ${card.glow.replace("0.", "rgba(99,102,241,0.")}, transparent)` }} />
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(245,166,35,0.70), transparent)" }} />
                   {/* Inner glow */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-                    style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.04), transparent 70%)" }} />
+                    style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(13,27,75,0.04), transparent 70%)" }} />
 
                   {card.tag && (
-                    <span className="absolute top-4 right-4 rounded-full bg-indigo-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-600"
-                      style={{ fontFamily: "var(--font-outfit)" }}>
+                    <span className="absolute top-4 right-4 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider"
+                      style={{ background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.30)", color: "#b06000", fontFamily: "var(--font-outfit)" }}>
                       {card.tag}
                     </span>
                   )}
@@ -508,7 +517,7 @@ export default function HomePage() {
                   </div>
 
                   <div className="relative">
-                    <h3 className="font-bold text-ink group-hover:text-indigo-700 transition-colors text-sm"
+                    <h3 className="font-bold text-ink group-hover:text-[#0d1b4b] transition-colors text-sm"
                       style={{ fontFamily: "var(--font-syne)" }}>
                       {card.title}
                     </h3>
@@ -526,15 +535,15 @@ export default function HomePage() {
           <Reveal delay={0.44}>
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/eligibility">
-                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(79,70,229,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(79,70,229,0.60)]"
-                  style={{ fontFamily: "var(--font-outfit)" }}>
+                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1"
+                  style={{ fontFamily: "var(--font-outfit)", background: "linear-gradient(135deg,#0d1b4b,#1a2b6b)", border: "1px solid rgba(245,166,35,0.30)", boxShadow: "0 6px 28px rgba(13,27,75,0.45)" }}>
                   Check TRC Eligibility
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </button>
               </Link>
               <Link href="/contact">
-                <button className="group inline-flex items-center gap-2 rounded-2xl border border-indigo-200 bg-indigo-50 px-8 py-3.5 text-sm font-semibold text-indigo-700 transition-all duration-300 hover:bg-indigo-100 hover:-translate-y-0.5"
-                  style={{ fontFamily: "var(--font-outfit)" }}>
+                <button className="group inline-flex items-center gap-2 rounded-2xl px-8 py-3.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.07)", color: "#b06000" }}>
                   Talk to an Expert
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </button>
@@ -550,17 +559,17 @@ export default function HomePage() {
       <section className="relative section-padding overflow-hidden"
         style={{ background: "linear-gradient(160deg, #050714 0%, #080c28 45%, #0d1038 75%, #050714 100%)" }}>
         {/* Background */}
-        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 grid-pattern opacity-[0.18]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[700px] rounded-full blur-[160px]"
-            style={{ background: "rgba(79,70,229,0.10)" }} />
+            style={{ background: "rgba(13,27,75,0.15)" }} />
         </div>
 
         <div className="relative page-container">
           <div className="text-center mb-14">
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-300 mb-5"
-                style={{ fontFamily: "var(--font-outfit)" }}>
+              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] mb-5"
+                style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.35)", background: "rgba(245,166,35,0.08)", color: "#F5A623" }}>
                 <GraduationCap size={11} />
                 Student Visa
               </div>
@@ -622,7 +631,7 @@ export default function HomePage() {
               },
             ].map((c, i) => (
               <Reveal key={c.code} delay={i * 0.10}>
-                <div className={`group relative rounded-3xl overflow-hidden border ${c.border} transition-all duration-500 hover:-translate-y-2.5 hover:shadow-[0_24px_60px_-8px_rgba(79,70,229,0.30)] bg-white/[0.03] backdrop-blur-sm h-full flex flex-col`}>
+                <div className={`group relative rounded-3xl overflow-hidden border ${c.border} transition-all duration-500 hover:-translate-y-2.5 hover:shadow-[0_24px_60px_-8px_rgba(13,27,75,0.30)] bg-white/[0.03] backdrop-blur-sm h-full flex flex-col`}>
                   {/* Country photo */}
                   <div className="relative h-44 overflow-hidden shrink-0">
                     <Image
@@ -651,7 +660,7 @@ export default function HomePage() {
                   {/* Body */}
                   <div className="p-5 flex flex-col flex-1">
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <h3 className="text-lg font-bold text-white group-hover:text-violet-300 transition-colors"
+                      <h3 className="text-lg font-bold text-white group-hover:text-[#F5A623] transition-colors"
                         style={{ fontFamily: "var(--font-syne)" }}>
                         {c.name}
                       </h3>
@@ -666,8 +675,8 @@ export default function HomePage() {
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-auto">
                       {c.tags.map(t => (
-                        <span key={t} className="rounded-full bg-violet-500/15 border border-violet-400/20 px-2.5 py-0.5 text-[11px] font-semibold text-violet-300"
-                          style={{ fontFamily: "var(--font-outfit)" }}>
+                        <span key={t} className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                          style={{ background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.28)", color: "#F5A623", fontFamily: "var(--font-outfit)" }}>
                           {t}
                         </span>
                       ))}
@@ -681,8 +690,8 @@ export default function HomePage() {
           <Reveal delay={0.35}>
             <div className="mt-10 text-center">
               <Link href="/eligibility">
-                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(124,58,237,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(124,58,237,0.60)]"
-                  style={{ fontFamily: "var(--font-outfit)" }}>
+                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1"
+                  style={{ fontFamily: "var(--font-outfit)", background: "linear-gradient(135deg,#0d1b4b,#1a2b6b)", border: "1px solid rgba(245,166,35,0.30)", boxShadow: "0 6px 28px rgba(13,27,75,0.45)" }}>
                   Apply for Student Visa
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </button>
@@ -698,7 +707,7 @@ export default function HomePage() {
       <section className="relative section-padding overflow-hidden bg-ice-50">
         <div className="absolute inset-0 dot-pattern-light pointer-events-none opacity-60" />
         <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full blur-[130px] pointer-events-none"
-          style={{ background: "rgba(79,70,229,0.07)" }} />
+          style={{ background: "rgba(13,27,75,0.06)" }} />
 
         <div className="relative page-container">
           <div className="text-center mb-14">
@@ -796,7 +805,7 @@ export default function HomePage() {
             ].map((c, i) => (
               <Reveal key={c.code} delay={i * 0.04}>
                 <Link href="/countries" className="group block h-full">
-                  <div className="relative rounded-2xl overflow-hidden border border-slate-200/60 shadow-[0_1px_4px_rgba(15,22,64,0.06)] bg-white transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_16px_40px_-8px_rgba(79,70,229,0.20)] hover:border-indigo-300/50 h-full flex flex-col">
+                  <div className="relative rounded-2xl overflow-hidden border border-slate-200/60 shadow-[0_1px_4px_rgba(13,27,75,0.06)] bg-white transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_16px_40px_-8px_rgba(13,27,75,0.20)] hover:border-[rgba(245,166,35,0.35)] h-full flex flex-col">
                     {/* Photo */}
                     <div className="relative h-32 overflow-hidden shrink-0">
                       <Image
@@ -812,13 +821,13 @@ export default function HomePage() {
                     </div>
                     {/* Body */}
                     <div className="p-3 flex flex-col flex-1">
-                      <p className="font-bold text-ink text-sm group-hover:text-indigo-700 transition-colors"
+                      <p className="font-bold text-ink text-sm group-hover:text-[#0d1b4b] transition-colors"
                         style={{ fontFamily: "var(--font-syne)" }}>
                         {c.name}
                       </p>
                       <div className="mt-2 flex flex-wrap gap-1">
                         {c.types.map(t => (
-                          <span key={t} className={`rounded-full px-2 py-0.5 text-[10px] font-semibold border ${t === "Work" ? "bg-indigo-50 border-indigo-100 text-indigo-600" : "bg-amber-50 border-amber-100 text-amber-600"}`}
+                          <span key={t} className={`rounded-full px-2 py-0.5 text-[10px] font-semibold border ${t === "Work" ? "bg-[rgba(13,27,75,0.07)] border-[rgba(13,27,75,0.15)] text-[#0d1b4b]" : "bg-amber-50 border-amber-100 text-amber-600"}`}
                             style={{ fontFamily: "var(--font-outfit)" }}>
                             {t}
                           </span>
@@ -834,16 +843,16 @@ export default function HomePage() {
           <Reveal delay={0.60}>
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/eligibility">
-                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_6px_28px_rgba(79,70,229,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(79,70,229,0.60)]"
-                  style={{ fontFamily: "var(--font-outfit)" }}>
+                <button className="btn-shine group inline-flex items-center gap-2.5 rounded-2xl px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1"
+                  style={{ fontFamily: "var(--font-outfit)", background: "linear-gradient(135deg,#0d1b4b,#1a2b6b)", border: "1px solid rgba(245,166,35,0.30)", boxShadow: "0 6px 28px rgba(13,27,75,0.45)" }}>
                   Check My Eligibility
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
                 </button>
               </Link>
               <Link href="/countries">
-                <button className="group inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-8 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 hover:-translate-y-0.5"
+                <button className="group inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-8 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:border-[rgba(245,166,35,0.40)] hover:bg-[rgba(245,166,35,0.05)] hover:text-[#0d1b4b] hover:-translate-y-0.5"
                   style={{ fontFamily: "var(--font-outfit)" }}>
-                  <Globe size={14} className="text-indigo-500" />
+                  <Globe size={14} style={{ color: "#F5A623" }} />
                   View All Countries
                 </button>
               </Link>
@@ -860,7 +869,7 @@ export default function HomePage() {
         <div className="absolute inset-0 dot-pattern-light pointer-events-none opacity-70" />
         {/* Corner glow */}
         <div className="absolute -top-20 -right-20 h-80 w-80 rounded-full blur-[120px] pointer-events-none"
-          style={{ background: "rgba(79,70,229,0.07)" }} />
+          style={{ background: "rgba(13,27,75,0.06)" }} />
 
         <div className="relative page-container">
           <div className="text-center mb-16">
@@ -887,19 +896,19 @@ export default function HomePage() {
             {purposeCards.map((card, i) => (
               <Reveal key={card.label} delay={i * 0.06}>
                 <Link href={card.href} className="group block h-full">
-                  <div className="relative flex flex-col items-center gap-3.5 p-5 rounded-3xl bg-white border border-slate-200/60 shadow-[0_1px_4px_rgba(15,22,64,0.06)] text-center transition-all duration-500 hover:-translate-y-2.5 hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.18)] hover:border-indigo-300/50 cursor-pointer overflow-hidden h-full">
+                  <div className="relative flex flex-col items-center gap-3.5 p-5 rounded-3xl bg-white border border-slate-200/60 shadow-[0_1px_4px_rgba(13,27,75,0.06)] text-center transition-all duration-500 hover:-translate-y-2.5 hover:shadow-[0_20px_60px_-8px_rgba(13,27,75,0.18)] hover:border-[rgba(245,166,35,0.35)] cursor-pointer overflow-hidden h-full">
 
                     {/* hover bg tint */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-                      style={{ background: `radial-gradient(circle at 50% 0%, ${card.glow.replace("0.40","0.05")}, transparent 70%)` }}
+                      style={{ background: `radial-gradient(circle at 50% 0%, rgba(245,166,35,0.06), transparent 70%)` }}
                     />
 
                     {/* Optional tag */}
                     {card.tag && (
                       <span
-                        className="absolute top-2.5 right-2.5 rounded-full bg-indigo-100 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-indigo-600"
-                        style={{ fontFamily: "var(--font-outfit)" }}
+                        className="absolute top-2.5 right-2.5 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider"
+                        style={{ background: "rgba(245,166,35,0.12)", border: "1px solid rgba(245,166,35,0.30)", color: "#b06000", fontFamily: "var(--font-outfit)" }}
                       >
                         {card.tag}
                       </span>
@@ -915,7 +924,7 @@ export default function HomePage() {
 
                     <div className="relative">
                       <p
-                        className="text-sm font-bold text-ink group-hover:text-indigo-700 transition-colors"
+                        className="text-sm font-bold text-ink group-hover:text-[#0d1b4b] transition-colors"
                         style={{ fontFamily: "var(--font-syne)" }}
                       >
                         {card.label}
@@ -931,7 +940,8 @@ export default function HomePage() {
                     {/* Arrow on hover */}
                     <ArrowUpRight
                       size={11}
-                      className="absolute top-3 right-3 text-indigo-400 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"
+                      className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"
+                      style={{ color: "#F5A623" }}
                     />
                   </div>
                 </Link>
@@ -1014,9 +1024,9 @@ export default function HomePage() {
       ════════════════════════════════════════════════════════════ */}
       <section className="section-padding bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 h-96 w-96 rounded-full blur-[140px] pointer-events-none"
-          style={{ background: "rgba(79,70,229,0.05)" }} />
+          style={{ background: "rgba(13,27,75,0.05)" }} />
         <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full blur-[110px] pointer-events-none"
-          style={{ background: "rgba(245,158,11,0.05)" }} />
+          style={{ background: "rgba(245,166,35,0.05)" }} />
 
         <div className="relative page-container">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-4">
@@ -1050,18 +1060,18 @@ export default function HomePage() {
             {featuredCountries.map((country, i) => (
               <Reveal key={country.id} delay={i * 0.07}>
                 <Link href={`/countries/${country.id}`} className="group block h-full">
-                  <div className="relative flex flex-col h-full p-6 rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(15,22,64,0.06)] overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.16)] group-hover:border-indigo-300/50">
+                  <div className="relative flex flex-col h-full p-6 rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(13,27,75,0.06)] overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_-8px_rgba(13,27,75,0.16)] group-hover:border-[rgba(245,166,35,0.35)]">
 
                     {/* Top accent line */}
                     <div
                       className="absolute top-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ background: "linear-gradient(90deg, transparent, rgba(79,70,229,0.6), transparent)" }}
+                      style={{ background: "linear-gradient(90deg, transparent, rgba(245,166,35,0.70), transparent)" }}
                     />
 
                     {/* Inner glow on hover */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
-                      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.04), transparent 70%)" }}
+                      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(13,27,75,0.04), transparent 70%)" }}
                     />
 
                     <div className="relative flex items-center gap-4">
@@ -1077,7 +1087,7 @@ export default function HomePage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
                           <h3
-                            className="font-bold text-ink group-hover:text-indigo-700 transition-colors truncate"
+                            className="font-bold text-ink group-hover:text-[#0d1b4b] transition-colors truncate"
                             style={{ fontFamily: "var(--font-syne)" }}
                           >
                             {country.name}
@@ -1102,8 +1112,8 @@ export default function HomePage() {
                       {country.supportedRoutes.map(r => (
                         <span
                           key={r}
-                          className="rounded-full bg-indigo-50 border border-indigo-100 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-600 capitalize"
-                          style={{ fontFamily: "var(--font-outfit)" }}
+                      className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold capitalize"
+                          style={{ background: "rgba(13,27,75,0.07)", border: "1px solid rgba(13,27,75,0.15)", color: "#0d1b4b", fontFamily: "var(--font-outfit)" }}
                         >
                           {r}
                         </span>
@@ -1119,7 +1129,8 @@ export default function HomePage() {
                       </span>
                       <ArrowUpRight
                         size={13}
-                        className="text-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity"
+                        style={{ color: "#F5A623" }}
                       />
                     </div>
                   </div>
@@ -1139,15 +1150,15 @@ export default function HomePage() {
           <div className="absolute inset-0 dot-pattern-light opacity-50" />
           <div
             className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[900px] rounded-full blur-[140px]"
-            style={{ background: "rgba(79,70,229,0.06)" }}
+            style={{ background: "rgba(13,27,75,0.06)" }}
           />
           <div
             className="absolute bottom-0 right-0 h-80 w-80 rounded-full blur-[120px]"
-            style={{ background: "rgba(245,158,11,0.07)" }}
+            style={{ background: "rgba(245,166,35,0.07)" }}
           />
           <div
             className="absolute bottom-0 left-0 h-64 w-64 rounded-full blur-[100px]"
-            style={{ background: "rgba(124,58,237,0.06)" }}
+            style={{ background: "rgba(13,27,75,0.05)" }}
           />
         </div>
 
@@ -1156,8 +1167,8 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <Reveal>
               <div
-                className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/8 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-600 mb-5"
-                style={{ fontFamily: "var(--font-outfit)" }}
+                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] mb-5"
+                style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.35)", background: "rgba(245,166,35,0.08)", color: "#E8971A" }}
               >
                 <Zap size={11} />
                 How It Works
@@ -1169,7 +1180,7 @@ export default function HomePage() {
                 style={{ fontFamily: "var(--font-syne)" }}
               >
                 Four Steps to Your{" "}
-                <span className="text-gradient-indigo">EU Future</span>
+                <span className="text-gradient-hero">EU Future</span>
               </h2>
             </Reveal>
             <Reveal delay={0.12}>
@@ -1189,7 +1200,7 @@ export default function HomePage() {
               <div
                 className="w-full h-full"
                 style={{
-                  background: "linear-gradient(90deg, rgba(99,102,241,0.30) 0%, rgba(124,58,237,0.25) 33%, rgba(245,158,11,0.25) 66%, rgba(16,185,129,0.30) 100%)",
+                  background: "linear-gradient(90deg, rgba(13,27,75,0.30) 0%, rgba(26,43,107,0.25) 33%, rgba(245,166,35,0.25) 66%, rgba(13,27,75,0.30) 100%)",
                 }}
               />
               {/* Animated shimmer over connector */}
@@ -1206,16 +1217,16 @@ export default function HomePage() {
             {steps.map((step, i) => {
               const st = stepStyles[step.color];
               const stepColorMap: Record<string, { border: string; glow: string; iconRing: string; numBg: string; numText: string }> = {
-                indigo:  { border: "rgba(99,102,241,0.20)",  glow: "rgba(79,70,229,0.08)",   iconRing: "rgba(99,102,241,0.15)",  numBg: "#eef2ff", numText: "#4f46e5" },
-                violet:  { border: "rgba(124,58,237,0.20)",  glow: "rgba(124,58,237,0.07)",  iconRing: "rgba(124,58,237,0.15)", numBg: "#f5f3ff", numText: "#7c3aed" },
-                gold:    { border: "rgba(245,158,11,0.22)",  glow: "rgba(245,158,11,0.07)",  iconRing: "rgba(245,158,11,0.20)", numBg: "#fffbeb", numText: "#d97706" },
-                emerald: { border: "rgba(16,185,129,0.20)",  glow: "rgba(16,185,129,0.07)",  iconRing: "rgba(16,185,129,0.18)", numBg: "#ecfdf5", numText: "#059669" },
+                indigo:  { border: "rgba(13,27,75,0.20)",   glow: "rgba(13,27,75,0.08)",   iconRing: "rgba(13,27,75,0.12)",   numBg: "#f0f4ff", numText: "#0d1b4b" },
+                violet:  { border: "rgba(26,43,107,0.20)",  glow: "rgba(26,43,107,0.07)",  iconRing: "rgba(26,43,107,0.12)",  numBg: "#f0f4ff", numText: "#1a2b6b" },
+                gold:    { border: "rgba(245,166,35,0.22)",  glow: "rgba(245,166,35,0.07)", iconRing: "rgba(245,166,35,0.20)", numBg: "#fffbeb", numText: "#d97706" },
+                emerald: { border: "rgba(13,27,75,0.18)",   glow: "rgba(13,27,75,0.06)",   iconRing: "rgba(13,27,75,0.10)",   numBg: "#f0f4ff", numText: "#0d1b4b" },
               };
               const sc = stepColorMap[step.color];
               return (
                 <Reveal key={step.num} delay={i * 0.10}>
                   <div
-                    className="group relative flex flex-col items-center text-center rounded-3xl p-7 bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.16)]"
+                    className="group relative flex flex-col items-center text-center rounded-3xl p-7 bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-8px_rgba(13,27,75,0.16)]"
                     style={{
                       border: `1px solid ${sc.border}`,
                       boxShadow: `0 1px 4px rgba(15,22,64,0.05)`,
@@ -1226,12 +1237,12 @@ export default function HomePage() {
                       className="absolute top-0 left-6 right-6 h-[2px] rounded-full opacity-60"
                       style={{
                         background: step.color === "indigo"
-                          ? "linear-gradient(90deg, transparent, #6366f1, transparent)"
+                          ? "linear-gradient(90deg, transparent, #0d1b4b, transparent)"
                           : step.color === "violet"
-                          ? "linear-gradient(90deg, transparent, #7c3aed, transparent)"
+                          ? "linear-gradient(90deg, transparent, #1a2b6b, transparent)"
                           : step.color === "gold"
-                          ? "linear-gradient(90deg, transparent, #f59e0b, transparent)"
-                          : "linear-gradient(90deg, transparent, #10b981, transparent)",
+                          ? "linear-gradient(90deg, transparent, #F5A623, transparent)"
+                          : "linear-gradient(90deg, transparent, #0d1b4b, transparent)",
                       }}
                     />
 
@@ -1280,8 +1291,8 @@ export default function HomePage() {
             <div className="mt-14 text-center">
               <Link href="/eligibility">
                 <button
-                  className="group inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-600 px-9 py-4 text-sm font-semibold text-white shadow-[0_6px_32px_rgba(79,70,229,0.38)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_48px_rgba(79,70,229,0.52)] active:translate-y-0 active:scale-[0.97]"
-                  style={{ fontFamily: "var(--font-outfit)" }}
+                  className="group inline-flex items-center gap-2.5 rounded-2xl px-9 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0 active:scale-[0.97]"
+                  style={{ fontFamily: "var(--font-outfit)", background: "linear-gradient(135deg,#0d1b4b,#1a2b6b)", border: "1px solid rgba(245,166,35,0.30)", boxShadow: "0 6px 32px rgba(13,27,75,0.38)" }}
                 >
                   Start Your Eligibility Check
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
@@ -1305,9 +1316,9 @@ export default function HomePage() {
           <div style={{
             position: "absolute", inset: 0,
             background: [
-              "radial-gradient(ellipse 80% 50% at 20% 10%, rgba(79,70,229,0.20) 0%, transparent 58%)",
-              "radial-gradient(ellipse 60% 40% at 80% 82%, rgba(245,158,11,0.10) 0%, transparent 52%)",
-              "radial-gradient(ellipse 50% 60% at 55% 30%, rgba(124,58,237,0.18) 0%, transparent 52%)",
+              "radial-gradient(ellipse 80% 50% at 20% 10%, rgba(13,27,75,0.25) 0%, transparent 58%)",
+              "radial-gradient(ellipse 60% 40% at 80% 82%, rgba(245,166,35,0.10) 0%, transparent 52%)",
+              "radial-gradient(ellipse 50% 60% at 55% 30%, rgba(26,43,107,0.20) 0%, transparent 52%)",
             ].join(",")
           }} />
           <div className="absolute inset-0 grid-pattern opacity-[0.15]" />
@@ -1316,8 +1327,8 @@ export default function HomePage() {
         <div className="relative page-container">
           <div className="text-center mb-16">
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300 mb-5"
-                style={{ fontFamily: "var(--font-outfit)" }}>
+              <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] mb-5"
+                style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.08)", color: "#F5A623" }}>
                 <Sparkles size={11} />
                 Why Avensa
               </div>
@@ -1379,7 +1390,7 @@ export default function HomePage() {
                   {/* Bottom shimmer on hover */}
                   <div
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-2/3 rounded-full transition-all duration-500"
-                    style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.7), transparent)" }}
+                    style={{ background: "linear-gradient(90deg, transparent, rgba(245,166,35,0.70), transparent)" }}
                   />
                 </div>
               </Reveal>
@@ -1391,9 +1402,9 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           § 6  SOCIAL PROOF TICKER
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative py-0 overflow-hidden border-y border-indigo-100/60 bg-ice-50">
+      <section className="relative py-0 overflow-hidden bg-[#f8f9ff]" style={{ borderTop: "1px solid rgba(13,27,75,0.08)", borderBottom: "1px solid rgba(13,27,75,0.08)" }}>
         {/* Top row — route ticker */}
-        <div className="flex whitespace-nowrap border-b border-indigo-100/40 py-3" style={{ animation: "ticker 28s linear infinite" }}>
+        <div className="flex whitespace-nowrap py-3" style={{ borderBottom: "1px solid rgba(13,27,75,0.06)", animation: "ticker 28s linear infinite" }}>
           {[...Array(3)].map((_, gi) => (
             <div key={gi} className="flex items-center gap-10 px-5 shrink-0">
               {[
@@ -1442,12 +1453,12 @@ export default function HomePage() {
               ].map((item, j) => (
                 <span
                   key={j}
-                  className="flex items-center gap-2.5 text-sm font-medium text-indigo-400/70"
-                  style={{ fontFamily: "var(--font-outfit)" }}
+                  className="flex items-center gap-2.5 text-sm font-medium"
+                  style={{ fontFamily: "var(--font-outfit)", color: "rgba(245,166,35,0.80)" }}
                 >
                   <span className="text-base">{item.icon}</span>
                   <span>{item.text}</span>
-                  <span className="text-indigo-200 text-xs">·</span>
+                  <span style={{ color: "rgba(245,166,35,0.35)" }} className="text-xs">·</span>
                 </span>
               ))}
             </div>
@@ -1460,7 +1471,7 @@ export default function HomePage() {
       ════════════════════════════════════════════════════════════ */}
       <section className="section-padding bg-white relative overflow-hidden">
         <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full blur-[120px] pointer-events-none"
-          style={{ background: "rgba(79,70,229,0.05)" }} />
+          style={{ background: "rgba(13,27,75,0.05)" }} />
 
         <div className="relative page-container">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-14 gap-4">
@@ -1493,25 +1504,21 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {latestArticles.map((article, i) => {
               const accents = [
-                { bar: "#6366f1", tagCl: "bg-indigo-50 border-indigo-100 text-indigo-600" },
-                { bar: "#7c3aed", tagCl: "bg-violet-50 border-violet-100 text-violet-600" },
-                { bar: "#f59e0b", tagCl: "bg-amber-50 border-amber-100 text-amber-600"   },
+                { bar: "#0d1b4b", tagCl: "bg-[rgba(13,27,75,0.07)] border-[rgba(13,27,75,0.15)] text-[#0d1b4b]" },
+                { bar: "#F5A623", tagCl: "bg-amber-50 border-amber-100 text-amber-700" },
+                { bar: "#1a2b6b", tagCl: "bg-[rgba(26,43,107,0.07)] border-[rgba(26,43,107,0.15)] text-[#1a2b6b]" },
               ][i];
               return (
                 <Reveal key={article.id} delay={i * 0.09}>
                   <Link href={`/knowledge-base/${article.slug}`} className="group block h-full">
-                    <div className="relative flex flex-col h-full rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(15,22,64,0.06)] overflow-hidden transition-all duration-500 group-hover:-translate-y-2.5 group-hover:shadow-[0_20px_60px_-8px_rgba(79,70,229,0.16)] group-hover:border-indigo-300/50">
+                    <div className="relative flex flex-col h-full rounded-3xl bg-white border border-slate-200/70 shadow-[0_1px_4px_rgba(13,27,75,0.06)] overflow-hidden transition-all duration-500 group-hover:-translate-y-2.5 group-hover:shadow-[0_20px_60px_-8px_rgba(13,27,75,0.16)] group-hover:border-[rgba(245,166,35,0.35)]">
 
                       {/* Top colour bar */}
-                      <div
-                        className="h-[3px] w-full transition-all duration-500 group-hover:h-[4px]"
-                        style={{ background: accents.bar }}
-                      />
 
                       {/* Hover glow */}
                       <div
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{ background: "radial-gradient(ellipse at 50% -20%, rgba(79,70,229,0.04), transparent 60%)" }}
+                        style={{ background: "radial-gradient(ellipse at 50% -20%, rgba(13,27,75,0.04), transparent 60%)" }}
                       />
 
                       <div className="relative p-6 flex-1">
@@ -1530,7 +1537,7 @@ export default function HomePage() {
                           </span>
                         </div>
                         <h3
-                          className="font-bold text-ink leading-snug group-hover:text-indigo-700 transition-colors"
+                          className="font-bold text-ink leading-snug group-hover:text-[#0d1b4b] transition-colors"
                           style={{ fontFamily: "var(--font-syne)" }}
                         >
                           {article.title}
@@ -1545,12 +1552,12 @@ export default function HomePage() {
 
                       <div className="relative px-6 py-4 border-t border-slate-100 flex items-center justify-between">
                         <span
-                          className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 group-hover:gap-2.5 transition-all duration-300"
-                          style={{ fontFamily: "var(--font-outfit)" }}
+                          className="flex items-center gap-1.5 text-xs font-semibold group-hover:gap-2.5 transition-all duration-300"
+                          style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}
                         >
                           Read article <ArrowRight size={12} />
                         </span>
-                        <ArrowUpRight size={12} className="text-indigo-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "#F5A623" }} />
                       </div>
                     </div>
                   </Link>
@@ -1564,12 +1571,12 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           § 7.5  TEAM — 7 members
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative section-padding overflow-hidden bg-slate-50">
+      <section id="team" className="relative section-padding overflow-hidden bg-slate-50">
         {/* Background decoration */}
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-[800px] rounded-full blur-[160px] pointer-events-none"
-          style={{ background: "rgba(79,70,229,0.06)" }} />
+          style={{ background: "rgba(13,27,75,0.05)" }} />
         <div className="absolute bottom-0 right-0 h-64 w-64 rounded-full blur-[120px] pointer-events-none"
-          style={{ background: "rgba(245,158,11,0.06)" }} />
+          style={{ background: "rgba(245,166,35,0.06)" }} />
 
         <div className="relative page-container">
           {/* Section header */}
@@ -1593,43 +1600,43 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          {/* Team grid — 6 members, 3 cols × 2 rows */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+          {/* Team grid — 6 members, 3 cols sm / 6 cols lg */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4">
             {[
-              { name: "Nishant Bhagat",  role: "Director & CEO",                    avatar: "/team/Nishant.jpeg",  gradient: "from-indigo-500 to-violet-600" },
-              { name: "Yashika Sharma",  role: "Legal Team & Consultant",           avatar: "/team/Yashika.jpeg",  gradient: "from-emerald-500 to-teal-600"  },
-              { name: "Santosh Gawas",   role: "Tourist Visa Expert & Consultant",  avatar: "/team/Santosh.jpeg",  gradient: "from-rose-500 to-pink-600"     },
-              { name: "Rohit Chaudhary", role: "Schengen TRC Consultant",           avatar: "/team/Rohit.jpeg",    gradient: "from-teal-500 to-cyan-600"     },
-              { name: "Tushar Sharma",   role: "Legal & Study Consultant",          avatar: "/team/Tushar.jpeg",   gradient: "from-amber-500 to-orange-500"  },
-              { name: "Sanjiv Kumar",    role: "General Consultant",                avatar: "/team/Sanjiv.jpeg",   gradient: "from-sky-500 to-indigo-500"    },
+              { name: "Nishant Bhagat",  role: "Director & CEO",                    avatar: "/team/Nishant.jpeg",  gradient: "from-[#0d1b4b] to-[#1a2b6b]"   },
+              { name: "Yashika Sharma",  role: "Legal Team & Consultant",           avatar: "/team/Yashika.jpeg",  gradient: "from-[#F5A623] to-[#E8971A]"   },
+              { name: "Santosh Gawas",   role: "Tourist Visa Expert & Consultant",  avatar: "/team/Santosh.jpeg",  gradient: "from-[#1a2b6b] to-[#F5A623]"   },
+              { name: "Rohit Chaudhary", role: "Schengen TRC Consultant",           avatar: "/team/Rohit.jpeg",    gradient: "from-[#0d1b4b] to-[#F5A623]"   },
+              { name: "Tushar Sharma",   role: "Legal & Study Consultant",          avatar: "/team/Tushar.jpeg",   gradient: "from-[#F5A623] to-[#fcd34d]"   },
+              { name: "Sanjiv Kumar",    role: "General Consultant",                avatar: "/team/Sanjiv.jpeg",   gradient: "from-[#1a2b6b] to-[#0d1b4b]"  },
             ].map((member, i) => (
               <Reveal key={member.name} delay={i * 0.07}>
-                <div className="group relative rounded-2xl overflow-hidden bg-white border border-slate-200/80 shadow-[0_2px_12px_rgba(15,22,64,0.07)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_16px_48px_-8px_rgba(79,70,229,0.18)] hover:border-indigo-200">
+                <div className="group relative rounded-xl overflow-hidden bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(13,27,75,0.07)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_12px_32px_-6px_rgba(13,27,75,0.18)] hover:border-[rgba(245,166,35,0.35)]">
 
                   {/* Accent line top */}
-                  <div className={`absolute top-0 left-0 right-0 h-[3px] z-10 bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <div className={`absolute top-0 left-0 right-0 h-[2px] z-10 bg-gradient-to-r ${member.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                  {/* Photo — portrait ratio, no overlay on face */}
-                  <div className="relative w-full" style={{ paddingBottom: "100%" }}>
+                  {/* Photo — 80% ratio (less tall than before) */}
+                  <div className="relative w-full" style={{ paddingBottom: "80%" }}>
                     <Image
                       src={member.avatar}
                       alt={member.name}
                       fill
-                      sizes="(max-width:640px) 50vw, 33vw"
+                      sizes="(max-width:640px) 33vw, (max-width:1024px) 25vw, 16vw"
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
 
-                  {/* Name + role below photo — white bg, always fully readable */}
-                  <div className="px-4 py-3 border-t border-slate-100">
+                  {/* Name + role below photo */}
+                  <div className="px-2.5 py-2 border-t border-slate-100">
                     <p
-                      className="text-[14px] font-bold text-slate-900 leading-tight"
+                      className="text-[11px] font-bold text-slate-900 leading-tight truncate"
                       style={{ fontFamily: "var(--font-syne)" }}
                     >
                       {member.name}
                     </p>
                     <p
-                      className={`mt-1 text-[11px] font-semibold bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent leading-snug`}
+                      className={`mt-0.5 text-[10px] font-semibold bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent leading-snug line-clamp-2`}
                       style={{ fontFamily: "var(--font-outfit)" }}
                     >
                       {member.role}
@@ -1648,8 +1655,8 @@ export default function HomePage() {
               </p>
               <Link href="/contact">
                 <button
-                  className="group inline-flex items-center gap-2 rounded-2xl border border-indigo-200 bg-indigo-50 px-7 py-3 text-sm font-semibold text-indigo-700 transition-all duration-300 hover:bg-indigo-100 hover:-translate-y-0.5"
-                  style={{ fontFamily: "var(--font-outfit)" }}
+                  className="group inline-flex items-center gap-2 rounded-2xl px-7 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                  style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.07)", color: "#b06000" }}
                 >
                   Get in Touch
                   <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
@@ -1674,15 +1681,15 @@ export default function HomePage() {
           <div className="absolute inset-0 grid-pattern opacity-[0.14]" />
           <div
             className="absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full blur-[150px]"
-            style={{ background: "rgba(79,70,229,0.12)" }}
+            style={{ background: "rgba(13,27,75,0.15)" }}
           />
           <div
             className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full blur-[120px]"
-            style={{ background: "rgba(245,158,11,0.08)" }}
+            style={{ background: "rgba(245,166,35,0.08)" }}
           />
           <div
             className="absolute top-1/2 right-0 h-64 w-64 rounded-full blur-[100px]"
-            style={{ background: "rgba(124,58,237,0.10)" }}
+            style={{ background: "rgba(26,43,107,0.12)" }}
           />
         </div>
 
@@ -1693,8 +1700,8 @@ export default function HomePage() {
             <div className="lg:sticky lg:top-28">
               <Reveal>
                 <div
-                  className="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300 mb-6"
-                  style={{ fontFamily: "var(--font-outfit)" }}
+                  className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] mb-6"
+                  style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.08)", color: "#F5A623" }}
                 >
                   <Search size={11} />
                   FAQ
@@ -1707,7 +1714,7 @@ export default function HomePage() {
                   style={{ fontFamily: "var(--font-syne)" }}
                 >
                   Common Questions,{" "}
-                  <span className="text-gradient-indigo">Clear Answers</span>
+                  <span className="text-gradient-hero">Clear Answers</span>
                 </h2>
               </Reveal>
 
@@ -1724,9 +1731,9 @@ export default function HomePage() {
               <Reveal delay={0.18}>
                 <div className="flex flex-wrap gap-3 mb-10">
                   {[
-                    { label: "13 EU Countries", color: "rgba(99,102,241,0.20)", border: "rgba(99,102,241,0.30)", text: "#a5b4fc" },
-                    { label: "Free to Use",     color: "rgba(16,185,129,0.15)", border: "rgba(16,185,129,0.28)", text: "#6ee7b7" },
-                    { label: "Always Updated",  color: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.28)", text: "#fcd34d" },
+                    { label: "13 EU Countries", color: "rgba(13,27,75,0.15)",   border: "rgba(13,27,75,0.28)",   text: "#8aa5d6" },
+                    { label: "Free to Use",     color: "rgba(245,166,35,0.12)", border: "rgba(245,166,35,0.28)", text: "#F5A623" },
+                    { label: "Always Updated",  color: "rgba(245,166,35,0.08)", border: "rgba(245,166,35,0.20)", text: "#fcd34d" },
                   ].map(p => (
                     <span
                       key={p.label}
@@ -1742,8 +1749,8 @@ export default function HomePage() {
               <Reveal delay={0.22}>
                 <Link href="/knowledge-base#faq">
                   <button
-                    className="inline-flex items-center gap-2.5 rounded-2xl border border-indigo-400/30 bg-indigo-500/10 px-6 py-3 text-sm font-semibold text-indigo-300 transition-all duration-300 hover:bg-indigo-500/20 hover:border-indigo-400/50 hover:text-white hover:-translate-y-0.5"
-                    style={{ fontFamily: "var(--font-outfit)" }}
+                    className="inline-flex items-center gap-2.5 rounded-2xl px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+                    style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.08)", color: "#F5A623" }}
                   >
                     View All FAQs <ChevronRight size={14} />
                   </button>
@@ -1766,21 +1773,6 @@ export default function HomePage() {
 
 
 
-      {/* ════════════════════════════════════════════════════════════
-          § 10  DISCLAIMER BAND
-      ════════════════════════════════════════════════════════════ */}
-      <section className="relative bg-gold-50 border-y border-gold-200/50 py-5">
-        <div className="page-container">
-          <p
-            className="text-xs text-amber-800/60 text-center max-w-4xl mx-auto leading-relaxed"
-            style={{ fontFamily: "var(--font-outfit)" }}
-          >
-            <strong className="text-amber-800/80 font-semibold">⚠ Important: </strong>
-            Avensa Overseas provides general immigration information only and does not constitute legal advice.
-            Always consult a qualified immigration lawyer or official government sources before making decisions.
-          </p>
-        </div>
-      </section>
     </>
   );
 }

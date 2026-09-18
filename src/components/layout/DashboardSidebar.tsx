@@ -42,7 +42,7 @@ export function DashboardSidebar({
         href="/"
         className="relative flex items-center px-5 py-4 border-b border-white/6 hover:opacity-90 transition-opacity"
       >
-        <AvensaLogo variant="horizontal" theme="dark" size="xs" />
+        <AvensaLogo variant="horizontal" theme="dark" size="sm" />
       </Link>
 
       {/* ── User info ── */}

@@ -9,13 +9,18 @@ import type {
 export const COMPANY = {
   name: "Avensa Overseas",
   tagline: "Your Trusted EU Immigration Partner",
-  email: "support@avensaoverseas.com",
-  phone: "+44 20 7946 0958",
-  address: "London, United Kingdom",
+  email: "avensaoverseas@gmail.com",
+  phone: "+370 656 90429",
+  whatsapp: "https://wa.me/37065690429",
+  address: "Vilnius, Lithuania  ·  Mumbai, India",
+  locations: [
+    { city: "Vilnius", country: "Lithuania", region: "Europe" },
+    { city: "Mumbai",  country: "India",     region: "Asia"   },
+  ],
   socials: {
-    linkedin: "https://linkedin.com/company/avensa-overseas",
-    twitter: "https://twitter.com/avensaoverseas",
-    facebook: "https://facebook.com/avensaoverseas",
+    instagram: "https://www.instagram.com/avensaoverseas",
+    facebook:  "https://www.facebook.com/share/1HGewZnS5T/",
+    whatsapp:  "https://wa.me/370656904293",
   },
   disclaimer:
     "Avensa Overseas provides informational guidance only. All immigration decisions are made by the competent national authority of the destination country. Information on this portal does not constitute legal advice. Rule versions and effective dates are displayed for reference. Always verify requirements with official government sources.",
@@ -655,6 +660,7 @@ export const PUBLIC_NAV_LINKS = [
   { label: "Short-Stay Calculator", href: "/calculator" },
   { label: "Knowledge Base", href: "/knowledge-base" },
   { label: "News", href: "/news" },
+  { label: "Team", href: "/#team" },
   { label: "Contact", href: "/contact" },
 ];
 

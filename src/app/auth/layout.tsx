@@ -6,8 +6,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     <div className="min-h-screen bg-sand-50 flex flex-col">
 
       {/* Header */}
-      <header className="border-b border-[rgba(14,20,72,0.08)] bg-white/80 backdrop-blur-sm px-6 py-4">
-        <Link href="/" className="inline-block w-fit">
+      <header className="border-b border-[rgba(13,27,75,0.10)] bg-white/90 backdrop-blur-sm px-6 py-3">
+        <Link href="/" className="inline-block w-fit hover:opacity-90 transition-opacity">
           <AvensaLogo variant="horizontal" theme="light" size="sm" />
         </Link>
       </header>
