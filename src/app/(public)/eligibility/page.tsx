@@ -144,19 +144,33 @@ export default function EligibilityPage() {
         <div className="page-container max-w-3xl space-y-6">
           <Disclaimer />
 
-          <div className="rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden">
-            <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
+          <div className="rounded-3xl bg-white overflow-hidden"
+            style={{ border: "1px solid rgba(13,27,75,0.12)", boxShadow: "0 1px 4px rgba(13,27,75,0.07)" }}>
+            <div className="px-6 py-5 flex items-center justify-between"
+              style={{
+                background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                borderBottom: "1px solid rgba(245,166,35,0.20)",
+              }}>
               <div>
-                <h2 className="text-xl font-bold text-ink" style={{ fontFamily: "var(--font-syne)" }}>
+                <h2 className="text-base font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
                   Eligibility Assessment Result
                 </h2>
-                <p className="text-xs text-slate-400 mt-0.5" style={{ fontFamily: "var(--font-outfit)" }}>
+                <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-outfit)", color: "rgba(255,255,255,0.50)" }}>
                   Preliminary guidance only — not a legal determination
                 </p>
               </div>
-              <Button variant="ghost" size="sm" onClick={reset}>
-                <RotateCcw size={14} /> Start Over
-              </Button>
+              <button
+                onClick={reset}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  fontFamily: "var(--font-outfit)",
+                  background: "rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  color: "rgba(255,255,255,0.70)",
+                }}
+              >
+                <RotateCcw size={12} /> Start Over
+              </button>
             </div>
 
             <div className="px-6 py-6 space-y-6">
@@ -238,10 +252,30 @@ export default function EligibilityPage() {
 
               <div className="flex gap-3">
                 <Link href="/auth/register" className="flex-1">
-                  <Button className="w-full">Create Account to Apply</Button>
+                  <button
+                    className="btn-shine w-full inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
+                    style={{
+                      fontFamily: "var(--font-outfit)",
+                      background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                      border: "1px solid rgba(245,166,35,0.30)",
+                      boxShadow: "0 4px 16px rgba(13,27,75,0.35)",
+                    }}
+                  >
+                    Create Account to Apply
+                  </button>
                 </Link>
                 <Link href="/contact" className="flex-1">
-                  <Button variant="secondary" className="w-full">Speak to an Adviser</Button>
+                  <button
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
+                    style={{
+                      fontFamily: "var(--font-outfit)",
+                      background: "rgba(13,27,75,0.04)",
+                      border: "1px solid rgba(13,27,75,0.18)",
+                      color: "#0d1b4b",
+                    }}
+                  >
+                    Speak to an Adviser
+                  </button>
                 </Link>
               </div>
             </div>
@@ -281,7 +315,29 @@ export default function EligibilityPage() {
         <Disclaimer className="mb-6" />
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden">
+          <div className="rounded-3xl bg-white overflow-hidden"
+            style={{ border: "1px solid rgba(13,27,75,0.12)", boxShadow: "0 1px 4px rgba(13,27,75,0.07)" }}>
+
+            {/* Card header — navy gradient strip */}
+            <div className="px-6 py-4 flex items-center gap-3"
+              style={{
+                background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                borderBottom: "1px solid rgba(245,166,35,0.20)",
+              }}>
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
+                style={{ background: "rgba(245,166,35,0.15)", border: "1px solid rgba(245,166,35,0.30)" }}>
+                <Search size={14} style={{ color: "#F5A623" }} />
+              </div>
+              <div>
+                <p className="text-sm font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
+                  Eligibility Check
+                </p>
+                <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-outfit)", color: "rgba(255,255,255,0.50)" }}>
+                  Step {step} of {STEPS.length} — {STEPS[step - 1].label}
+                </p>
+              </div>
+            </div>
+
             <div className="px-6 py-6">
               {/* Step 1 */}
               {step === 1 && (
@@ -361,30 +417,75 @@ export default function EligibilityPage() {
             </div>
 
             {/* Footer actions */}
-            <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/60 flex items-center justify-between gap-3 rounded-b-3xl">
-              <Button
+            <div className="px-6 py-4 flex items-center justify-between gap-3 rounded-b-3xl"
+              style={{
+                borderTop: "1px solid rgba(13,27,75,0.08)",
+                background: "rgba(13,27,75,0.02)",
+              }}>
+              {/* Back button */}
+              <button
                 type="button"
-                variant="ghost"
-                size="sm"
                 onClick={() => setStep(s => Math.max(1, s - 1))}
                 disabled={step === 1}
+                className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:-translate-y-0.5"
+                style={{
+                  fontFamily: "var(--font-outfit)",
+                  background: "rgba(13,27,75,0.06)",
+                  border: "1px solid rgba(13,27,75,0.15)",
+                  color: "#0d1b4b",
+                }}
               >
-                <ArrowLeft size={14} /> Back
-              </Button>
+                <ArrowLeft size={13} /> Back
+              </button>
 
-              <span className="text-xs text-slate-400" style={{ fontFamily: "var(--font-outfit)" }}>
-                Step {step} of {STEPS.length}
-              </span>
+              {/* Progress dots */}
+              <div className="flex items-center gap-1.5">
+                {STEPS.map((_, i) => (
+                  <div key={i}
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width:  i + 1 === step ? 20 : 6,
+                      height: 6,
+                      background: i + 1 === step
+                        ? "linear-gradient(90deg, #0d1b4b, #F5A623)"
+                        : i + 1 < step
+                          ? "rgba(13,27,75,0.40)"
+                          : "rgba(13,27,75,0.12)",
+                    }}
+                  />
+                ))}
+              </div>
 
+              {/* Continue / Submit button */}
               {step < STEPS.length ? (
-                <Button type="button" size="sm" onClick={() => setStep(s => Math.min(STEPS.length, s + 1))}>
-                  Continue <ArrowRight size={14} />
-                </Button>
+                <button
+                  type="button"
+                  onClick={() => setStep(s => Math.min(STEPS.length, s + 1))}
+                  className="btn-shine inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
+                  style={{
+                    fontFamily: "var(--font-outfit)",
+                    background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                    border: "1px solid rgba(245,166,35,0.30)",
+                    boxShadow: "0 4px 16px rgba(13,27,75,0.35)",
+                  }}
+                >
+                  Continue <ArrowRight size={13} />
+                </button>
               ) : (
-                <Button type="submit" size="sm">
-                  <Sparkles size={14} className="text-gold-300" />
+                <button
+                  type="submit"
+                  className="btn-shine inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
+                  style={{
+                    fontFamily: "var(--font-outfit)",
+                    background: "linear-gradient(135deg, #F5A623 0%, #E8971A 100%)",
+                    border: "1px solid rgba(245,166,35,0.40)",
+                    boxShadow: "0 4px 16px rgba(245,166,35,0.40)",
+                    color: "#0d1b4b",
+                  }}
+                >
+                  <Sparkles size={13} />
                   Check Eligibility
-                </Button>
+                </button>
               )}
             </div>
           </div>

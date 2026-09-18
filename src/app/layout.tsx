@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     "immigration eligibility",
     "Avensa Overseas",
   ],
+  icons: {
+    icon: "/Images/Favicon.png",
+    shortcut: "/Images/Favicon.png",
+    apple: "/Images/Favicon.png",
+  },
   openGraph: {
     title: "Avensa Overseas – EU Immigration Portal",
     description: "Your trusted EU immigration guidance and application management platform.",

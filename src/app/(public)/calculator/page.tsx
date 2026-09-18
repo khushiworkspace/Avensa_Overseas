@@ -44,7 +44,10 @@ export default function CalculatorPage() {
   function calculate() { setResult(calculateSchengenDays(stays)); }
 
   const pct = result ? Math.min(100, (result.daysUsed / 90) * 100) : 0;
-  const barColor = pct >= 100 ? "bg-red-500" : pct > 75 ? "bg-amber-500" : "bg-emerald-500";
+  const barBg =
+    pct >= 100 ? "#ef4444" :
+    pct > 75   ? "#F5A623" :
+                 "#10b981";
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg-page)" }}>
@@ -91,9 +94,26 @@ export default function CalculatorPage() {
         </div>
 
         {/* Add stay */}
-        <div className="rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-100">
-            <h2 className="font-bold text-ink" style={{ fontFamily: "var(--font-syne)" }}>Add a Previous Stay</h2>
+        <div className="rounded-3xl bg-white overflow-hidden"
+          style={{ border: "1px solid rgba(13,27,75,0.12)", boxShadow: "0 1px 4px rgba(13,27,75,0.07)" }}>
+          {/* Card header — navy gradient */}
+          <div className="px-6 py-4 flex items-center gap-3"
+            style={{
+              background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+              borderBottom: "1px solid rgba(245,166,35,0.20)",
+            }}>
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
+              style={{ background: "rgba(245,166,35,0.15)", border: "1px solid rgba(245,166,35,0.30)" }}>
+              <Plus size={14} style={{ color: "#F5A623" }} />
+            </div>
+            <div>
+              <h2 className="text-sm font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
+                Add a Previous Stay
+              </h2>
+              <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-outfit)", color: "rgba(255,255,255,0.50)" }}>
+                Enter every Schengen visit in the last 180 days
+              </p>
+            </div>
           </div>
           <div className="px-6 py-5">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -123,22 +143,55 @@ export default function CalculatorPage() {
                 <AlertTriangle size={13} /> {entryError}
               </p>
             )}
-            <Button className="mt-4" onClick={addStay} variant="secondary" size="sm">
-              <Plus size={15} /> Add Stay
-            </Button>
+            {/* Add Stay — navy outline style */}
+            <button
+              type="button"
+              onClick={addStay}
+              className="btn-shine mt-4 inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
+              style={{
+                fontFamily: "var(--font-outfit)",
+                background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                border: "1px solid rgba(245,166,35,0.30)",
+                boxShadow: "0 4px 16px rgba(13,27,75,0.30)",
+                color: "#fff",
+              }}
+            >
+              <Plus size={14} /> Add Stay
+            </button>
           </div>
         </div>
 
         {/* Stays list */}
         {stays.length > 0 && (
-          <div className="rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden">
-            <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-              <h2 className="font-bold text-ink" style={{ fontFamily: "var(--font-syne)" }}>
-                Your Stays ({stays.length})
-              </h2>
-              <Button variant="danger" size="sm" onClick={() => { setStays([]); setResult(null); }}>
-                Clear All
-              </Button>
+          <div className="rounded-3xl bg-white overflow-hidden"
+            style={{ border: "1px solid rgba(13,27,75,0.12)", boxShadow: "0 1px 4px rgba(13,27,75,0.07)" }}>
+            {/* Card header — navy gradient */}
+            <div className="px-6 py-4 flex items-center justify-between"
+              style={{
+                background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                borderBottom: "1px solid rgba(245,166,35,0.20)",
+              }}>
+              <div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
+                  style={{ background: "rgba(245,166,35,0.15)", border: "1px solid rgba(245,166,35,0.30)" }}>
+                  <Calculator size={14} style={{ color: "#F5A623" }} />
+                </div>
+                <h2 className="text-sm font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
+                  Your Stays ({stays.length})
+                </h2>
+              </div>
+              <button
+                onClick={() => { setStays([]); setResult(null); }}
+                className="inline-flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  fontFamily: "var(--font-outfit)",
+                  background: "rgba(239,68,68,0.15)",
+                  border: "1px solid rgba(239,68,68,0.30)",
+                  color: "#fca5a5",
+                }}
+              >
+                <Trash2 size={12} /> Clear All
+              </button>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
@@ -190,19 +243,44 @@ export default function CalculatorPage() {
           </div>
         )}
 
-        {/* Calculate button */}
-        <Button className="w-full" size="lg" onClick={calculate} disabled={stays.length === 0}>
-          <Calculator size={18} /> Calculate Remaining Days
-        </Button>
+        {/* Calculate button — navy gradient + gold border */}
+        <button
+          type="button"
+          onClick={calculate}
+          disabled={stays.length === 0}
+          className="btn-shine w-full inline-flex items-center justify-center gap-2.5 rounded-2xl px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          style={{
+            fontFamily: "var(--font-outfit)",
+            background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+            border: "1px solid rgba(245,166,35,0.35)",
+            boxShadow: "0 4px 20px rgba(13,27,75,0.40)",
+          }}
+        >
+          <Calculator size={18} style={{ color: "#F5A623" }} /> Calculate Remaining Days
+        </button>
 
         {/* Result */}
         {result && (
-          <div className="rounded-3xl bg-white overflow-hidden animate-fade-up" style={{ border: "1px solid rgba(245,166,35,0.30)", boxShadow: "0 4px 20px rgba(13,27,75,0.10)" }}>
-            <div className="px-6 py-4 border-b" style={{ borderColor: "rgba(245,166,35,0.18)", background: "rgba(245,166,35,0.04)" }}>
-              <h2 className="font-bold text-ink" style={{ fontFamily: "var(--font-syne)" }}>Calculation Result</h2>
-              <p className="text-xs text-slate-400 mt-0.5" style={{ fontFamily: "var(--font-outfit)" }}>
-                Based on a rolling 180-day window from today
-              </p>
+          <div className="rounded-3xl bg-white overflow-hidden animate-fade-up"
+            style={{ border: "1px solid rgba(13,27,75,0.12)", boxShadow: "0 4px 20px rgba(13,27,75,0.10)" }}>
+            {/* Card header — navy gradient */}
+            <div className="px-6 py-4 flex items-center gap-3"
+              style={{
+                background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                borderBottom: "1px solid rgba(245,166,35,0.20)",
+              }}>
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl"
+                style={{ background: "rgba(245,166,35,0.15)", border: "1px solid rgba(245,166,35,0.30)" }}>
+                <Calculator size={14} style={{ color: "#F5A623" }} />
+              </div>
+              <div>
+                <h2 className="text-sm font-bold text-white" style={{ fontFamily: "var(--font-syne)" }}>
+                  Calculation Result
+                </h2>
+                <p className="text-xs mt-0.5" style={{ fontFamily: "var(--font-outfit)", color: "rgba(255,255,255,0.50)" }}>
+                  Based on a rolling 180-day window from today
+                </p>
+              </div>
             </div>
             <div className="px-6 py-6">
               {/* Stats */}
@@ -244,8 +322,8 @@ export default function CalculatorPage() {
                 </div>
                 <div className="h-3 rounded-full bg-slate-100 overflow-hidden">
                   <div
-                    className={`h-full rounded-full transition-all duration-700 ${barColor}`}
-                    style={{ width: `${pct}%` }}
+                    className="h-full rounded-full transition-all duration-700"
+                    style={{ width: `${pct}%`, background: barBg }}
                   />
                 </div>
                 <p className="text-xs text-slate-400 mt-1.5 text-right" style={{ fontFamily: "var(--font-outfit)" }}>
