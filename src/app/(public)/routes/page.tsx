@@ -134,7 +134,7 @@ export default function RoutesPage() {
           {/* Quick-stat chips */}
           <div className="mt-6 flex flex-wrap gap-3">
             {[
-              { icon: Globe,        label: "13 EU Countries" },
+              { icon: Globe,        label: "30 EU Contries" },
               { icon: Map,          label: "30+ Active Routes" },
               { icon: Briefcase,    label: "Work · Study · Family" },
             ].map(({ icon: Icon, label }) => (

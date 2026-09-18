@@ -132,7 +132,7 @@ const trustCards = [
   },
   {
     icon: Globe,
-    title: "13 EU Countries",
+    title: "30 EU Contries",
     desc: "Complete coverage across all major European immigration destinations.",
     iconBg: "bg-[rgba(26,43,107,0.15)]",
     iconCl: "text-[#8aa5d6]",
@@ -317,7 +317,7 @@ export default function HomePage() {
               >
                 Check eligibility, build your document checklist, and track your
                 application across{" "}
-                <strong className="text-white font-semibold">13 European countries</strong>
+                <strong className="text-white font-semibold">30 European countries</strong>
                 {" "}and{" "}
                 <strong className="text-white font-semibold">30+ immigration routes</strong>.
               </p>

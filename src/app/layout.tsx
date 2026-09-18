@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
+import DisableInspect from "@/components/DisableInspect";
 
 /* ── Premium font stack ──────────────────────────────────────────── */
 const syne = Syne({
@@ -49,7 +50,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${syne.variable} ${outfit.variable}`}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <DisableInspect />
+        {children}
+      </body>
     </html>
   );
 }

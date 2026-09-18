@@ -28,7 +28,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const benefits = [
-  "Free eligibility checker for 13 EU countries",
+  "Free eligibility checker for 30 EU Contries",
   "Secure document upload and storage",
   "Real-time application tracking",
   "Email & in-app notifications",

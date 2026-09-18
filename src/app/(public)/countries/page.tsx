@@ -133,7 +133,7 @@ export default function CountriesPage() {
               className="text-4xl lg:text-6xl font-bold text-white leading-tight"
               style={{ fontFamily: "var(--font-syne)" }}
             >
-              13 EU Countries,{" "}
+              30 EU Contries,{" "}
               <span className="text-gradient-hero">One Platform</span>
             </h1>
             <p
