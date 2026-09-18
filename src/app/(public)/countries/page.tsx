@@ -156,7 +156,7 @@ export default function CountriesPage() {
                 key={label}
                 className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.07] px-4 py-2 backdrop-blur-sm"
               >
-                <Icon size={13} className="text-indigo-300" />
+                <Icon size={13} className="shrink-0" style={{ color: "#F5A623" }} />
                 <span
                   className="text-xs font-semibold text-white/75"
                   style={{ fontFamily: "var(--font-outfit)" }}
@@ -198,12 +198,12 @@ export default function CountriesPage() {
                 className="group block animate-fade-up"
                 style={{ animationDelay: `${i * 0.04}s`, animationFillMode: "both" }}
               >
-                <div className="relative flex flex-col h-full rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-indigo-300/50">
+                <div className="relative flex flex-col h-full rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-[rgba(245,166,35,0.35)]">
 
                   {/* Top accent line */}
                   <div
                     className="absolute top-0 left-0 right-0 h-[2px] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: "linear-gradient(90deg,transparent,rgba(79,70,229,0.7),transparent)" }}
+                    style={{ background: "linear-gradient(90deg,transparent,rgba(245,166,35,0.70),transparent)" }}
                   />
 
                   {/* ── City photo header ── */}
@@ -234,7 +234,7 @@ export default function CountriesPage() {
                     </div>
                   ) : (
                     /* Fallback colour band if no photo mapped */
-                    <div className="h-20 w-full bg-gradient-to-br from-indigo-500/10 to-violet-500/10 shrink-0" />
+                    <div className="h-20 w-full shrink-0" style={{ background: "linear-gradient(135deg, rgba(13,27,75,0.08), rgba(245,166,35,0.05))" }} />
                   )}
 
                   {/* ── Card body ── */}
@@ -243,7 +243,7 @@ export default function CountriesPage() {
                     {/* Inner glow */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-3xl"
-                      style={{ background: "radial-gradient(ellipse at 50% 0%,rgba(79,70,229,0.04),transparent 70%)" }}
+                      style={{ background: "radial-gradient(ellipse at 50% 0%,rgba(13,27,75,0.04),transparent 70%)" }}
                     />
 
                     {/* Flag + name row */}
@@ -258,7 +258,7 @@ export default function CountriesPage() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
                           <h3
-                            className="font-bold text-ink group-hover:text-indigo-700 transition-colors truncate"
+                            className="font-bold text-ink group-hover:text-[#0d1b4b] transition-colors truncate"
                             style={{ fontFamily: "var(--font-syne)" }}
                           >
                             {country.name}
@@ -272,10 +272,8 @@ export default function CountriesPage() {
                         </div>
                         <div className="flex items-center gap-2 mt-1.5 flex-wrap">
                           {country.eu && (
-                            <span
-                              className="inline-flex items-center rounded-full bg-indigo-50 border border-indigo-100 px-2 py-0.5 text-[10px] font-semibold text-indigo-600"
-                              style={{ fontFamily: "var(--font-outfit)" }}
-                            >
+                            <span className="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                              style={{ background: "rgba(13,27,75,0.07)", border: "1px solid rgba(13,27,75,0.18)", color: "#0d1b4b", fontFamily: "var(--font-outfit)" }}>
                               EU Member
                             </span>
                           )}
@@ -302,11 +300,8 @@ export default function CountriesPage() {
                     {/* Route pills */}
                     <div className="relative mt-3 flex flex-wrap gap-1.5">
                       {country.supportedRoutes.map((r) => (
-                        <span
-                          key={r}
-                          className="rounded-full bg-indigo-50 border border-indigo-100 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-600 capitalize"
-                          style={{ fontFamily: "var(--font-outfit)" }}
-                        >
+                        <span key={r} className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold capitalize"
+                          style={{ background: "rgba(13,27,75,0.07)", border: "1px solid rgba(13,27,75,0.15)", color: "#0d1b4b", fontFamily: "var(--font-outfit)" }}>
                           {r}
                         </span>
                       ))}
@@ -323,10 +318,8 @@ export default function CountriesPage() {
                           {country.capital}
                         </span>
                       </div>
-                      <span
-                        className="flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:gap-2 transition-all duration-300"
-                        style={{ fontFamily: "var(--font-outfit)" }}
-                      >
+                      <span className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all duration-300"
+                        style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}>
                         View routes <ArrowUpRight size={11} />
                       </span>
                     </div>

@@ -17,12 +17,12 @@ interface Props { params: { slug: string } }
 const CATEGORIES: ImmigrationCategory[] = ["work", "study", "family", "residence", "visit", "special"];
 
 const categoryConfig: Record<ImmigrationCategory, { icon: React.ElementType; gradient: string; glow: string; light: string }> = {
-  work:      { icon: Briefcase,     gradient: "from-indigo-500 to-violet-600", glow: "rgba(79,70,229,0.35)",  light: "bg-indigo-50 text-indigo-600 border-indigo-100" },
-  study:     { icon: GraduationCap, gradient: "from-violet-500 to-purple-600", glow: "rgba(124,58,237,0.30)", light: "bg-violet-50 text-violet-600 border-violet-100" },
-  family:    { icon: Users,         gradient: "from-sky-500 to-indigo-500",    glow: "rgba(14,165,233,0.28)", light: "bg-sky-50 text-sky-600 border-sky-100"          },
-  residence: { icon: HomeIcon,      gradient: "from-emerald-500 to-teal-600",  glow: "rgba(16,185,129,0.28)", light: "bg-emerald-50 text-emerald-600 border-emerald-100" },
-  visit:     { icon: Plane,         gradient: "from-amber-500 to-orange-500",  glow: "rgba(245,158,11,0.32)", light: "bg-amber-50 text-amber-600 border-amber-100"    },
-  special:   { icon: Star,          gradient: "from-rose-500 to-pink-600",     glow: "rgba(244,63,94,0.28)",  light: "bg-rose-50 text-rose-600 border-rose-100"       },
+  work:      { icon: Briefcase,     gradient: "from-[#0d1b4b] to-[#1a2b6b]",  glow: "rgba(13,27,75,0.35)",   light: "bg-[rgba(13,27,75,0.07)] text-[#0d1b4b] border-[rgba(13,27,75,0.18)]"   },
+  study:     { icon: GraduationCap, gradient: "from-[#F5A623] to-[#E8971A]",  glow: "rgba(245,166,35,0.35)", light: "bg-[rgba(245,166,35,0.08)] text-[#b06000] border-[rgba(245,166,35,0.25)]" },
+  family:    { icon: Users,         gradient: "from-[#1a2b6b] to-[#0d1b4b]",  glow: "rgba(26,43,107,0.30)",  light: "bg-[rgba(13,27,75,0.07)] text-[#0d1b4b] border-[rgba(13,27,75,0.18)]"   },
+  residence: { icon: HomeIcon,      gradient: "from-[#0d1b4b] to-[#F5A623]",  glow: "rgba(13,27,75,0.30)",   light: "bg-[rgba(245,166,35,0.08)] text-[#b06000] border-[rgba(245,166,35,0.25)]" },
+  visit:     { icon: Plane,         gradient: "from-[#F5A623] to-[#fcd34d]",  glow: "rgba(245,166,35,0.32)", light: "bg-amber-50 text-amber-600 border-amber-100"                              },
+  special:   { icon: Star,          gradient: "from-[#1a2b6b] to-[#F5A623]",  glow: "rgba(26,43,107,0.28)",  light: "bg-[rgba(13,27,75,0.07)] text-[#0d1b4b] border-[rgba(13,27,75,0.18)]"   },
 };
 
 export function generateStaticParams() {
@@ -104,7 +104,7 @@ export default function RouteOrCategoryPage({ params }: Props) {
                   <Link key={route.id} href={`/routes/${route.slug}`}
                     className="group block animate-fade-up"
                     style={{ animationDelay: `${i * 0.06}s`, animationFillMode: "both" }}>
-                    <div className="relative flex flex-col h-full p-5 rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-indigo-300/50">
+                    <div className="relative flex flex-col h-full p-5 rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-[rgba(245,166,35,0.35)]">
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
                         style={{ background: `radial-gradient(ellipse at 50% 0%,${cfg.glow.replace("0.30","0.04")},transparent 70%)` }} />
                       <div className="relative flex items-center gap-3 mb-3">
@@ -117,7 +117,7 @@ export default function RouteOrCategoryPage({ params }: Props) {
                           </span>
                         </div>
                       </div>
-                      <h3 className="relative font-bold text-ink group-hover:text-indigo-700 transition-colors flex-1"
+                      <h3 className="relative font-bold text-ink group-hover:text-[#0d1b4b] transition-colors flex-1"
                         style={{ fontFamily: "var(--font-syne)" }}>
                         {route.name}
                       </h3>
@@ -128,8 +128,8 @@ export default function RouteOrCategoryPage({ params }: Props) {
                         <span className="flex items-center gap-1"><Clock size={11} />{route.processingTime}</span>
                         <span className="flex items-center gap-1"><FileText size={11} />{route.requiredDocuments.length} docs</span>
                       </div>
-                      <div className="relative mt-3 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:gap-2 transition-all"
-                        style={{ fontFamily: "var(--font-outfit)" }}>
+                      <div className="relative mt-3 flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all"
+                        style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}>
                         View requirements <ArrowRight size={11} />
                       </div>
                     </div>
@@ -283,8 +283,8 @@ export default function RouteOrCategoryPage({ params }: Props) {
           {/* Sidebar */}
           <div className="space-y-5">
             {/* Quick facts */}
-            <div className="rounded-3xl bg-gradient-to-b from-indigo-50 to-white border border-indigo-100 shadow-card overflow-hidden">
-              <div className="px-6 py-4 border-b border-indigo-100/60">
+            <div className="rounded-3xl shadow-card overflow-hidden" style={{ background: "linear-gradient(to bottom, rgba(245,166,35,0.05), white)", border: "1px solid rgba(245,166,35,0.20)" }}>
+              <div className="px-6 py-4 border-b" style={{ borderColor: "rgba(245,166,35,0.18)" }}>
                 <h3 className="font-bold text-ink" style={{ fontFamily: "var(--font-syne)" }}>Quick Facts</h3>
               </div>
               <div className="px-6 py-5 space-y-4">
@@ -295,8 +295,8 @@ export default function RouteOrCategoryPage({ params }: Props) {
                   { icon: FileText,   label: "Documents",  value: `${route.requiredDocuments.length} required` },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-100 shrink-0">
-                      <Icon size={14} className="text-indigo-600" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl shrink-0" style={{ background: "rgba(245,166,35,0.12)" }}>
+                      <Icon size={14} style={{ color: "#0d1b4b" }} />
                     </div>
                     <div>
                       <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide"
@@ -335,8 +335,8 @@ export default function RouteOrCategoryPage({ params }: Props) {
             <div className="rounded-3xl bg-white border border-slate-200/70 shadow-card p-6">
               <h3 className="font-bold text-ink mb-3" style={{ fontFamily: "var(--font-syne)" }}>Official Source</h3>
               <a href={route.sourceUrl} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors group"
-                style={{ fontFamily: "var(--font-outfit)" }}>
+                className="flex items-center gap-2 text-sm font-semibold transition-colors group"
+                style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}>
                 <Globe size={14} />
                 Official Government Page
                 <ExternalLink size={12} className="ml-auto group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

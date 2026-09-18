@@ -62,8 +62,8 @@ export default function AccessibilityPage() {
               <ul className="space-y-3">
                 {features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
-                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 mt-0.5">
-                      <CheckCircle size={12} className="text-emerald-600" />
+                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full mt-0.5" style={{ background: "rgba(245,166,35,0.15)" }}>
+                      <CheckCircle size={12} style={{ color: "#0d1b4b" }} />
                     </div>
                     <span className="text-sm text-slate-600" style={{ fontFamily: "var(--font-outfit)" }}>{f}</span>
                   </li>
@@ -96,7 +96,7 @@ export default function AccessibilityPage() {
               </h2>
               <p className="text-sm text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-outfit)" }}>
                 If you experience any accessibility barriers, please contact us at{" "}
-                <a href={`mailto:${COMPANY.email}`} className="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors">
+                <a href={`mailto:${COMPANY.email}`} className="font-semibold transition-colors hover:underline" style={{ color: "#0d1b4b" }}>
                   {COMPANY.email}
                 </a>
                 . We aim to respond within 5 business days.

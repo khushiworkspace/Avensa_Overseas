@@ -38,12 +38,12 @@ export const metadata: Metadata = { title: "Immigration Routes – EU Visa & Per
 const CATEGORIES: ImmigrationCategory[] = ["work", "study", "family", "residence", "visit", "special"];
 
 const categoryConfig: Record<ImmigrationCategory, { icon: React.ElementType; gradient: string; glow: string; light: string }> = {
-  work:      { icon: Briefcase,     gradient: "from-indigo-500 to-violet-600", glow: "rgba(79,70,229,0.35)",  light: "bg-indigo-50 text-indigo-600 border-indigo-100"  },
-  study:     { icon: GraduationCap, gradient: "from-violet-500 to-purple-600", glow: "rgba(124,58,237,0.30)", light: "bg-violet-50 text-violet-600 border-violet-100"  },
-  family:    { icon: Users,         gradient: "from-sky-500 to-indigo-500",    glow: "rgba(14,165,233,0.28)", light: "bg-sky-50 text-sky-600 border-sky-100"           },
-  residence: { icon: HomeIcon,      gradient: "from-emerald-500 to-teal-600",  glow: "rgba(16,185,129,0.28)", light: "bg-emerald-50 text-emerald-600 border-emerald-100" },
-  visit:     { icon: Plane,         gradient: "from-amber-500 to-orange-500",  glow: "rgba(245,158,11,0.32)", light: "bg-amber-50 text-amber-600 border-amber-100"     },
-  special:   { icon: Star,          gradient: "from-rose-500 to-pink-600",     glow: "rgba(244,63,94,0.28)", light: "bg-rose-50 text-rose-600 border-rose-100"        },
+  work:      { icon: Briefcase,     gradient: "from-[#0d1b4b] to-[#1a2b6b]",  glow: "rgba(13,27,75,0.35)",   light: "bg-[rgba(13,27,75,0.07)] text-[#0d1b4b] border-[rgba(13,27,75,0.18)]"   },
+  study:     { icon: GraduationCap, gradient: "from-[#F5A623] to-[#E8971A]",  glow: "rgba(245,166,35,0.35)", light: "bg-[rgba(245,166,35,0.08)] text-[#b06000] border-[rgba(245,166,35,0.25)]" },
+  family:    { icon: Users,         gradient: "from-[#1a2b6b] to-[#0d1b4b]",  glow: "rgba(26,43,107,0.30)",  light: "bg-[rgba(13,27,75,0.07)] text-[#0d1b4b] border-[rgba(13,27,75,0.18)]"   },
+  residence: { icon: HomeIcon,      gradient: "from-[#0d1b4b] to-[#F5A623]",  glow: "rgba(13,27,75,0.30)",   light: "bg-[rgba(245,166,35,0.08)] text-[#b06000] border-[rgba(245,166,35,0.25)]" },
+  visit:     { icon: Plane,         gradient: "from-[#F5A623] to-[#fcd34d]",  glow: "rgba(245,166,35,0.32)", light: "bg-amber-50 text-amber-600 border-amber-100"                              },
+  special:   { icon: Star,          gradient: "from-[#1a2b6b] to-[#F5A623]",  glow: "rgba(26,43,107,0.28)",  light: "bg-[rgba(13,27,75,0.07)] text-[#0d1b4b] border-[rgba(13,27,75,0.18)]"   },
 };
 
 export default function RoutesPage() {
@@ -142,7 +142,7 @@ export default function RoutesPage() {
                 key={label}
                 className="flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.06] px-4 py-2 backdrop-blur-sm"
               >
-                <Icon size={12} className="text-indigo-300 shrink-0" />
+                <Icon size={12} className="shrink-0" style={{ color: "#F5A623" }} />
                 <span className="text-xs font-semibold text-white/70" style={{ fontFamily: "var(--font-outfit)" }}>
                   {label}
                 </span>
@@ -229,7 +229,7 @@ export default function RoutesPage() {
                       className="group block animate-fade-up"
                       style={{ animationDelay: `${i * 0.05}s`, animationFillMode: "both" }}
                     >
-                      <div className="relative flex flex-col h-full p-5 rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-indigo-300/50">
+                      <div className="relative flex flex-col h-full p-5 rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-card-hover group-hover:border-[rgba(245,166,35,0.35)]">
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"
                           style={{ background: `radial-gradient(ellipse at 50% 0%,${cfg.glow.replace("0.30","0.05").replace("0.35","0.05").replace("0.32","0.05").replace("0.28","0.04")},transparent 70%)` }} />
 
@@ -258,7 +258,7 @@ export default function RoutesPage() {
                         </div>
 
                         <h3
-                          className="relative font-bold text-ink group-hover:text-indigo-700 transition-colors flex-1 leading-snug"
+                          className="relative font-bold text-ink group-hover:text-[#0d1b4b] transition-colors flex-1 leading-snug"
                           style={{ fontFamily: "var(--font-syne)" }}
                         >
                           {route.name}
@@ -273,8 +273,8 @@ export default function RoutesPage() {
                           <span className="flex items-center gap-1"><FileText size={11} />{route.requiredDocuments.length} docs</span>
                         </div>
 
-                        <div className="relative mt-4 flex items-center gap-1.5 text-xs font-semibold text-indigo-600 group-hover:gap-2.5 transition-all duration-300"
-                          style={{ fontFamily: "var(--font-outfit)" }}>
+                        <div className="relative mt-4 flex items-center gap-1.5 text-xs font-semibold group-hover:gap-2.5 transition-all duration-300"
+                          style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}>
                           View requirements <ArrowRight size={12} />
                         </div>
                       </div>

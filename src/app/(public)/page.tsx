@@ -151,7 +151,7 @@ const trustCards = [
 const stats = [
   { value: "30+", label: "EU Countries"       },
   { value: "30+", label: "Immigration Routes" },
-  { value: "50k+",label: "Applications Guided"},
+  { value: "1000",label: "Applications Guided"},
   { value: "98%", label: "Accuracy Rate"      },
 ];
 
@@ -182,7 +182,7 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           § 1  HERO — Void dark, aurora glow, 3-D depth
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden"
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden"
         style={{
           background: "linear-gradient(160deg, #050714 0%, #080c28 40%, #0d1038 70%, #050714 100%)",
         }}
@@ -269,7 +269,7 @@ export default function HomePage() {
         </div>
 
         {/* ── Hero content ── */}
-        <div className="relative page-container w-full py-32 lg:py-40">
+        <div className="relative page-container w-full py-20 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
 
             {/* Eyebrow badge */}
@@ -413,7 +413,7 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           § 1.5  SPECIALISATION — Schengen-to-Schengen TRC
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 overflow-hidden bg-white">
+      <section className="relative py-12 overflow-hidden bg-white">
         {/* subtle top glow */}
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-[700px] rounded-full blur-[130px] pointer-events-none"
           style={{ background: "rgba(13,27,75,0.06)" }} />
@@ -625,9 +625,9 @@ export default function HomePage() {
                 desc: "Bulgaria has some of the lowest tuition fees in the EU with recognised medical, law, and engineering degrees.",
                 img: "https://picsum.photos/seed/sofia/800/500",
                 tags: ["Bachelor", "Medical", "Engineering"],
-                color: "from-emerald-500/20 to-sky-500/10",
-                border: "border-emerald-400/20",
-                badge: "from-emerald-500 to-teal-500",
+                color: "from-[#0d1b4b]/20 to-[#1a2b6b]/10",
+                border: "border-[rgba(13,27,75,0.20)]",
+                badge: "from-[#F5A623] to-[#E8971A]",
               },
             ].map((c, i) => (
               <Reveal key={c.code} delay={i * 0.10}>
@@ -954,7 +954,7 @@ export default function HomePage() {
       {/* ════════════════════════════════════════════════════════════
           § 2.5  EUROPEAN DESTINATIONS VISUAL SHOWCASE
       ════════════════════════════════════════════════════════════ */}
-      <section className="relative py-16 overflow-hidden bg-white">
+      <section className="relative py-10 overflow-hidden bg-white">
         {/* Section header */}
         <div className="relative page-container mb-10">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
@@ -1343,7 +1343,7 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p
-                className="mt-4 text-white/42 max-w-lg mx-auto leading-relaxed"
+                className="mt-4 text-white/60 max-w-lg mx-auto leading-relaxed"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
                 Structured immigration information — no guesswork, no legal advice, just clarity.
@@ -1381,7 +1381,7 @@ export default function HomePage() {
                     {tc.title}
                   </h3>
                   <p
-                    className="relative mt-2 text-xs text-white/38 leading-relaxed"
+                    className="relative mt-2 text-xs text-white/60 leading-relaxed"
                     style={{ fontFamily: "var(--font-outfit)" }}
                   >
                     {tc.desc}
@@ -1668,106 +1668,74 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════════════════════
-          § 8  FAQ — split layout with smooth accordion
+          § 8  FAQ — clean split layout
       ════════════════════════════════════════════════════════════ */}
       <section
         className="relative section-padding overflow-hidden"
-        style={{
-          background: "linear-gradient(165deg, #050714 0%, #0a0f2e 35%, #0f1640 70%, #050714 100%)",
-        }}
+        style={{ background: "#f8fafc" }}
       >
-        {/* Background decoration */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 grid-pattern opacity-[0.14]" />
-          <div
-            className="absolute -top-32 left-1/4 h-[500px] w-[500px] rounded-full blur-[150px]"
-            style={{ background: "rgba(13,27,75,0.15)" }}
-          />
-          <div
-            className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full blur-[120px]"
-            style={{ background: "rgba(245,166,35,0.08)" }}
-          />
-          <div
-            className="absolute top-1/2 right-0 h-64 w-64 rounded-full blur-[100px]"
-            style={{ background: "rgba(26,43,107,0.12)" }}
-          />
-        </div>
+        {/* Subtle top border accent */}
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #e2e8f0, transparent)" }} />
 
         <div className="relative page-container">
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.6fr] lg:gap-20 lg:items-start">
+          {/* ── Section header — centered ── */}
+          <div className="text-center mb-14">
+            <Reveal>
+              <div
+                className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] mb-5"
+                style={{ fontFamily: "var(--font-outfit)", border: "1px solid #e2e8f0", background: "#ffffff", color: "#0d1b4b" }}
+              >
+                <Search size={11} />
+                FAQ
+              </div>
+            </Reveal>
 
-            {/* ── Left: sticky header panel ── */}
-            <div className="lg:sticky lg:top-28">
-              <Reveal>
-                <div
-                  className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] mb-6"
-                  style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.08)", color: "#F5A623" }}
-                >
-                  <Search size={11} />
-                  FAQ
-                </div>
-              </Reveal>
+            <Reveal delay={0.06}>
+              <h2
+                className="text-3xl lg:text-4xl font-bold leading-tight"
+                style={{ fontFamily: "var(--font-syne)", color: "#0d1b4b" }}
+              >
+                Common Questions,{" "}
+                <span style={{ color: "#F5A623" }}>Clear Answers</span>
+              </h2>
+            </Reveal>
 
-              <Reveal delay={0.06}>
-                <h2
-                  className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-5"
-                  style={{ fontFamily: "var(--font-syne)" }}
-                >
-                  Common Questions,{" "}
-                  <span className="text-gradient-hero">Clear Answers</span>
-                </h2>
-              </Reveal>
-
-              <Reveal delay={0.12}>
-                <p
-                  className="text-base text-white/65 leading-relaxed mb-8"
-                  style={{ fontFamily: "var(--font-outfit)" }}
-                >
-                  Everything you need to know about EU immigration, eligibility, and the Avensa process.
-                </p>
-              </Reveal>
-
-              {/* Stat pills */}
-              <Reveal delay={0.18}>
-                <div className="flex flex-wrap gap-3 mb-10">
-                  {[
-                    { label: "13 EU Countries", color: "rgba(13,27,75,0.15)",   border: "rgba(13,27,75,0.28)",   text: "#8aa5d6" },
-                    { label: "Free to Use",     color: "rgba(245,166,35,0.12)", border: "rgba(245,166,35,0.28)", text: "#F5A623" },
-                    { label: "Always Updated",  color: "rgba(245,166,35,0.08)", border: "rgba(245,166,35,0.20)", text: "#fcd34d" },
-                  ].map(p => (
-                    <span
-                      key={p.label}
-                      className="rounded-full px-3.5 py-1.5 text-[12px] font-semibold"
-                      style={{ background: p.color, border: `1px solid ${p.border}`, color: p.text, fontFamily: "var(--font-outfit)" }}
-                    >
-                      {p.label}
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.22}>
-                <Link href="/knowledge-base#faq">
-                  <button
-                    className="inline-flex items-center gap-2.5 rounded-2xl px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
-                    style={{ fontFamily: "var(--font-outfit)", border: "1px solid rgba(245,166,35,0.30)", background: "rgba(245,166,35,0.08)", color: "#F5A623" }}
-                  >
-                    View All FAQs <ChevronRight size={14} />
-                  </button>
-                </Link>
-              </Reveal>
-            </div>
-
-            {/* ── Right: accordion list ── */}
-            <div className="space-y-3">
-              {homeFaqs.map((faq, i) => (
-                <Reveal key={faq.id} delay={i * 0.07}>
-                  <FAQItem index={i} question={faq.question} answer={faq.answer} />
-                </Reveal>
-              ))}
-            </div>
-
+            <Reveal delay={0.1}>
+              <p
+                className="mt-4 text-base max-w-xl mx-auto leading-relaxed"
+                style={{ fontFamily: "var(--font-outfit)", color: "#64748b" }}
+              >
+                Everything you need to know about EU immigration, eligibility, and the Avensa process.
+              </p>
+            </Reveal>
           </div>
+
+          {/* ── Two column FAQ grid ── */}
+          <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-4 max-w-5xl mx-auto">
+            {homeFaqs.map((faq, i) => (
+              <Reveal key={faq.id} delay={i * 0.06}>
+                <FAQItem index={i} question={faq.question} answer={faq.answer} />
+              </Reveal>
+            ))}
+          </div>
+
+          {/* ── CTA ── */}
+          <Reveal delay={0.3}>
+            <div className="mt-10 text-center">
+              <Link href="/knowledge-base#faq">
+                <button
+                  className="inline-flex items-center gap-2.5 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                  style={{
+                    fontFamily: "var(--font-outfit)",
+                    background: "#0d1b4b",
+                    color: "#ffffff",
+                  }}
+                >
+                  View All FAQs <ChevronRight size={14} />
+                </button>
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

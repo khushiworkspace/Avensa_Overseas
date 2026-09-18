@@ -8,12 +8,12 @@ import { Breadcrumb } from "@/components/ui/Breadcrumb";
 export const metadata: Metadata = { title: "Immigration News & Updates" };
 
 const accentColors = [
-  { bar: "#6366f1", tag: "bg-indigo-50 border-indigo-100 text-indigo-600" },
-  { bar: "#7c3aed", tag: "bg-violet-50 border-violet-100 text-violet-600" },
-  { bar: "#f59e0b", tag: "bg-amber-50 border-amber-100 text-amber-600"   },
-  { bar: "#10b981", tag: "bg-emerald-50 border-emerald-100 text-emerald-600" },
-  { bar: "#6366f1", tag: "bg-indigo-50 border-indigo-100 text-indigo-600" },
-  { bar: "#7c3aed", tag: "bg-violet-50 border-violet-100 text-violet-600" },
+  { bar: "#0d1b4b", tag: "bg-[rgba(13,27,75,0.07)] border-[rgba(13,27,75,0.18)] text-[#0d1b4b]" },
+  { bar: "#F5A623", tag: "bg-amber-50 border-amber-100 text-amber-700"                          },
+  { bar: "#fcd34d", tag: "bg-amber-50 border-amber-100 text-amber-700"                          },
+  { bar: "#1a2b6b", tag: "bg-[rgba(26,43,107,0.07)] border-[rgba(26,43,107,0.18)] text-[#1a2b6b]" },
+  { bar: "#0d1b4b", tag: "bg-[rgba(13,27,75,0.07)] border-[rgba(13,27,75,0.18)] text-[#0d1b4b]" },
+  { bar: "#F5A623", tag: "bg-amber-50 border-amber-100 text-amber-700"                          },
 ];
 
 export default function NewsPage() {
@@ -63,7 +63,7 @@ export default function NewsPage() {
                   className="group block animate-fade-up"
                   style={{ animationDelay: `${i * 0.06}s`, animationFillMode: "both" }}
                 >
-                  <div className="relative flex flex-col h-full rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2.5 group-hover:shadow-card-hover group-hover:border-indigo-300/50">
+                  <div className="relative flex flex-col h-full rounded-3xl bg-white border border-slate-200/70 shadow-card overflow-hidden transition-all duration-500 group-hover:-translate-y-2.5 group-hover:shadow-card-hover group-hover:border-[rgba(245,166,35,0.35)]">
 
                     {/* Top colour bar */}
                     <div className="h-[3px] w-full transition-all duration-500 group-hover:h-[4px]"
@@ -71,7 +71,7 @@ export default function NewsPage() {
 
                     {/* Hover glow */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ background: "radial-gradient(ellipse at 50% -20%,rgba(79,70,229,0.04),transparent 60%)" }} />
+                      style={{ background: "radial-gradient(ellipse at 50% -20%,rgba(13,27,75,0.04),transparent 60%)" }} />
 
                     <div className="relative p-6 flex-1 space-y-3">
                       <div className="flex items-center justify-between">
@@ -89,7 +89,7 @@ export default function NewsPage() {
                       </div>
 
                       <h3
-                        className="font-bold text-ink leading-snug group-hover:text-indigo-700 transition-colors"
+                        className="font-bold text-ink leading-snug group-hover:text-[#0d1b4b] transition-colors"
                         style={{ fontFamily: "var(--font-syne)" }}
                       >
                         {article.title}
@@ -116,11 +116,11 @@ export default function NewsPage() {
                     </div>
 
                     <div className="relative px-6 py-4 border-t border-slate-100 flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 group-hover:gap-2.5 transition-all duration-300"
-                        style={{ fontFamily: "var(--font-outfit)" }}>
+                      <span className="flex items-center gap-1.5 text-xs font-semibold group-hover:gap-2.5 transition-all duration-300"
+                        style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}>
                         Read more <ArrowRight size={12} />
                       </span>
-                      <ArrowUpRight size={12} className="text-indigo-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: "#F5A623" }} />
                     </div>
                   </div>
                 </Link>

@@ -62,9 +62,12 @@ export function Footer() {
     <footer
       className="relative overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #050714 0%, #08091f 100%)",
+        background: "linear-gradient(180deg, #020510 0%, #050714 100%)",
       }}
     >
+      {/* Gold separator line at the very top of the footer */}
+      <div className="h-[2px] w-full" style={{ background: "linear-gradient(90deg, transparent 0%, #F5A623 30%, #fcd34d 50%, #F5A623 70%, transparent 100%)" }} />
+
       {/* ── Background decoration ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* top gradient glow — navy */}
@@ -89,7 +92,7 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-6">
             {/* Logo on white card so it's fully visible against dark footer */}
             <Link href="/" className="inline-block rounded-2xl bg-white px-5 py-3 shadow-[0_2px_16px_rgba(0,0,0,0.25)] hover:shadow-[0_4px_24px_rgba(0,0,0,0.35)] transition-shadow duration-200">
-              <AvensaLogo variant="horizontal" theme="light" size="sm" />
+              <AvensaLogo variant="horizontal" theme="light" size="md" />
             </Link>
 
             <p

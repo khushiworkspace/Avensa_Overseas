@@ -62,7 +62,7 @@ export default function CookiesPage() {
             {cookieTypes.map((ct) => (
               <div
                 key={ct.name}
-                className="rounded-2xl border border-slate-200/80 p-5 transition-all duration-200 hover:border-indigo-200 hover:bg-indigo-50/30"
+                className="rounded-2xl border border-slate-200/80 p-5 transition-all duration-200 hover:border-[rgba(245,166,35,0.35)] hover:bg-[rgba(245,166,35,0.03)]"
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-ink text-sm" style={{ fontFamily: "var(--font-syne)" }}>

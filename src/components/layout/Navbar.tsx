@@ -33,7 +33,7 @@ export function Navbar() {
           "sticky top-0 z-50 transition-all duration-300",
           scrolled
             ? "bg-white/95 backdrop-blur-xl shadow-[0_2px_20px_rgba(13,27,75,0.10)] border-b border-[#e8eaf0]"
-            : "bg-white border-b border-[#e8eaf0]"
+            : "bg-white"
         )}
       >
         <div className="page-container">

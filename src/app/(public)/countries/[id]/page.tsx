@@ -20,20 +20,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const categoryGradients: Record<string, string> = {
-  work:      "from-indigo-500 to-violet-600",
-  study:     "from-violet-500 to-purple-600",
-  family:    "from-sky-500 to-indigo-500",
-  residence: "from-emerald-500 to-teal-600",
-  visit:     "from-amber-500 to-orange-500",
-  special:   "from-rose-500 to-pink-600",
+  work:      "from-[#0d1b4b] to-[#1a2b6b]",
+  study:     "from-[#F5A623] to-[#E8971A]",
+  family:    "from-[#1a2b6b] to-[#0d1b4b]",
+  residence: "from-[#0d1b4b] to-[#F5A623]",
+  visit:     "from-[#F5A623] to-[#fcd34d]",
+  special:   "from-[#1a2b6b] to-[#F5A623]",
 };
 const categoryGlows: Record<string, string> = {
-  work:      "rgba(79,70,229,0.35)",
-  study:     "rgba(124,58,237,0.30)",
-  family:    "rgba(14,165,233,0.28)",
-  residence: "rgba(16,185,129,0.28)",
-  visit:     "rgba(245,158,11,0.32)",
-  special:   "rgba(244,63,94,0.28)",
+  work:      "rgba(13,27,75,0.35)",
+  study:     "rgba(245,166,35,0.35)",
+  family:    "rgba(26,43,107,0.30)",
+  residence: "rgba(13,27,75,0.30)",
+  visit:     "rgba(245,166,35,0.32)",
+  special:   "rgba(26,43,107,0.28)",
 };
 
 export default function CountryDetailPage({ params }: Props) {
@@ -118,8 +118,8 @@ export default function CountryDetailPage({ params }: Props) {
             ) : (
               <div className="space-y-4">
                 {routes.map((route, i) => {
-                  const grad = categoryGradients[route.category] ?? "from-indigo-500 to-violet-600";
-                  const glow = categoryGlows[route.category]    ?? "rgba(79,70,229,0.30)";
+                  const grad = categoryGradients[route.category] ?? "from-[#0d1b4b] to-[#1a2b6b]";
+                  const glow = categoryGlows[route.category]    ?? "rgba(13,27,75,0.30)";
                   return (
                     <div
                       key={route.id}
@@ -141,14 +141,14 @@ export default function CountryDetailPage({ params }: Props) {
                               {CATEGORY_LABELS[route.category]}
                             </span>
                             {route.status === "active" && (
-                              <span className="flex items-center gap-1 text-[11px] text-emerald-600 font-semibold"
-                                style={{ fontFamily: "var(--font-outfit)" }}>
+                              <span className="flex items-center gap-1 text-[11px] font-semibold"
+                                style={{ fontFamily: "var(--font-outfit)", color: "#F5A623" }}>
                                 <CheckCircle size={11} /> Active
                               </span>
                             )}
                           </div>
                           <h3
-                            className="text-base font-bold text-ink group-hover:text-indigo-700 transition-colors"
+                            className="text-base font-bold text-ink group-hover:text-[#0d1b4b] transition-colors"
                             style={{ fontFamily: "var(--font-syne)" }}
                           >
                             {route.name}
@@ -158,7 +158,7 @@ export default function CountryDetailPage({ params }: Props) {
                             {route.shortDescription}
                           </p>
                         </div>
-                        <ChevronRight size={16} className="text-slate-300 shrink-0 mt-1 group-hover:text-indigo-400 transition-colors" />
+                        <ChevronRight size={16} className="text-slate-300 shrink-0 mt-1 transition-colors" style={{}} />
                       </div>
 
                       <div className="relative flex flex-wrap gap-4 text-xs text-slate-400" style={{ fontFamily: "var(--font-outfit)" }}>
@@ -203,7 +203,7 @@ export default function CountryDetailPage({ params }: Props) {
                   ].map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-center justify-between gap-2">
                       <span className="flex items-center gap-2 text-sm text-slate-500" style={{ fontFamily: "var(--font-outfit)" }}>
-                        <Icon size={13} className="text-indigo-400 shrink-0" />
+                        <Icon size={13} className="shrink-0" style={{ color: "#F5A623" }} />
                         {label}
                       </span>
                       <span className="text-sm font-semibold text-ink" style={{ fontFamily: "var(--font-outfit)" }}>
@@ -216,7 +216,7 @@ export default function CountryDetailPage({ params }: Props) {
             </div>
 
             {/* Processing info */}
-            <div className="rounded-3xl bg-indigo-50 border border-indigo-100 p-6">
+            <div className="rounded-3xl p-6" style={{ background: "rgba(245,166,35,0.06)", border: "1px solid rgba(245,166,35,0.20)" }}>
               <h3 className="font-bold text-ink mb-2" style={{ fontFamily: "var(--font-syne)" }}>Processing Information</h3>
               <p className="text-sm text-slate-600 leading-relaxed" style={{ fontFamily: "var(--font-outfit)" }}>
                 {country.processingInfo}
@@ -230,12 +230,12 @@ export default function CountryDetailPage({ params }: Props) {
                 href={country.officialImmigrationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-indigo-600 hover:text-indigo-800 transition-colors font-semibold group"
-                style={{ fontFamily: "var(--font-outfit)" }}
+                className="flex items-center gap-2 text-sm font-semibold group transition-colors"
+                style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}
               >
                 <Globe size={14} />
                 Official Immigration Authority
-                <ExternalLink size={12} className="ml-auto group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ExternalLink size={12} className="ml-auto group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" style={{ color: "#F5A623" }} />
               </a>
               <p className="mt-2 text-xs text-slate-400" style={{ fontFamily: "var(--font-outfit)" }}>
                 Always verify current requirements on the official government website.

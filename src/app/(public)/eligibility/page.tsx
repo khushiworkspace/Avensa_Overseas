@@ -164,10 +164,10 @@ export default function EligibilityPage() {
               {result.eligible.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-emerald-100">
-                      <CheckCircle size={15} className="text-emerald-600" />
+                    <div className="flex h-7 w-7 items-center justify-center rounded-xl" style={{ background: "rgba(13,27,75,0.10)" }}>
+                      <CheckCircle size={15} style={{ color: "#0d1b4b" }} />
                     </div>
-                    <h3 className="font-bold text-emerald-800" style={{ fontFamily: "var(--font-syne)" }}>
+                    <h3 className="font-bold" style={{ fontFamily: "var(--font-syne)", color: "#0d1b4b" }}>
                       Potentially Eligible Routes ({result.eligible.length})
                     </h3>
                   </div>
@@ -175,16 +175,16 @@ export default function EligibilityPage() {
                     {result.eligible.map((r) => {
                       const country = COUNTRIES.find((c) => c.id === r.countryId);
                       return (
-                        <div key={r.id} className="flex items-start justify-between gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+                        <div key={r.id} className="flex items-start justify-between gap-4 rounded-2xl p-4" style={{ border: "1px solid rgba(13,27,75,0.20)", background: "rgba(13,27,75,0.04)" }}>
                           <div>
-                            <p className="font-bold text-emerald-900" style={{ fontFamily: "var(--font-syne)" }}>{r.name}</p>
-                            <p className="text-sm text-emerald-700 mt-0.5" style={{ fontFamily: "var(--font-outfit)" }}>
+                            <p className="font-bold" style={{ fontFamily: "var(--font-syne)", color: "#0d1b4b" }}>{r.name}</p>
+                            <p className="text-sm mt-0.5" style={{ fontFamily: "var(--font-outfit)", color: "#1a2b6b" }}>
                               {country?.name} · {r.processingTime}
                             </p>
-                            <p className="text-xs text-emerald-600 mt-1" style={{ fontFamily: "var(--font-outfit)" }}>{r.shortDescription}</p>
+                            <p className="text-xs mt-1" style={{ fontFamily: "var(--font-outfit)", color: "#0d1b4b" }}>{r.shortDescription}</p>
                           </div>
                           <Link href={`/routes/${r.slug}`} className="shrink-0">
-                            <Button size="sm" variant="outline" className="border-emerald-400 text-emerald-700 hover:bg-emerald-100">
+                            <Button size="sm" variant="outline" className="border-[rgba(13,27,75,0.30)] text-[#0d1b4b] hover:bg-[rgba(13,27,75,0.05)]">
                               View <ArrowRight size={12} />
                             </Button>
                           </Link>

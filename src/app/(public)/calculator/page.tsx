@@ -73,9 +73,9 @@ export default function CalculatorPage() {
         <Disclaimer />
 
         {/* How it works */}
-        <div className="flex gap-4 rounded-3xl border border-indigo-200/60 bg-indigo-50/60 p-5">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-indigo-100">
-            <Info size={15} className="text-indigo-600" />
+        <div className="flex gap-4 rounded-3xl p-5" style={{ border: "1px solid rgba(245,166,35,0.25)", background: "rgba(245,166,35,0.05)" }}>
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl" style={{ background: "rgba(245,166,35,0.15)" }}>
+            <Info size={15} style={{ color: "#0d1b4b" }} />
           </div>
           <div>
             <p className="text-sm font-bold text-ink mb-1" style={{ fontFamily: "var(--font-syne)" }}>
@@ -159,7 +159,7 @@ export default function CalculatorPage() {
                       Math.floor((new Date(stay.exitDate).getTime() - new Date(stay.entryDate).getTime()) / 86400000) + 1
                     );
                     return (
-                      <tr key={stay.id} className="border-t border-slate-100 hover:bg-indigo-50/30 transition-colors">
+                      <tr key={stay.id} className="border-t border-slate-100 transition-colors" style={{}}>
                         <td className="px-5 py-3 font-semibold text-ink" style={{ fontFamily: "var(--font-outfit)" }}>
                           {country?.name ?? stay.country}
                         </td>
@@ -197,8 +197,8 @@ export default function CalculatorPage() {
 
         {/* Result */}
         {result && (
-          <div className="rounded-3xl bg-white border border-indigo-200 shadow-indigo-sm overflow-hidden animate-fade-up">
-            <div className="px-6 py-4 border-b border-indigo-100 bg-indigo-50/50">
+          <div className="rounded-3xl bg-white overflow-hidden animate-fade-up" style={{ border: "1px solid rgba(245,166,35,0.30)", boxShadow: "0 4px 20px rgba(13,27,75,0.10)" }}>
+            <div className="px-6 py-4 border-b" style={{ borderColor: "rgba(245,166,35,0.18)", background: "rgba(245,166,35,0.04)" }}>
               <h2 className="font-bold text-ink" style={{ fontFamily: "var(--font-syne)" }}>Calculation Result</h2>
               <p className="text-xs text-slate-400 mt-0.5" style={{ fontFamily: "var(--font-outfit)" }}>
                 Based on a rolling 180-day window from today

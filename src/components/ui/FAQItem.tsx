@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 interface FAQItemProps {
   index: number;
@@ -14,43 +14,42 @@ export default function FAQItem({ index, question, answer }: FAQItemProps) {
 
   return (
     <div
-      className="group overflow-hidden rounded-2xl transition-all duration-300"
+      className="group overflow-hidden rounded-xl transition-all duration-300"
       style={{
-        background: open ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.04)",
+        background: open ? "#ffffff" : "#ffffff",
         border: open
-          ? "1px solid rgba(99,102,241,0.40)"
-          : "1px solid rgba(255,255,255,0.08)",
-        backdropFilter: "blur(16px) saturate(180%)",
+          ? "1px solid #0d1b4b"
+          : "1px solid #e2e8f0",
         boxShadow: open
-          ? "0 0 0 1px rgba(99,102,241,0.15), 0 12px 40px -8px rgba(79,70,229,0.30)"
-          : "0 1px 4px rgba(0,0,0,0.20)",
+          ? "0 4px 24px -4px rgba(13,27,75,0.12)"
+          : "0 1px 3px rgba(0,0,0,0.06)",
       }}
     >
       {/* Header / trigger */}
       <button
         type="button"
         onClick={() => setOpen(v => !v)}
-        className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left"
+        className="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left"
         aria-expanded={open}
       >
-        <span className="flex items-center gap-3.5 min-w-0">
+        <span className="flex items-center gap-3 min-w-0">
           {/* Number chip */}
           <span
-            className="shrink-0 flex h-6 w-6 items-center justify-center rounded-lg text-[11px] font-bold transition-all duration-300"
+            className="shrink-0 flex h-7 w-7 items-center justify-center rounded-lg text-[11px] font-bold"
             style={{
-              background: open ? "#4f46e5" : "rgba(99,102,241,0.15)",
-              color:      open ? "#ffffff" : "#a5b4fc",
+              background: open ? "#0d1b4b" : "#f1f5f9",
+              color: open ? "#F5A623" : "#64748b",
               fontFamily: "var(--font-outfit)",
             }}
           >
-            {index + 1}
+            {String(index + 1).padStart(2, "0")}
           </span>
 
           {/* Question text */}
           <span
-            className="text-sm font-semibold leading-snug transition-colors duration-300"
+            className="text-sm font-semibold leading-snug transition-colors duration-200"
             style={{
-              color:      open ? "#e0e7ff" : "rgba(255,255,255,0.82)",
+              color: open ? "#0d1b4b" : "#1e293b",
               fontFamily: "var(--font-outfit)",
             }}
           >
@@ -58,36 +57,36 @@ export default function FAQItem({ index, question, answer }: FAQItemProps) {
           </span>
         </span>
 
-        {/* Chevron */}
+        {/* Plus / Minus icon */}
         <span
-          className="shrink-0 flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-300"
+          className="shrink-0 flex h-7 w-7 items-center justify-center rounded-lg transition-all duration-200"
           style={{
-            background: open ? "rgba(99,102,241,0.20)" : "rgba(255,255,255,0.06)",
-            transform:  open ? "rotate(180deg)" : "rotate(0deg)",
+            background: open ? "#0d1b4b" : "#f1f5f9",
           }}
         >
-          <ChevronDown
-            size={14}
-            style={{ color: open ? "#818cf8" : "rgba(255,255,255,0.35)" }}
-          />
+          {open
+            ? <Minus size={13} style={{ color: "#F5A623" }} />
+            : <Plus size={13} style={{ color: "#94a3b8" }} />
+          }
         </span>
       </button>
 
-      {/* Answer panel — animated via max-height grid trick */}
+      {/* Answer panel */}
       <div
         className="grid transition-all duration-300 ease-in-out"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">
           <div
-            className="px-6 pb-5 pt-1 text-sm leading-relaxed"
+            className="px-5 pb-5 text-sm leading-relaxed"
             style={{
-              color:      "rgba(255,255,255,0.60)",
+              color: "#475569",
               fontFamily: "var(--font-outfit)",
-              borderTop:  "1px solid rgba(255,255,255,0.07)",
+              borderTop: "1px solid #f1f5f9",
+              paddingTop: "12px",
             }}
           >
-            <div className="pt-4">{answer}</div>
+            {answer}
           </div>
         </div>
       </div>
