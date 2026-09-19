@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -21,23 +21,28 @@ import Link from "next/link";
 
 /* ── Schema ─────────────────────────────────────────────────────── */
 const schema = z.object({
-  nationality:        z.string().min(1, "Required"),
-  residenceCountry:   z.string().min(1, "Required"),
-  destinationCountry: z.string().min(1, "Required"),
-  purpose:            z.string().min(1, "Required"),
-  dateOfBirth:        z.string().min(1, "Required"),
-  education:          z.string().min(1, "Required"),
-  occupation:         z.string().min(1, "Required"),
-  yearsExperience:    z.string(),
-  hasJobOffer:        z.string(),
-  annualSalary:       z.string(),
-  languageProficiency:z.string().min(1, "Required"),
-  familyStatus:       z.string().min(1, "Required"),
-  currentStatus:      z.string().min(1, "Required"),
-  passportExpiry:     z.string().min(1, "Required"),
+  nationality:         z.string().min(1, "Required"),
+  residenceCountry:    z.string().min(1, "Required"),
+  destinationCountry:  z.string().min(1, "Required"),
+  purpose:             z.string().min(1, "Required"),
+  dateOfBirth:         z.string().min(1, "Required"),
+  education:           z.string().min(1, "Required"),
+  occupation:          z.string().min(1, "Required"),
+  yearsExperience:     z.string(),
+  hasJobOffer:         z.string(),
+  annualSalary:        z.string(),
+  languageProficiency: z.string().min(1, "Required"),
+  familyStatus:        z.string().min(1, "Required"),
+  currentStatus:       z.string().min(1, "Required"),
+  passportExpiry:      z.string().min(1, "Required"),
+  // Lead-capture fields (Step 1)
+  name:                z.string().optional(),
+  email:               z.string().optional(),
+  phone:               z.string().optional(),
 });
 type FormData = z.infer<typeof schema>;
 
+const TOTAL_STEPS = 5;
 const STEPS = [
   { label: "Background" },
   { label: "Destination" },
@@ -74,23 +79,159 @@ function FormSection({ title, subtitle, children }: {
 
 /* ── Page ────────────────────────────────────────────────────────── */
 export default function EligibilityPage() {
-  const [step, setStep]   = useState(1);
+  const [step, setStep]     = useState(1);
   const [result, setResult] = useState<null | {
     eligible: typeof IMMIGRATION_ROUTES;
     partial:  typeof IMMIGRATION_ROUTES;
   }>(null);
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>({
+  /* Lead-capture state */
+  const draftIdRef      = useRef<string | null>(null);
+  const saveTimerRef    = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isSavingRef     = useRef(false);
+
+  const { register, handleSubmit, watch, getValues, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: { hasJobOffer: "no", yearsExperience: "0", annualSalary: "0" },
   });
 
   const hasJobOffer = watch("hasJobOffer");
 
-  function onSubmit(data: FormData) {
+  /* ── Autosave helpers ───────────────────────────────────────────── */
+
+  /** Create the initial draft as soon as we have name + email */
+  const createDraft = useCallback(async (data: Partial<FormData>) => {
+    if (draftIdRef.current) return; // already created
+    if (!data.email && !data.phone) return; // need at least one identifier
+
+    try {
+      const res = await fetch("/api/leads/draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          leadType:          "eligibility",
+          name:              data.name  || undefined,
+          email:             data.email || undefined,
+          phone:             data.phone || undefined,
+          formData:          data,
+          completionPercent: Math.round(((step - 1) / TOTAL_STEPS) * 100),
+          lastStep:          step,
+          totalSteps:        TOTAL_STEPS,
+        }),
+      });
+      const json = await res.json();
+      if (json.success) draftIdRef.current = json.draftId;
+    } catch {
+      // Silently fail — never break the user's flow
+    }
+  }, [step]);
+
+  /** Debounced autosave — only updates, never creates */
+  const autosave = useCallback((data: Partial<FormData>, currentStep: number) => {
+    if (!draftIdRef.current) return;
+    if (isSavingRef.current) return;
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+
+    saveTimerRef.current = setTimeout(async () => {
+      isSavingRef.current = true;
+      try {
+        await fetch(`/api/leads/${draftIdRef.current}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name:              data.name  || undefined,
+            email:             data.email || undefined,
+            phone:             data.phone || undefined,
+            formData:          data,
+            completionPercent: Math.round(((currentStep - 1) / TOTAL_STEPS) * 100),
+            lastStep:          currentStep,
+          }),
+        });
+      } catch {
+        // Silently fail
+      } finally {
+        isSavingRef.current = false;
+      }
+    }, 1500); // 1.5s debounce
+  }, []);
+
+  /** Save on page-visibility change (user switching tabs / minimising) */
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        const values = getValues();
+        if (draftIdRef.current) autosave(values, step);
+        else createDraft(values);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, [autosave, createDraft, getValues, step]);
+
+  /** Save when moving between steps */
+  function handleStepChange(newStep: number) {
+    const values = getValues();
+    if (!draftIdRef.current) {
+      createDraft(values);
+    } else {
+      autosave(values, step);
+    }
+    setStep(newStep);
+  }
+
+  /* ── Final submission ──────────────────────────────────────────── */
+  async function onSubmit(data: FormData) {
     const age    = calcAge(data.dateOfBirth);
     const salary = Number(data.annualSalary) || 0;
 
+    /* Mark lead as completed in DB */
+    try {
+      if (draftIdRef.current) {
+        await fetch(`/api/leads/${draftIdRef.current}/complete`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name:     data.name  || "Anonymous",
+            email:    data.email || "unknown@avensaoverseas.com",
+            phone:    data.phone || undefined,
+            formData: data,
+          }),
+        });
+      } else {
+        // User submitted without autosave trigger — create a completed lead directly
+        const res = await fetch("/api/leads/draft", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            leadType:          "eligibility",
+            name:              data.name  || undefined,
+            email:             data.email || undefined,
+            phone:             data.phone || undefined,
+            formData:          data,
+            completionPercent: 100,
+            lastStep:          TOTAL_STEPS,
+            totalSteps:        TOTAL_STEPS,
+          }),
+        });
+        const json = await res.json();
+        if (json.success) {
+          await fetch(`/api/leads/${json.draftId}/complete`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name:     data.name  || "Anonymous",
+              email:    data.email || "unknown@avensaoverseas.com",
+              phone:    data.phone || undefined,
+              formData: data,
+            }),
+          });
+        }
+      }
+    } catch {
+      // Never block the UX on a DB error
+    }
+
+    /* Run eligibility logic (unchanged) */
     const candidates = IMMIGRATION_ROUTES.filter(
       (r) => r.countryId === data.destinationCountry && r.category === data.purpose
     );
@@ -128,14 +269,18 @@ export default function EligibilityPage() {
         if (salary > 0 && salary < 31752) missing.push("Income below minimum threshold (~€2,646/month)");
       }
 
-      if (missing.length === 0)      eligible.push(route);
-      else if (missing.length <= 2)  partial.push(route);
+      if (missing.length === 0)     eligible.push(route);
+      else if (missing.length <= 2) partial.push(route);
     }
 
     setResult({ eligible, partial });
   }
 
-  function reset() { setResult(null); setStep(1); }
+  function reset() {
+    draftIdRef.current = null;
+    setResult(null);
+    setStep(1);
+  }
 
   /* ── Results view ── */
   if (result) {
@@ -189,7 +334,8 @@ export default function EligibilityPage() {
                     {result.eligible.map((r) => {
                       const country = COUNTRIES.find((c) => c.id === r.countryId);
                       return (
-                        <div key={r.id} className="flex items-start justify-between gap-4 rounded-2xl p-4" style={{ border: "1px solid rgba(13,27,75,0.20)", background: "rgba(13,27,75,0.04)" }}>
+                        <div key={r.id} className="flex items-start justify-between gap-4 rounded-2xl p-4"
+                          style={{ border: "1px solid rgba(13,27,75,0.20)", background: "rgba(13,27,75,0.04)" }}>
                           <div>
                             <p className="font-bold" style={{ fontFamily: "var(--font-syne)", color: "#0d1b4b" }}>{r.name}</p>
                             <p className="text-sm mt-0.5" style={{ fontFamily: "var(--font-outfit)", color: "#1a2b6b" }}>
@@ -318,7 +464,7 @@ export default function EligibilityPage() {
           <div className="rounded-3xl bg-white overflow-hidden"
             style={{ border: "1px solid rgba(13,27,75,0.12)", boxShadow: "0 1px 4px rgba(13,27,75,0.07)" }}>
 
-            {/* Card header — navy gradient strip */}
+            {/* Card header */}
             <div className="px-6 py-4 flex items-center gap-3"
               style={{
                 background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
@@ -339,13 +485,48 @@ export default function EligibilityPage() {
             </div>
 
             <div className="px-6 py-6">
-              {/* Step 1 */}
+              {/* Step 1 — Background + lead capture */}
               {step === 1 && (
-                <FormSection title="Your Background" subtitle="Tell us a little about where you are from and where you currently live.">
+                <FormSection title="Your Background" subtitle="Tell us a little about where you are from. We'll save your progress automatically.">
+                  {/* Lead capture fields */}
+                  <Input
+                    label="Your Name"
+                    placeholder="e.g. Rahul Sharma"
+                    {...register("name")}
+                    onBlur={() => {
+                      const v = getValues();
+                      if (!draftIdRef.current) createDraft(v);
+                      else autosave(v, step);
+                    }}
+                  />
+                  <Input
+                    label="Email Address"
+                    type="email"
+                    placeholder="your@email.com"
+                    {...register("email")}
+                    onBlur={() => {
+                      const v = getValues();
+                      if (!draftIdRef.current) createDraft(v);
+                      else autosave(v, step);
+                    }}
+                  />
+                  <Input
+                    label="Phone Number (optional)"
+                    placeholder="+91 XXXXX XXXXX"
+                    {...register("phone")}
+                    onBlur={() => {
+                      const v = getValues();
+                      if (!draftIdRef.current) createDraft(v);
+                      else autosave(v, step);
+                    }}
+                  />
                   <Select label="Your Nationality" options={nationalityOptions} placeholder="Select nationality"
                     required {...register("nationality")} error={errors.nationality?.message} />
                   <Select label="Current Country of Residence" options={countryOptions} placeholder="Select country"
                     required {...register("residenceCountry")} error={errors.residenceCountry?.message} />
+                  <p className="text-xs text-slate-400 leading-relaxed" style={{ fontFamily: "var(--font-outfit)" }}>
+                    Your progress is saved automatically. We only use your contact details to follow up if you leave without completing the form.
+                  </p>
                 </FormSection>
               )}
 
@@ -422,10 +603,9 @@ export default function EligibilityPage() {
                 borderTop: "1px solid rgba(13,27,75,0.08)",
                 background: "rgba(13,27,75,0.02)",
               }}>
-              {/* Back button */}
               <button
                 type="button"
-                onClick={() => setStep(s => Math.max(1, s - 1))}
+                onClick={() => handleStepChange(Math.max(1, step - 1))}
                 disabled={step === 1}
                 className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:-translate-y-0.5"
                 style={{
@@ -456,11 +636,10 @@ export default function EligibilityPage() {
                 ))}
               </div>
 
-              {/* Continue / Submit button */}
               {step < STEPS.length ? (
                 <button
                   type="button"
-                  onClick={() => setStep(s => Math.min(STEPS.length, s + 1))}
+                  onClick={() => handleStepChange(Math.min(STEPS.length, step + 1))}
                   className="btn-shine inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.97]"
                   style={{
                     fontFamily: "var(--font-outfit)",

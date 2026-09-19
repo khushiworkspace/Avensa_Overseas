@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Lock } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { PUBLIC_NAV_LINKS } from "@/lib/constants";
@@ -89,34 +89,43 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* ── Mobile toggle ── */}
-            <button
-              className="lg:hidden flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-200"
-              style={{
-                background: "rgba(13,27,75,0.06)",
-                color: "#0d1b4b",
-              }}
-              onClick={() => setMobileOpen(v => !v)}
-              aria-label={mobileOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileOpen}
-            >
-              <span
-                className={cn(
-                  "absolute transition-all duration-300",
-                  mobileOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"
-                )}
+            {/* ── Desktop right side — Admin Console + Mobile toggle ── */}
+            <div className="flex items-center gap-3">
+
+              {/* Admin Console button — desktop only */}
+              <Link href="/admin/login" className="hidden lg:block">
+                <button
+                  className="inline-flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.97]"
+                  style={{
+                    fontFamily: "var(--font-outfit)",
+                    background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                    border: "1px solid rgba(245,166,35,0.35)",
+                    color: "#F5A623",
+                    boxShadow: "0 2px 10px rgba(13,27,75,0.20)",
+                  }}
+                >
+                  <Lock size={11} />
+                  Admin Console
+                </button>
+              </Link>
+
+              {/* ── Mobile toggle ── */}
+              <button
+                className="lg:hidden flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-200"
+                style={{ background: "rgba(13,27,75,0.06)", color: "#0d1b4b" }}
+                onClick={() => setMobileOpen(v => !v)}
+                aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileOpen}
               >
-                <Menu size={17} />
-              </span>
-              <span
-                className={cn(
-                  "absolute transition-all duration-300",
-                  !mobileOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100"
-                )}
-              >
-                <X size={17} />
-              </span>
-            </button>
+                <span className={cn("absolute transition-all duration-300", mobileOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100")}>
+                  <Menu size={17} />
+                </span>
+                <span className={cn("absolute transition-all duration-300", !mobileOpen ? "opacity-0 rotate-90 scale-50" : "opacity-100 rotate-0 scale-100")}>
+                  <X size={17} />
+                </span>
+              </button>
+
+            </div>
 
           </div>
         </div>
@@ -157,6 +166,24 @@ export function Navbar() {
                 );
               })}
             </nav>
+
+            {/* Admin Console — mobile */}
+            <div className="mt-4 pt-4" style={{ borderTop: "1px solid #e8eaf0" }}>
+              <Link href="/admin/login">
+                <button
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs font-semibold transition-all duration-200"
+                  style={{
+                    fontFamily: "var(--font-outfit)",
+                    background: "linear-gradient(135deg, #0d1b4b 0%, #1a2b6b 100%)",
+                    border: "1px solid rgba(245,166,35,0.35)",
+                    color: "#F5A623",
+                  }}
+                >
+                  <Lock size={11} />
+                  Admin Console
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>

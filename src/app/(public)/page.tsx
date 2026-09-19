@@ -268,7 +268,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* ── Hero content ── */}
+          {/* ── Hero content ── */}
         <div className="relative page-container w-full py-20 lg:py-28">
           <div className="mx-auto max-w-5xl text-center">
 
