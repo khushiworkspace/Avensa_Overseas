@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   ArrowLeft, Mail, Phone, Calendar, User,
@@ -67,8 +67,8 @@ function Panel({ title, icon: Icon, accent, children }: { title: string; icon: R
 }
 
 /* ─── Page ───────────────────────────────────────────────────────── */
-export default function AdminLeadDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function AdminLeadDetailPage({ params }: { params: { id: string } }) {
+  const { id } = params;
   const [lead,          setLead]          = useState<Lead | null>(null);
   const [notes,         setNotes]         = useState<LeadNote[]>([]);
   const [loading,       setLoading]       = useState(true);
