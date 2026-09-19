@@ -982,7 +982,7 @@ export default function HomePage() {
                   className="btn-secondary shrink-0 flex items-center gap-2"
                   style={{ fontFamily: "var(--font-outfit)" }}
                 >
-                  All 13 Countries <ChevronRight size={14} />
+                  All 30 Countries <ChevronRight size={14} />
                 </button>
               </Link>
             </Reveal>
