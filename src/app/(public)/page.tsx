@@ -724,7 +724,7 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="section-subtitle mx-auto max-w-2xl">
-                We process Tourist and Work Visa applications for 14 European destinations —
+                We process Tourist and Work Visa applications for 30 European destinations —
                 from the Baltic coast to the Mediterranean.
               </p>
             </Reveal>
