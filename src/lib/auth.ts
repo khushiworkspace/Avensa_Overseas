@@ -1,11 +1,14 @@
 import jwt from "jsonwebtoken";
 import { NextRequest, NextResponse } from "next/server";
 
-const JWT_SECRET  = process.env.JWT_SECRET as string;
 const JWT_EXPIRES = process.env.JWT_EXPIRES_IN ?? "6h";
 
-if (!JWT_SECRET) {
-  throw new Error("Please define JWT_SECRET in .env.local");
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error("JWT_SECRET is not configured");
+  }
+  return secret;
 }
 
 /* ─── Token payload ──────────────────────────────────────────────── */
@@ -18,13 +21,13 @@ export interface AdminTokenPayload {
 
 /* ─── Sign ───────────────────────────────────────────────────────── */
 export function signToken(payload: AdminTokenPayload): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES } as jwt.SignOptions);
+  return jwt.sign(payload, getJwtSecret(), { expiresIn: JWT_EXPIRES } as jwt.SignOptions);
 }
 
 /* ─── Verify ─────────────────────────────────────────────────────── */
 export function verifyToken(token: string): AdminTokenPayload | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as AdminTokenPayload;
+    return jwt.verify(token, getJwtSecret()) as AdminTokenPayload;
   } catch {
     return null;
   }
